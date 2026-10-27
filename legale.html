@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f7f2e7">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<!-- Mantieni noindex finché i dati del titolare e l'informativa non sono completi e verificati. -->
+<meta name="robots" content="noindex,nofollow">
+<title>Informazioni legali · Affitto in Ordine</title>
+<meta name="description" content="Privacy, cookie, termini d'uso, note legali e accessibilità di Affitto in Ordine, prototipo di micro-SaaS per piccoli proprietari immobiliari.">
+<script src="theme.js"></script>
+<link rel="stylesheet" href="landing.css">
+<link rel="stylesheet" href="legal.css">
+<link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="motion.css">
+<link rel="stylesheet" href="alive.css">
+</head>
+<body class="legal-page">
+
+<a class="skip-link" href="#main">Vai al contenuto</a>
+<div class="scroll-progress" aria-hidden="true"><span data-scroll-progress></span></div>
+
+<svg class="svg-sprite" aria-hidden="true">
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v10h14V10"/><path d="M9.5 20v-6h5v6"/></symbol>
+  <symbol id="i-logo" viewBox="0 0 32 32"><path d="M4 14.5 16 4l12 10.5"/><path d="M7.2 13v14.8h17.6V13"/><path d="m10.4 20.2 3.2 3.2 8-8"/></symbol>
+  <symbol id="i-theme" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.5 1.5M17.3 17.3l1.5 1.5M18.8 5.2l-1.5 1.5M6.7 17.3l-1.5 1.5"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20M5 5l14 14M19 5 5 19"/></symbol>
+</svg>
+
+<header class="site-head">
+  <div class="container head-inner">
+    <a class="brand" href="index.html" aria-label="Affitto in Ordine, pagina iniziale" translate="no">
+      <span class="brand-mark"><svg aria-hidden="true" focusable="false"><use href="#i-logo"></use></svg></span>
+      <span class="brand-text"><strong>Affitto in Ordine</strong><small>per piccoli proprietari</small></span>
+    </a>
+    <nav class="site-nav" aria-label="Navigazione principale">
+      <a href="index.html#come-funziona">Come funziona</a>
+      <a href="index.html#prezzi">Prezzo</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#accessibilita">Accessibilità</a>
+    </nav>
+    <div class="head-actions">
+      <span class="head-badge"><span class="dot" aria-hidden="true"></span>In validazione</span>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-expanded="false" aria-controls="themePanel" aria-haspopup="dialog" aria-label="Scegli tema e palette">
+        <svg aria-hidden="true" focusable="false"><use href="#i-theme"></use></svg>
+      </button>
+      <a class="btn btn--acid btn--sm head-cta" href="demo.html">Demo <svg aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></a>
+      <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobileMenu" aria-label="Apri il menu">
+        <span class="menu-lines" aria-hidden="true"><i></i><i></i></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="theme-panel" id="themePanel" data-theme-panel role="dialog" aria-labelledby="themePanelTitle" hidden>
+  <div class="theme-panel-head">
+    <div>
+      <p class="theme-kicker">Aspetto / preferenza locale</p>
+      <h2 id="themePanelTitle">Tema e palette</h2>
+    </div>
+    <button class="theme-close" type="button" data-theme-close aria-label="Chiudi selettore tema">
+      <svg aria-hidden="true" focusable="false"><use href="#i-x"></use></svg>
+    </button>
+  </div>
+  <fieldset class="theme-fieldset">
+    <legend>Modalità</legend>
+    <div class="theme-options theme-options--modes">
+      <label class="theme-option"><input type="radio" name="theme-mode" value="system"><span class="theme-option-face">Auto</span></label>
+      <label class="theme-option"><input type="radio" name="theme-mode" value="light"><span class="theme-option-face">Chiaro</span></label>
+      <label class="theme-option"><input type="radio" name="theme-mode" value="dark"><span class="theme-option-face">Scuro</span></label>
+    </div>
+  </fieldset>
+  <fieldset class="theme-fieldset">
+    <legend>Palette</legend>
+    <div class="theme-options theme-options--palettes">
+      <label class="theme-option"><input type="radio" name="theme-palette" value="lime"><span class="theme-option-face"><span class="theme-swatch" style="--swatch:#dcff45" aria-hidden="true"></span>Acido</span></label>
+      <label class="theme-option"><input type="radio" name="theme-palette" value="sky"><span class="theme-option-face"><span class="theme-swatch" style="--swatch:#7ddcff" aria-hidden="true"></span>Cielo</span></label>
+      <label class="theme-option"><input type="radio" name="theme-palette" value="coral"><span class="theme-option-face"><span class="theme-swatch" style="--swatch:#ff8a70" aria-hidden="true"></span>Corallo</span></label>
+      <label class="theme-option"><input type="radio" name="theme-palette" value="violet"><span class="theme-option-face"><span class="theme-swatch" style="--swatch:#b9a6ff" aria-hidden="true"></span>Viola</span></label>
+      <label class="theme-option"><input type="radio" name="theme-palette" value="mint"><span class="theme-option-face"><span class="theme-swatch" style="--swatch:#7bf7c9" aria-hidden="true"></span>Menta</span></label>
+      <label class="theme-option"><input type="radio" name="theme-palette" value="amber"><span class="theme-option-face"><span class="theme-swatch" style="--swatch:#ffcc66" aria-hidden="true"></span>Ambra</span></label>
+    </div>
+  </fieldset>
+  <p class="theme-note">La scelta resta solo su questo browser. Nessun cookie, nessun invio.</p>
+  <p class="theme-status" data-theme-status aria-live="polite"></p>
+</div>
+
+<div class="mobile-menu" id="mobileMenu" hidden>
+  <div class="mobile-menu-inner">
+    <div class="mobile-menu-head">
+      <span class="mobile-kicker">Menu / Affitto in Ordine</span>
+      <button class="menu-close" type="button" data-menu-close aria-label="Chiudi il menu"><svg aria-hidden="true" focusable="false"><use href="#i-x"></use></svg></button>
+    </div>
+    <nav class="mobile-nav" aria-label="Menu mobile">
+      <a href="index.html"><span>01</span>Home</a>
+      <a href="demo.html"><span>02</span>Demo</a>
+      <a href="#privacy"><span>03</span>Privacy</a>
+      <a href="#cookie"><span>04</span>Cookie</a>
+      <a href="#termini"><span>05</span>Termini</a>
+      <a href="#accessibilita"><span>06</span>Accessibilità</a>
+      <a href="#contatti"><span>07</span>Contatti</a>
+    </nav>
+    <div class="mobile-menu-foot">
+      <a class="btn btn--acid btn--wide" href="index.html#accesso">Richiedi l’accesso <svg aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></a>
+      <p>Progetto in validazione · nessuna vendita attiva</p>
+    </div>
+  </div>
+</div>
+
+<main id="main" class="legal-main" tabindex="-1">
+
+  <div class="container legal-hero">
+    <span class="legal-kicker">Trasparenza / Informazioni legali</span>
+    <h1>LE REGOLE,<br><span class="legal-highlight">IN CHIARO.</span></h1>
+    <p class="legal-lead">Qui trovi informativa privacy, cookie policy, termini d'uso, note legali e dichiarazione di accessibilità di Affitto in Ordine. Il progetto è un prototipo in fase di validazione: <strong>non è ancora possibile acquistare il servizio</strong>.</p>
+    <div class="legal-meta-row">
+      <p class="legal-updated">Ultimo aggiornamento: <time datetime="2026-10-26">26 ottobre 2026</time></p>
+      <p class="legal-draft"><span class="dot" aria-hidden="true"></span>Bozza operativa · noindex</p>
+    </div>
+
+    <div class="legal-warning" role="note">
+      <strong>Prima della pubblicazione.</strong> Completa i campi <span class="to-fill">[DA COMPILARE]</span> con i dati reali del titolare, del fornitore di hosting e dei tempi di risposta. Fai verificare questi testi da un professionista: questa pagina è un modello operativo, non una certificazione di conformità.
+    </div>
+  </div>
+
+  <div class="container legal-layout">
+
+    <nav class="legal-toc" aria-label="Indice della pagina">
+      <p>In questa pagina</p>
+      <a href="#privacy">Privacy</a>
+      <a href="#cookie">Cookie e memoria locale</a>
+      <a href="#termini">Termini d'uso</a>
+      <a href="#consumatori">Vendita e consumatori</a>
+      <a href="#note-legali">Note legali</a>
+      <a href="#accessibilita">Accessibilità</a>
+      <a href="#contatti">Contatti</a>
+    </nav>
+
+    <article class="legal-content">
+
+      <section class="legal-section" id="privacy">
+        <h2>Informativa privacy</h2>
+        <p class="legal-meta">Ai sensi degli articoli 13 e 14 del Regolamento (UE) 2016/679 (GDPR) e del D.Lgs. 196/2003 come modificato dal D.Lgs. 101/2018.</p>
+
+        <h3>1. Titolare del trattamento</h3>
+        <table class="legal-table">
+          <tr><th>Titolare</th><td><span class="to-fill">[DA COMPILARE: nome e cognome o ragione sociale]</span></td></tr>
+          <tr><th>Sede legale</th><td><span class="to-fill">[DA COMPILARE: via, CAP, città, provincia, Paese]</span></td></tr>
+          <tr><th>P.IVA / C.F.</th><td><span class="to-fill">[DA COMPILARE]</span></td></tr>
+          <tr><th>PEC</th><td><span class="to-fill">[DA COMPILARE, se disponibile]</span></td></tr>
+          <tr><th>Email</th><td><a href="mailto:alelocu09@gmail.com">alelocu09@gmail.com</a></td></tr>
+        </table>
+        <p>Per le richieste relative alla privacy scrivi all'indirizzo sopra con oggetto <strong>“Privacy”</strong>. Se il Titolare non ha ancora aperto una partita IVA, i dati identificativi e la sede devono comunque essere completati prima della pubblicazione.</p>
+
+        <h3>2. Quali dati trattiamo</h3>
+        <ul>
+          <li><strong>Dati che ci invii volontariamente.</strong> Nome, indirizzo email, numero indicativo di immobili, contenuto del messaggio e ogni altro dato che scegli di includere. Il form della landing non invia dati a un server: apre il tuo programma di posta con un messaggio già scritto. Il messaggio arriva alla casella email del Titolare.</li>
+          <li><strong>Dati della demo.</strong> Nomi, indirizzi, canoni, incassi e note inseriti nella demo sono salvati solo nel <em>localStorage</em> del tuo browser. Non vengono trasmessi al Titolare e non sono visibili a noi. I nomi e gli immobili precompilati sono fittizi.</li>
+          <li><strong>Preferenze e avviso.</strong> La modalità chiara/scura, la palette e la presa d'atto dell'avviso cookie sono salvate nel <em>localStorage</em> con le chiavi indicate più avanti. Sono preferenze tecniche del dispositivo e non vengono inviate a nessun server.</li>
+          <li><strong>Dati tecnici di navigazione.</strong> Se il sito viene pubblicato, il fornitore di hosting può registrare dati come indirizzo IP, data e ora, pagina richiesta e tipo di browser, per sicurezza, diagnostica e funzionamento del servizio. Il provider è <span class="to-fill">[DA COMPILARE: fornitore di hosting]</span>.</li>
+        </ul>
+        <p>Non chiediamo e non vogliamo ricevere categorie particolari di dati (per esempio dati sanitari, giudiziari, biometrici o relativi alle convinzioni personali). Non inserirli nella demo né nei messaggi. Se ci invii dati di terzi, per esempio dati di un inquilino, devi avere una base giuridica e, quando necessario, il consenso per farlo.</p>
+
+        <h3>3. Finalità e basi giuridiche</h3>
+        <table class="legal-table">
+          <tr><th>Finalità</th><th>Base giuridica</th></tr>
+          <tr><td>Rispondere a richieste di informazioni, demo o accesso fondatore.</td><td>Art. 6, par. 1, lett. b) GDPR: misure precontrattuali adottate su tua richiesta.</td></tr>
+          <tr><td>Gestire un eventuale contratto e fornire il servizio.</td><td>Art. 6, par. 1, lett. b) GDPR: esecuzione del contratto.</td></tr>
+          <tr><td>Adempiere a obblighi fiscali, contabili, amministrativi e legali.</td><td>Art. 6, par. 1, lett. c) GDPR: obbligo legale.</td></tr>
+          <tr><td>Proteggere il sito, prevenire abusi e difendersi in giudizio.</td><td>Art. 6, par. 1, lett. f) GDPR: legittimo interesse del Titolare.</td></tr>
+          <tr><td>Inviare comunicazioni promozionali o una newsletter, se attivate.</td><td>Art. 6, par. 1, lett. a) GDPR: consenso, revocabile in ogni momento.</td></tr>
+        </table>
+        <p>Oggi non inviamo newsletter e non facciamo marketing automatico. Se in futuro lo faremo, chiederemo un consenso separato, facoltativo e non condizionante rispetto alla richiesta di accesso.</p>
+        <p>Non effettuiamo profilazione, non prendiamo decisioni automatizzate con effetti giuridici e non usiamo i dati per addestrare modelli di intelligenza artificiale.</p>
+
+        <h3>4. Conferimento dei dati</h3>
+        <p>Nome e email sono necessari per rispondere alla richiesta: senza un recapito non possiamo contattarti. Il numero di immobili è facoltativo. Il conferimento per finalità di marketing è facoltativo e non condiziona la risposta alla tua richiesta.</p>
+
+        <h3>5. Destinatari</h3>
+        <p>I dati possono essere trattati da:</p>
+        <ul>
+          <li><strong>Google Ireland Limited / Google LLC</strong>, per il servizio di posta Gmail;</li>
+          <li>il fornitore di hosting e i servizi tecnici necessari al sito, quando saranno scelti;</li>
+          <li>consulenti fiscali, legali o tecnici, nei limiti delle rispettive competenze;</li>
+          <li>autorità pubbliche, quando richiesto dalla legge.</li>
+        </ul>
+        <p>Non vendiamo i dati personali e non li condividiamo per finalità commerciali di terzi. I fornitori trattano i dati secondo i contratti e le informative applicabili. Per Gmail, le informazioni sul trattamento sono disponibili nella privacy policy di Google.</p>
+
+        <h3>5.1 Dati di inquilini nella futura versione con account</h3>
+        <p>Nella demo attuale i dati restano sul dispositivo e non arrivano al Titolare. Se in futuro il servizio conterrà dati di inquilini inseriti dai clienti, il proprietario o gestore che li inserisce sarà titolare del trattamento e Affitto in Ordine sarà responsabile del trattamento ai sensi dell'art. 28 GDPR. In quel caso il contratto includerà un accordo sul trattamento dei dati con istruzioni, sub-responsabili, misure di sicurezza, assistenza per i diritti degli interessati e cancellazione o restituzione dei dati alla fine del rapporto.</p>
+
+        <h3>6. Trasferimenti fuori dallo Spazio economico europeo</h3>
+        <p>L'uso di Gmail può comportare un trasferimento di dati verso gli Stati Uniti. Eventuali trasferimenti avvengono sulla base di una decisione di adeguatezza, ove applicabile (incluso il Data Privacy Framework UE-USA), o di clausole contrattuali standard con misure supplementari. Prima del lancio verificheremo il meccanismo applicabile e conserveremo la documentazione del fornitore.</p>
+        <p>Per un servizio con account e dati dei clienti, valuteremo un fornitore con data residency nell'Unione europea o un'adeguata configurazione contrattuale.</p>
+
+        <h3>7. Per quanto tempo conserviamo i dati</h3>
+        <table class="legal-table">
+          <tr><th>Dati</th><th>Conservazione</th></tr>
+          <tr><td>Richieste di informazioni, demo o accesso.</td><td>24 mesi dall'ultimo contatto, salvo necessità di difesa o obblighi di legge.</td></tr>
+          <tr><td>Dati contrattuali, fatture e documenti contabili.</td><td>10 anni, in base agli obblighi fiscali e contabili applicabili.</td></tr>
+          <tr><td>Comunicazioni di marketing, se attivate.</td><td>Fino alla revoca del consenso o alla cancellazione dell'indirizzo.</td></tr>
+          <tr><td>Dati della demo.</td><td>Solo sul tuo dispositivo, fino al ripristino o alla cancellazione dei dati del browser.</td></tr>
+          <tr><td>Log tecnici del fornitore di hosting.</td><td>Per il tempo tecnico necessario e comunque non oltre <span class="to-fill">[DA COMPILARE: giorni]</span>, salvo obblighi di legge.</td></tr>
+        </table>
+        <p>Alla scadenza cancelliamo o anonimizziamo i dati in modo sicuro. Se un obbligo di legge o un contenzioso richiede una conservazione più lunga, manteniamo solo i dati necessari.</p>
+
+        <h3>8. I tuoi diritti</h3>
+        <p>Puoi chiedere, nei casi previsti dal GDPR:</p>
+        <ul>
+          <li>accesso ai dati che ti riguardano e copia degli stessi;</li>
+          <li>rettifica di dati inesatti o incompleti;</li>
+          <li>cancellazione dei dati, quando non sussistono obblighi di conservazione;</li>
+          <li>limitazione del trattamento;</li>
+          <li>opposizione al trattamento basato su legittimo interesse;</li>
+          <li>portabilità dei dati, quando applicabile;</li>
+          <li>revoca del consenso, senza pregiudizio per il trattamento già effettuato.</li>
+        </ul>
+        <p>Per esercitare i diritti scrivi a <a href="mailto:alelocu09@gmail.com">alelocu09@gmail.com</a> con oggetto <strong>“Diritti GDPR”</strong>. Risponderemo entro un mese, salvo proroga motivata nei casi complessi previsti dall'art. 12 GDPR. Se ritieni che il trattamento violi la normativa, puoi proporre reclamo al Garante per la protezione dei dati personali, Piazza Venezia 11, 00187 Roma, <a href="https://www.garanteprivacy.it" target="_blank" rel="noopener">garanteprivacy.it</a>.</p>
+
+        <h3>9. Minori</h3>
+        <p>Il sito e il servizio non sono destinati a persone di età inferiore a 18 anni. Se veniamo a conoscenza di dati di minori raccolti senza base giuridica, li cancelliamo.</p>
+
+        <h3>10. Sicurezza</h3>
+        <p>Nella versione attuale non esiste un backend e la demo non trasmette dati. Per la futura versione applicheremo misure tecniche e organizzative adeguate: cifratura in transito, controllo degli accessi, autenticazione a due fattori per gli amministratori, backup, aggiornamenti di sicurezza e procedura di gestione degli incidenti. Nessun sistema è sicuro al 100%; se ritieni che ci sia un problema, scrivici subito.</p>
+
+        <h3>11. Modifiche</h3>
+        <p>Aggiorneremo questa informativa se cambiano finalità, fornitori o modalità di trattamento. La data di aggiornamento è indicata all'inizio della pagina. Per modifiche sostanziali, avviseremo gli interessati con un mezzo adeguato, quando possibile.</p>
+
+        <h3>12. Contatti</h3>
+        <p>Per qualsiasi domanda sul trattamento dei dati: <a href="mailto:alelocu09@gmail.com">alelocu09@gmail.com</a>.</p>
+      </section>
+
+      <section class="legal-section" id="cookie">
+        <h2>Cookie e memoria locale</h2>
+        <p class="legal-meta">Ultima verifica: 26 ottobre 2026.</p>
+
+        <div class="legal-callout">
+          <p><strong>Questo sito non usa cookie.</strong> Non ci sono cookie di profilazione, analytics, marketing, social plugin o pixel. Non c'è quindi un consenso pubblicitario da prestare. Al primo accesso su landing e demo mostriamo un <strong>avviso informativo</strong> che spiega la memoria locale e richiede una presa d'atto; non è un banner di consenso e non modifica ciò che viene memorizzato. La pagina legale resta accessibile anche senza prendere atto dell'avviso.</p>
+        </div>
+
+        <h3>Cosa usa il sito</h3>
+        <p>La demo usa la <strong>memoria locale del browser</strong> (<em>localStorage</em>) per conservare gli immobili, gli incassi e le preferenze che inserisci. È una memorizzazione tecnica necessaria a fornire la funzione che hai richiesto: senza di essa, i dati sparirebbero a ogni ricaricamento.</p>
+        <p>Per le transizioni tra pagine usiamo anche <em>sessionStorage</em> con una sola chiave temporanea: serve a non ripetere l'animazione d'ingresso quando hai già scelto di aprire un'altra pagina. Viene letta e rimossa alla pagina successiva; non contiene dati personali e non viene inviata a nessun server.</p>
+        <p>Questa memorizzazione rientra nell'eccezione per i mezzi tecnici strettamente necessari prevista dall'art. 5, par. 3, della Direttiva 2002/58/CE e dall'art. 122 del D.Lgs. 196/2003, come interpretati dal Garante. Non serve un consenso preventivo perché non traccia l'utente e non ha finalità pubblicitarie.</p>
+
+        <h3>Chiavi salvate nel browser</h3>
+        <table class="legal-table">
+          <tr><th scope="col">Chiave</th><th scope="col">Contenuto</th><th scope="col">Durata</th></tr>
+          <tr><td><code>affitto-in-ordine-demo-v1</code></td><td>Immobili, inquilini fittizi, canoni, incassi, scadenze e note della demo.</td><td>Fino a “Ripristina i dati demo” o alla cancellazione dei dati del sito.</td></tr>
+          <tr><td><code>aio-theme-v1</code></td><td>Modalità chiara/scura/automatica e palette scelta.</td><td>Fino alla cancellazione dei dati del sito.</td></tr>
+          <tr><td><code>aio-notice-v1</code></td><td>Presa d'atto dell'avviso cookie e memoria locale.</td><td>Fino alla cancellazione dei dati del sito.</td></tr>
+          <tr><td><code>aio-motion-nav</code> <small>(sessionStorage)</small></td><td>Indicatore temporaneo di navigazione, senza dati personali.</td><td>Fino alla pagina successiva; viene rimosso alla prima lettura.</td></tr>
+        </table>
+
+        <p>I dati restano sul tuo dispositivo. Puoi cancellarli con il pulsante <strong>“Ripristina i dati demo”</strong> per i dati della demo, oppure cancellando i dati del sito dalle impostazioni del browser per tutte le chiavi. Il Titolare non riceve una copia di questi dati. Se cancelli i dati del sito, l'avviso informativo ricomparirà al successivo accesso.</p>
+        <p>La memoria locale non è cifrata: chi ha accesso al dispositivo o al profilo del browser può leggerla. Non inserire dati sensibili e, se usi un dispositivo condiviso, cancella i dati della demo quando hai finito.</p>
+
+        <h3>Cookie di terze parti</h3>
+        <p>Non carichiamo Google Fonts, Google Analytics, Meta Pixel, Hotjar, video incorporati o altri strumenti di tracciamento. I font sono di sistema. Se clicchi un link verso Gmail o un altro sito, lasci il nostro sito e si applicano le informative e i cookie di quel fornitore, che non controlliamo.</p>
+
+        <h3>Se in futuro aggiungeremo strumenti di misurazione</h3>
+        <p>Se introdurremo analytics, pubblicità o altre tecnologie non tecniche, chiederemo il consenso <strong>prima</strong> dell'attivazione, con un banner che permette di accettare, rifiutare e revocare la scelta, e aggiorneremo questa pagina. Non useremo cookie wall né consensi preselezionati.</p>
+
+        <h3>Come gestire la memoria locale</h3>
+        <ul>
+          <li><strong>Ripristina i dati demo:</strong> cancella i dati salvati dalla demo.</li>
+          <li><strong>Impostazioni del browser:</strong> alla voce privacy e dati dei siti puoi cancellare i dati memorizzati per questo sito.</li>
+          <li><strong>Modalità privata:</strong> i dati vengono cancellati alla chiusura della finestra, in base al browser.</li>
+        </ul>
+        <p>Se trovi un cookie o uno strumento di tracciamento che non abbiamo dichiarato, segnalacelo a <a href="mailto:alelocu09@gmail.com">alelocu09@gmail.com</a>.</p>
+      </section>
+
+      <section class="legal-section" id="termini">
+        <h2>Termini d'uso</h2>
+        <p class="legal-meta">Versione 1.0 · 26 ottobre 2026.</p>
+
+        <h3>1. Oggetto</h3>
+        <p>Questi termini regolano l'accesso e l'uso del sito e della demo di <strong>Affitto in Ordine</strong>. Il sito è un prototipo informativo e la demo è gratuita. Il sito non costituisce un'offerta di vendita e non è attualmente possibile acquistare il servizio.</p>
+
+        <h3>2. Stato del progetto</h3>
+        <p>Il prodotto è in fase di validazione. I prezzi, le funzioni e i tempi mostrati sono indicativi e possono cambiare. Nessun pagamento viene richiesto o accettato tramite il sito. La richiesta di accesso non crea un contratto né un obbligo di acquisto.</p>
+        <p>L'indicazione “primi 20 posti” descrive il numero massimo di clienti fondatori previsti: non è un contatore in tempo reale e non garantisce la disponibilità. Al lancio, i posti saranno assegnati ai primi 20 clienti che completeranno l'acquisto secondo le condizioni pubblicate. Il prezzo fondatore e l'eventuale blocco del prezzo saranno confermati al lancio e non costituiscono un'offerta vincolante oggi.</p>
+
+        <h3>3. Uso della demo</h3>
+        <p>Ti concediamo una licenza personale, non esclusiva, non trasferibile e revocabile per usare la demo al solo fine di valutare il prodotto. Non puoi:</p>
+        <ul>
+          <li>rivendere, noleggiare o distribuire la demo o parti di essa;</li>
+          <li>copiare, decompilare, modificare o estrarre il codice, salvo quanto consentito dalla legge;</li>
+          <li>automatizzare l'accesso, sovraccaricare il servizio, eludere misure di sicurezza o interferire con il funzionamento;</li>
+          <li>usare la demo per attività illecite, per molestare persone o per trattare dati senza una base giuridica.</li>
+        </ul>
+        <p>Inserisci solo dati di esempio o dati per cui hai il diritto di farlo. Non inserire dati reali di inquilini senza il loro consenso, quando necessario, e non inserire categorie particolari di dati. La demo è fornita “così com'è”: può essere modificata, sospesa o interrotta senza preavviso.</p>
+
+        <h3>4. Proprietà intellettuale</h3>
+        <p>Testi, grafica, interfaccia, codice e contenuti del sito sono del Titolare o sono utilizzati con licenza. Il nome “Affitto in Ordine” è un nome di lavoro e non implica che il marchio sia registrato. Non puoi usare nome, logo o contenuti per creare confusione sull'origine del prodotto.</p>
+
+        <h3>5. Nessuna consulenza professionale</h3>
+        <p>Affitto in Ordine è uno strumento di organizzazione. Non fornisce consulenza fiscale, legale, finanziaria, assicurativa o contabile. I calcoli, i promemoria e i testi generati dalla demo sono di supporto e devono essere verificati da te e dai tuoi consulenti. Non garantiamo risparmi, risultati economici, assenza di sanzioni o guadagni.</p>
+
+        <h3>6. Disponibilità e modifiche</h3>
+        <p>La demo può non essere disponibile per manutenzione, aggiornamenti, problemi tecnici o cause fuori dal nostro controllo. Possiamo modificare funzioni, contenuti e questi termini. La versione aggiornata sarà pubblicata su questa pagina con la nuova data.</p>
+
+        <h3>7. Responsabilità</h3>
+        <p>Nei limiti consentiti dalla legge, il Titolare non risponde di danni indiretti, perdita di dati, mancato guadagno o danni derivanti dall'uso o dall'impossibilità di usare la demo. Restano fermi i diritti inderogabili dei consumatori e la responsabilità per dolo o colpa grave. L'utente è responsabile dei dati inseriti, delle credenziali eventualmente utilizzate e delle decisioni prese sulla base delle informazioni del sito.</p>
+        <p>Nella demo non esiste un backup automatico: se hai bisogno di conservare i dati, usa l'export CSV prima di cancellare o cambiare browser.</p>
+
+        <h3>8. Reclami, legge applicabile e foro</h3>
+        <p>Per reclami scrivi a <a href="mailto:alelocu09@gmail.com">alelocu09@gmail.com</a> con oggetto <strong>“Reclamo”</strong>. I termini sono regolati dalla legge italiana. Per i consumatori è competente il foro del luogo di residenza o domicilio, come previsto dall'art. 66-bis del Codice del Consumo. Per i professionisti è competente il foro di <span class="to-fill">[DA COMPILARE: città]</span>, salvo diverso accordo scritto.</p>
+
+        <h3>9. Modifiche ai termini</h3>
+        <p>Possiamo aggiornare questi termini per adeguarli a nuove funzioni, obblighi di legge o esigenze operative. Le modifiche saranno pubblicate con la data di aggiornamento. L'uso successivo del sito comporta l'accettazione dei nuovi termini, nei limiti consentiti dalla legge.</p>
+
+        <h3>10. Contatti</h3>
+        <p>Per informazioni: <a href="mailto:alelocu09@gmail.com">alelocu09@gmail.com</a>.</p>
+      </section>
+
+      <section class="legal-section" id="consumatori">
+        <h2>Vendita e tutele dei consumatori</h2>
+        <p class="legal-meta">Sezione informativa. Il servizio non è in vendita alla data di pubblicazione.</p>
+
+        <div class="legal-callout">
+          <p><strong>Oggi non c'è nulla da comprare.</strong> Non accettiamo pagamenti, non attiviamo abbonamenti e non concludiamo contratti a distanza. Le informazioni seguenti indicano gli standard che applicheremo se e quando il servizio sarà messo in vendita.</p>
+        </div>
+
+        <h3>Informazioni prima dell'acquisto</h3>
+        <p>Prima di un eventuale acquisto mostreremo in modo chiaro, ai sensi dell'art. 49 del Codice del Consumo:</p>
+        <ul>
+          <li>identità, sede e contatti del venditore;</li>
+          <li>caratteristiche principali del servizio e compatibilità;</li>
+          <li>prezzo totale, IVA inclusa, e durata del contratto;</li>
+          <li>modalità di pagamento, rinnovo e disdetta;</li>
+          <li>tempi di attivazione e assistenza;</li>
+          <li>diritto di recesso e relative eccezioni;</li>
+          <li>garanzia legale di conformità e modalità di reclamo.</li>
+        </ul>
+
+        <h3>Diritto di recesso</h3>
+        <p>Per i contratti conclusi a distanza con un consumatore, il diritto di recesso è di norma di 14 giorni dalla conclusione del contratto, secondo gli artt. 52 e seguenti del Codice del Consumo. Se il servizio digitale inizia immediatamente su richiesta del consumatore, applicheremo le eccezioni dell'art. 59 solo nei casi e con le condizioni previste dalla legge, raccogliendo un consenso espresso e separato. Non useremo il recesso come scorciatoia per nascondere condizioni svantaggiose.</p>
+        <p>Il modulo di recesso sarà disponibile online e potrà essere inviato anche con una dichiarazione esplicita via email. Rimborseremo i pagamenti ricevuti secondo le tempistiche di legge.</p>
+
+        <h3>Garanzia legale</h3>
+        <p>Il servizio digitale dovrà essere conforme a quanto descritto nel contratto. Ai sensi degli artt. 135-octies e seguenti del Codice del Consumo, in caso di difetto di conformità il consumatore potrà chiedere, secondo i casi, il ripristino della conformità, una riduzione del prezzo o la risoluzione del contratto. La garanzia non copre usi impropri o modifiche non autorizzate.</p>
+
+        <h3>Prezzi, rinnovi e disdetta</h3>
+        <p>I prezzi saranno mostrati IVA inclusa, senza costi nascosti. L'eventuale abbonamento annuale avrà durata e condizioni di rinnovo chiare. La disdetta potrà essere esercitata prima del rinnovo con le modalità indicate nel contratto; non applicheremo ostacoli artificiosi. Le fatture saranno emesse secondo la normativa fiscale applicabile.</p>
+
+        <h3>Pratiche commerciali corrette</h3>
+        <p>Non useremo scarsità finta, testimonianze inventate, contatori falsi o promesse di guadagno. L'indicazione “primi 20 posti” si riferisce a un numero reale di clienti fondatori: se il numero cambia, aggiorneremo l'offerta. I prezzi “fondatore” saranno applicati alle condizioni descritte al momento dell'acquisto.</p>
+
+        <h3>Reclami e risoluzione delle controversie</h3>
+        <p>Per un reclamo scrivi a <a href="mailto:alelocu09@gmail.com">alelocu09@gmail.com</a> con oggetto <strong>“Reclamo”</strong>. Risponderemo in tempi ragionevoli e indicheremo lo stato della richiesta. Per i consumatori resta possibile rivolgersi alle associazioni dei consumatori e agli organismi di risoluzione alternativa delle controversie (ADR) competenti. Prima del lancio verificheremo l'organismo applicabile e gli obblighi di informazione; non imponiamo arbitrato obbligatorio.</p>
+
+        <h3>Legge applicabile</h3>
+        <p>Ai consumatori si applica la legge italiana e, in ogni caso, le tutele inderogabili del Paese di residenza abituale previste dalla normativa europea. Per i professionisti si applicano i termini e il foro indicati nei Termini d'uso.</p>
+      </section>
+
+      <section class="legal-section" id="note-legali">
+        <h2>Note legali</h2>
+        <p class="legal-meta">Informazioni ai sensi dell'art. 7 del D.Lgs. 70/2003, dell'art. 49 del Codice del Consumo e, ove applicabile, dell'art. 2250 del Codice civile.</p>
+
+        <table class="legal-table">
+          <tr><th>Denominazione</th><td>Affitto in Ordine <span class="legal-tag">nome di lavoro</span></td></tr>
+          <tr><th>Titolare</th><td><span class="to-fill">[DA COMPILARE: nome e cognome o ragione sociale]</span></td></tr>
+          <tr><th>Forma giuridica</th><td><span class="to-fill">[DA COMPILARE: persona fisica, ditta individuale, società]</span></td></tr>
+          <tr><th>Sede legale</th><td><span class="to-fill">[DA COMPILARE: via, CAP, città, provincia, Paese]</span></td></tr>
+          <tr><th>P.IVA</th><td><span class="to-fill">[DA COMPILARE]</span></td></tr>
+          <tr><th>Codice fiscale</th><td><span class="to-fill">[DA COMPILARE]</span></td></tr>
+          <tr><th>PEC</th><td><span class="to-fill">[DA COMPILARE]</span></td></tr>
+          <tr><th>REA</th><td><span class="to-fill">[DA COMPILARE, se società]</span></td></tr>
+          <tr><th>Email</th><td><a href="mailto:alelocu09@gmail.com">alelocu09@gmail.com</a></td></tr>
+          <tr><th>Hosting</th><td><span class="to-fill">[DA COMPILARE: fornitore e sede]</span></td></tr>
+          <tr><th>Dominio</th><td><span class="to-fill">[DA COMPILARE: dominio effettivo]</span></td></tr>
+        </table>
+
+        <div class="legal-callout">
+          <p><strong>Nota operativa.</strong> Se il Titolare è una persona fisica senza partita IVA, il sito non deve presentarsi come un'attività commerciale attiva. Prima di pubblicare, completa i dati identificativi, verifica gli adempimenti fiscali e, se necessario, iscrivi l'attività al REA. “Affitto in Ordine” è un nome provvisorio: controlla marchio e dominio prima di investirci.</p>
+        </div>
+
+        <h3>Natura dei contenuti</h3>
+        <p>I contenuti del sito hanno finalità informativa e dimostrativa. Non costituiscono consulenza fiscale, legale, finanziaria o assicurativa, né un'offerta al pubblico. Le informazioni su ISTAT, contratti, cedolare secca e scadenze sono semplificate e possono cambiare: verifica sempre con un professionista e con i documenti ufficiali.</p>
+
+        <h3>Copyright</h3>
+        <p>© 2026 Affitto in Ordine. Tutti i diritti riservati, salvo diverse indicazioni. È vietata la riproduzione dei contenuti senza autorizzazione, salvo citazione breve con attribuzione e link alla fonte.</p>
+
+        <h3>Segnalazioni</h3>
+        <p>Per segnalare contenuti errati, problemi di sicurezza o violazioni: <a href="mailto:alelocu09@gmail.com">alelocu09@gmail.com</a>.</p>
+      </section>
+
+      <section class="legal-section" id="accessibilita">
+        <h2>Accessibilità</h2>
+        <p class="legal-meta">Dichiarazione aggiornata al 26 ottobre 2026.</p>
+        <p>Vogliamo che il sito e la demo siano utilizzabili dal maggior numero possibile di persone. Il nostro obiettivo è il livello <strong>WCAG 2.1 AA</strong> e i requisiti della norma <strong>EN 301 549</strong>. Quando il servizio sarà offerto al pubblico, terremo conto dei requisiti dell'European Accessibility Act (Direttiva (UE) 2019/882, attuata in Italia dal D.Lgs. 82/2022).</p>
+
+        <h3>Cosa abbiamo già fatto</h3>
+        <ul>
+          <li>HTML semantico, lingua italiana dichiarata, titoli gerarchici e landmark di pagina.</li>
+          <li>Skip link “Vai al contenuto” per saltare la navigazione da tastiera.</li>
+          <li>Navigazione da tastiera con focus visibile su link, pulsanti, campi e modali.</li>
+          <li>Modale della demo con focus trap, chiusura con Esc e ritorno del focus al pulsante che l'ha aperto.</li>
+          <li>Avviso cookie informativo con dialogo annunciato, ordine di tabulazione controllato, link all'informativa e ritorno del focus al contenuto dopo la presa d'atto. La pagina legale non viene bloccata.</li>
+          <li>Label associate ai campi del form, messaggi di errore inline collegati ai campi e link all'informativa privacy.</li>
+          <li>Contrasto dei colori curato in modalità chiara e scura, layout responsive, controlli compatti ma raggiungibili e rispetto di <code>prefers-reduced-motion</code>.</li>
+          <li>Animazioni ed effetti decorativi non essenziali disattivati quando il sistema richiede movimento ridotto.</li>
+          <li>Testi alternativi per le immagini della dashboard; nessun contenuto lampeggiante o con riproduzione automatica.</li>
+        </ul>
+
+        <h3>Limiti noti</h3>
+        <ul>
+          <li>Il sito è un prototipo e non è ancora stato sottoposto a un audit di accessibilità indipendente.</li>
+          <li>La demo usa <em>localStorage</em> e l'attributo <em>inert</em>: browser molto datati potrebbero non supportarli completamente.</li>
+          <li>I link esterni, come Gmail, non sono sotto il nostro controllo e possono avere barriere proprie.</li>
+          <li>I dati della dashboard sono pensati per essere leggibili anche come testo, ma la demo non è uno strumento certificato per l'uso con tecnologie assistive.</li>
+        </ul>
+
+        <h3>Segnalare una barriera</h3>
+        <p>Se incontri un ostacolo, scrivi a <a href="mailto:alelocu09@gmail.com">alelocu09@gmail.com</a> con oggetto <strong>“Accessibilità”</strong>. Indica la pagina, il dispositivo e il problema. Risponderemo entro <span class="to-fill">[DA COMPILARE: giorni]</span> giorni lavorativi e, quando possibile, proporremo un'alternativa o una correzione.</p>
+
+        <h3>Aggiornamenti</h3>
+        <p>Rivediamo l'accessibilità a ogni rilascio. Non usiamo overlay automatici che promettono conformità senza modificare il sito. Questa dichiarazione sarà aggiornata quando saranno disponibili i risultati di un audit.</p>
+      </section>
+
+      <section class="legal-section" id="contatti">
+        <h2>Contatti</h2>
+        <p>Per qualunque richiesta relativa a privacy, termini, accessibilità o reclami puoi scrivere a:</p>
+        <div class="legal-contact">
+          <a href="mailto:alelocu09@gmail.com">alelocu09@gmail.com</a>
+        </div>
+        <p>Per aiutarci a rispondere più velocemente, indica nell'oggetto <strong>“Privacy”</strong>, <strong>“Accessibilità”</strong> o <strong>“Reclamo”</strong>. I tempi di risposta ordinari sono <span class="to-fill">[DA COMPILARE: giorni]</span> giorni lavorativi.</p>
+        <p>PEC, numeri di telefono e sedi saranno pubblicati solo dopo la conferma dei dati del Titolare. Fino ad allora, il canale attivo è l'indirizzo email indicato sopra.</p>
+      </section>
+
+    </article>
+  </div>
+</main>
+
+<footer class="site-foot">
+  <div class="container">
+    <p class="foot-word" aria-hidden="true">AFFITTO IN <span>ORDINE.</span></p>
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand brand--foot" href="index.html" aria-label="Affitto in Ordine, pagina iniziale" translate="no">
+          <span class="brand-mark"><svg aria-hidden="true" focusable="false"><use href="#i-logo"></use></svg></span>
+          <span class="brand-text"><strong>Affitto in Ordine</strong><small>per piccoli proprietari</small></span>
+        </a>
+        <p class="foot-tag">Le scadenze del tuo affitto, in un unico posto. Progetto in validazione, non ancora un servizio attivo.</p>
+      </div>
+      <div class="foot-right">
+        <div class="foot-links">
+          <a href="index.html">Home</a>
+          <a href="demo.html">Demo</a>
+          <a href="index.html#prezzi">Prezzo</a>
+          <a href="mailto:alelocu09@gmail.com">alelocu09@gmail.com</a>
+        </div>
+        <div class="foot-links legal-links">
+          <a href="#privacy">Privacy</a>
+          <a href="#cookie">Cookie</a>
+          <a href="#termini">Termini</a>
+          <a href="#note-legali">Note legali</a>
+          <a href="#accessibilita">Accessibilità</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-legal">
+      <p>© <span id="year">2026</span> Affitto in Ordine. Le informazioni presenti non costituiscono consulenza fiscale, legale o finanziaria.</p>
+      <p>Progetto in validazione · nessun pagamento attivo · <a href="#note-legali">Informazioni legali in bozza</a></p>
+    </div>
+  </div>
+</footer>
+
+<div class="cursor-glow" aria-hidden="true"></div>
+<script src="landing.js"></script>
+<script src="motion.js"></script>
+<script src="alive.js"></script>
+</body>
+</html>

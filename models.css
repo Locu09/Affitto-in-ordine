@@ -1,0 +1,383 @@
+/* Affitto in Ordine — modelli 3D reali (WebGL / three.js) */
+
+/* ---------- Modello nell'hero ---------- */
+
+.hero-3d {
+  position: absolute;
+  z-index: 3;
+  top: -178px;
+  right: 0;
+  width: clamp(172px, 14vw, 204px);
+  aspect-ratio: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 24px 28px rgba(10, 13, 10, 0.2));
+}
+
+.hero-3d::before {
+  content: "";
+  position: absolute;
+  inset: 18% 8% 4%;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--lime) 34%, transparent), transparent 70%);
+  filter: blur(18px);
+  opacity: 0.8;
+}
+
+.hero-3d canvas,
+.sidebar-3d canvas {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-3d-fallback {
+  display: none;
+  position: absolute;
+  inset: 30% 25% 20%;
+  place-items: center;
+  border: 2px solid var(--edge);
+  border-radius: 24px;
+  background: var(--paper-2);
+  color: var(--ink);
+  box-shadow: 5px 5px 0 var(--lime);
+  transform: rotate(-5deg);
+}
+
+.hero-3d-fallback svg { width: 48%; height: 48%; }
+
+.hero-3d.is-3d-failed .hero-3d-canvas { display: none; }
+.hero-3d.is-3d-failed .hero-3d-fallback { display: grid; }
+
+@media (max-width: 1199px) {
+  .hero-3d {
+    top: -150px;
+    width: 166px;
+  }
+}
+
+@media (max-width: 960px) {
+  .hero-3d { display: none; }
+}
+
+/* ---------- Modello principale nella sezione "Come funziona" ---------- */
+
+.model-feature {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+  align-items: center;
+  gap: clamp(30px, 4.8vw, 72px);
+  margin-top: clamp(54px, 6.5vw, 88px);
+  padding-top: clamp(34px, 4.5vw, 58px);
+  border-top: 1px solid rgba(247, 242, 231, 0.18);
+}
+
+.model-feature-copy {
+  position: relative;
+  z-index: 2;
+  min-width: 0;
+}
+
+.model-feature-copy h3 {
+  margin-top: 17px;
+  color: var(--on-night);
+  font-family: var(--display);
+  font-size: clamp(2.15rem, 4.1vw, 4.35rem);
+  font-weight: 900;
+  letter-spacing: -0.065em;
+  line-height: 0.86;
+  text-transform: uppercase;
+}
+
+.model-feature-copy p {
+  max-width: 45ch;
+  margin-top: 20px;
+  color: var(--on-night-muted);
+  font-size: clamp(13.5px, 1.15vw, 15.5px);
+  line-height: 1.65;
+  text-wrap: pretty;
+}
+
+.model-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.model-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 28px;
+  padding: 4px 10px;
+  border: 1px solid rgba(247, 242, 231, 0.22);
+  border-radius: 999px;
+  color: var(--on-night-muted);
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.model-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--lime);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--lime) 13%, transparent);
+}
+
+.model-dot--coral { background: var(--coral); box-shadow: 0 0 0 3px color-mix(in srgb, var(--coral) 13%, transparent); }
+.model-dot--violet { background: var(--violet); box-shadow: 0 0 0 3px color-mix(in srgb, var(--violet) 13%, transparent); }
+
+.model-pause[hidden] { display: none !important; }
+
+.model-pause {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  margin-top: 24px;
+  padding: 9px 14px;
+  border: 1.5px solid color-mix(in srgb, var(--lime) 72%, transparent);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--on-night);
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+}
+
+.model-pause:hover {
+  border-color: var(--lime);
+  background: var(--lime);
+  color: var(--accent-on);
+  transform: translateY(-2px);
+}
+
+.model-pause svg { width: 14px; height: 14px; stroke-width: 2.2; }
+
+.model-note {
+  margin-top: 16px !important;
+  color: color-mix(in srgb, var(--on-night-muted) 86%, transparent) !important;
+  font-family: var(--mono);
+  font-size: 9.5px !important;
+  line-height: 1.55 !important;
+  letter-spacing: 0.025em;
+}
+
+.model-stage {
+  position: relative;
+  min-height: 458px;
+  overflow: hidden;
+  border: 2px solid color-mix(in srgb, var(--on-night) 25%, transparent);
+  border-radius: 24px;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 60% 40%, color-mix(in srgb, var(--lime) 13%, transparent), transparent 45%),
+    radial-gradient(circle at 10% 90%, color-mix(in srgb, var(--violet) 26%, transparent), transparent 43%),
+    #0d120e;
+  box-shadow: 9px 9px 0 color-mix(in srgb, var(--lime) 78%, var(--edge) 10%), 0 30px 64px rgba(0, 0, 0, 0.2);
+}
+
+.model-stage::before {
+  content: "";
+  position: absolute;
+  right: -10%;
+  bottom: -10%;
+  left: -10%;
+  z-index: 0;
+  height: 50%;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--lime) 24%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--lime) 24%, transparent) 1px, transparent 1px);
+  background-size: 30px 30px;
+  opacity: 0.52;
+  transform: perspective(560px) rotateX(62deg);
+  transform-origin: 50% 100%;
+  -webkit-mask-image: radial-gradient(ellipse at 50% 100%, #000 8%, transparent 72%);
+  mask-image: radial-gradient(ellipse at 50% 100%, #000 8%, transparent 72%);
+  pointer-events: none;
+}
+
+.model-stage::after {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  z-index: 0;
+  border: 1px solid rgba(247, 242, 231, 0.07);
+  border-radius: 16px;
+  pointer-events: none;
+}
+
+.model-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: pan-y;
+  cursor: grab;
+}
+
+.model-stage.is-dragging .model-canvas { cursor: grabbing; }
+
+.model-label {
+  position: absolute;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 5px 9px;
+  border: 1.5px solid var(--lime);
+  border-radius: 8px;
+  background: rgba(9, 13, 10, 0.86);
+  color: var(--lime);
+  box-shadow: 3px 3px 0 color-mix(in srgb, var(--lime) 54%, transparent);
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+  pointer-events: none;
+  transform: rotate(-2deg);
+}
+
+.model-label--deadlines { top: 10%; left: 6%; }
+.model-label--income { top: 22%; right: 6%; border-color: var(--coral); color: var(--coral); box-shadow: 3px 3px 0 color-mix(in srgb, var(--coral) 50%, transparent); transform: rotate(2deg); }
+.model-label--istat { bottom: 16%; left: 8%; border-color: var(--violet); color: var(--violet); box-shadow: 3px 3px 0 color-mix(in srgb, var(--violet) 50%, transparent); transform: rotate(-1deg); }
+
+.model-hint {
+  position: absolute;
+  right: 14px;
+  bottom: 13px;
+  z-index: 2;
+  min-height: 30px;
+  padding: 7px 10px;
+  border: 1px solid rgba(247, 242, 231, 0.21);
+  border-radius: 999px;
+  background: rgba(9, 13, 10, 0.74);
+  color: var(--on-night-muted);
+  font-family: var(--mono);
+  font-size: 8.5px;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.model-stage.has-dragged .model-hint { opacity: 0.45; }
+
+.model-fallback {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: none;
+  place-items: center;
+  align-content: center;
+  gap: 14px;
+  padding: 30px;
+  background: rgba(9, 13, 10, 0.92);
+  color: var(--on-night-muted);
+  text-align: center;
+}
+
+.model-fallback svg { width: 62px; height: 62px; color: var(--lime); }
+.model-fallback span { max-width: 28ch; font-family: var(--mono); font-size: 10px; line-height: 1.55; }
+
+.model-stage.is-3d-failed .model-canvas { display: none; }
+.model-stage.is-3d-failed .model-fallback { display: grid; }
+.model-stage.is-3d-failed .model-label,
+.model-stage.is-3d-failed .model-hint { display: none; }
+
+@media (max-width: 960px) {
+  .model-feature {
+    grid-template-columns: 1fr;
+    gap: 27px;
+  }
+
+  .model-feature-copy { max-width: 620px; }
+  .model-stage { min-height: 430px; }
+}
+
+@media (max-width: 720px) {
+  .model-feature { margin-top: 46px; padding-top: 31px; }
+  .model-feature-copy h3 { font-size: clamp(2rem, 10.3vw, 3.2rem); }
+  .model-feature-copy p { font-size: 14px; }
+  .model-stage { min-height: 360px; border-radius: 19px; box-shadow: 6px 6px 0 color-mix(in srgb, var(--lime) 70%, transparent); }
+  .model-stage::after { inset: 8px; border-radius: 12px; }
+  .model-label--deadlines { top: 8%; left: 5%; }
+  .model-label--income { top: 17%; right: 5%; }
+  .model-label--istat { bottom: 13%; left: 5%; }
+  .model-hint { right: 9px; bottom: 9px; font-size: 8px; }
+  .model-pause { width: 100%; margin-top: 20px; }
+}
+
+@media (max-width: 400px) {
+  .model-stage { min-height: 330px; }
+  .model-label { font-size: 8px; padding: 4px 7px; }
+  .model-hint { max-width: calc(100% - 18px); font-size: 7.5px; }
+}
+
+/* ---------- Modello compatto nella sidebar della demo ---------- */
+
+.sidebar-3d {
+  position: relative;
+  height: 122px;
+  margin: 10px 0 8px;
+  overflow: hidden;
+  border-top: 1px dashed rgba(247, 242, 231, 0.18);
+  border-bottom: 1px dashed rgba(247, 242, 231, 0.18);
+  pointer-events: none;
+}
+
+.sidebar-3d::before {
+  content: "";
+  position: absolute;
+  inset: 5% 15%;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--lime) 27%, transparent), transparent 70%);
+  filter: blur(16px);
+}
+
+.sidebar-3d-fallback {
+  display: none;
+  position: absolute;
+  inset: 18% 32% 12%;
+  place-items: center;
+  border: 2px solid var(--edge);
+  border-radius: 14px;
+  background: var(--paper-2);
+  color: var(--ink);
+  box-shadow: 3px 3px 0 var(--lime);
+}
+
+.sidebar-3d-fallback svg { width: 50%; height: 50%; }
+
+.sidebar-3d.is-3d-failed canvas { display: none; }
+.sidebar-3d.is-3d-failed .sidebar-3d-fallback { display: grid; }
+
+@media (max-width: 1100px) {
+  .sidebar-3d { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .model-stage { scroll-behavior: auto; }
+  .model-hint { transition: none; }
+}
+
+@media print {
+  .hero-3d,
+  .model-feature,
+  .sidebar-3d { display: none !important; }
+}

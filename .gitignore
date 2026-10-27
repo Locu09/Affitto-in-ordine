@@ -1,0 +1,15 @@
+# File di sistema
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+
+# Dipendenze, build e segreti locali
+node_modules/
+dist/
+.env
+.env.*
+!.env.example

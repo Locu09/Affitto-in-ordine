@@ -1,0 +1,13 @@
+{
+  "name": "affitto-in-ordine",
+  "version": "1.0.0",
+  "description": "**Prototipo di micro-SaaS per piccoli proprietari immobiliari.** Non è una macchina per fare soldi. È un prodotto digitale che prova a risolvere un problema specifico e a farsi pagare per farlo.",
+  "main": "demo.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}

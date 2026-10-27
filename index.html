@@ -1,0 +1,706 @@
+﻿<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f7f2e7">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<title>Affitto in Ordine · date fuori dalla testa</title>
+<meta name="description" content="Il cruscotto per chi affitta 1–5 case: scadenze, incassi e aumenti ISTAT in un unico posto. Progetto in validazione, demo senza registrazione.">
+<script src="theme.js"></script>
+<link rel="stylesheet" href="landing.css">
+<link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="motion.css">
+<link rel="stylesheet" href="models.css">
+<link rel="stylesheet" href="notice.css">
+<link rel="stylesheet" href="alive.css">
+</head>
+<body>
+
+<a class="skip-link" href="#top">Vai al contenuto</a>
+<div class="scroll-progress" aria-hidden="true"><span data-scroll-progress></span></div>
+
+<svg class="svg-sprite" aria-hidden="true">
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v10h14V10"/><path d="M9.5 20v-6h5v6"/></symbol>
+  <symbol id="i-logo" viewBox="0 0 32 32"><path d="M4 14.5 16 4l12 10.5"/><path d="M7.2 13v14.8h17.6V13"/><path d="m10.4 20.2 3.2 3.2 8-8"/></symbol>
+  <symbol id="i-theme" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.5 1.5M17.3 17.3l1.5 1.5M18.8 5.2l-1.5 1.5M6.7 17.3l-1.5 1.5"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="16" rx="2.5"/><path d="M8 3v4M16 3v4M3.5 10h17"/><path d="m9 15 2 2 4-4"/></symbol>
+  <symbol id="i-wallet" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2.5"/><path d="M3 10h18"/><circle cx="16.5" cy="14.5" r="1.2"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 9a6 6 0 1 1 12 0c0 4 1.5 6 2 7H4c.5-1 2-3 2-7Z"/><path d="M10 20h4"/></symbol>
+  <symbol id="i-calc" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M8.5 7h7M8.5 11h1M12 11h1M15.5 11h1M8.5 14.5h1M12 14.5h1M15.5 14.5h1M8.5 18h1M12 18h1"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3 2.8 20h18.4L12 3Z"/><path d="M12 9v5M12 17.2v.1"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20M5 5l14 14M19 5 5 19"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7V5Z"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></symbol>
+</svg>
+
+<header class="site-head">
+  <div class="container head-inner">
+    <a class="brand" href="#top" aria-label="Affitto in Ordine, pagina iniziale" translate="no">
+      <span class="brand-mark"><svg aria-hidden="true" focusable="false"><use href="#i-logo"></use></svg></span>
+      <span class="brand-text"><strong>Affitto in Ordine</strong><small>per piccoli proprietari</small></span>
+    </a>
+    <nav class="site-nav" aria-label="Navigazione principale">
+      <a href="#problema">Il problema</a>
+      <a href="#come-funziona">Come funziona</a>
+      <a href="#funzioni">Funzioni</a>
+      <a href="#prezzi">Prezzo</a>
+      <a href="#domande">Domande</a>
+    </nav>
+    <div class="head-actions">
+      <span class="head-badge"><span class="dot" aria-hidden="true"></span>In validazione</span>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-expanded="false" aria-controls="themePanel" aria-haspopup="dialog" aria-label="Scegli tema e palette">
+        <svg aria-hidden="true" focusable="false"><use href="#i-theme"></use></svg>
+      </button>
+      <a class="btn btn--acid btn--sm head-cta" href="demo.html">Demo <svg aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></a>
+      <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobileMenu" aria-label="Apri il menu">
+        <span class="menu-lines" aria-hidden="true"><i></i><i></i></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="theme-panel" id="themePanel" data-theme-panel role="dialog" aria-labelledby="themePanelTitle" hidden>
+  <div class="theme-panel-head">
+    <div>
+      <p class="theme-kicker">Aspetto / preferenza locale</p>
+      <h2 id="themePanelTitle">Tema e palette</h2>
+    </div>
+    <button class="theme-close" type="button" data-theme-close aria-label="Chiudi selettore tema">
+      <svg aria-hidden="true" focusable="false"><use href="#i-x"></use></svg>
+    </button>
+  </div>
+  <fieldset class="theme-fieldset">
+    <legend>Modalità</legend>
+    <div class="theme-options theme-options--modes">
+      <label class="theme-option"><input type="radio" name="theme-mode" value="system"><span class="theme-option-face">Auto</span></label>
+      <label class="theme-option"><input type="radio" name="theme-mode" value="light"><span class="theme-option-face">Chiaro</span></label>
+      <label class="theme-option"><input type="radio" name="theme-mode" value="dark"><span class="theme-option-face">Scuro</span></label>
+    </div>
+  </fieldset>
+  <fieldset class="theme-fieldset">
+    <legend>Palette</legend>
+    <div class="theme-options theme-options--palettes">
+      <label class="theme-option"><input type="radio" name="theme-palette" value="lime"><span class="theme-option-face"><span class="theme-swatch" style="--swatch:#dcff45" aria-hidden="true"></span>Acido</span></label>
+      <label class="theme-option"><input type="radio" name="theme-palette" value="sky"><span class="theme-option-face"><span class="theme-swatch" style="--swatch:#7ddcff" aria-hidden="true"></span>Cielo</span></label>
+      <label class="theme-option"><input type="radio" name="theme-palette" value="coral"><span class="theme-option-face"><span class="theme-swatch" style="--swatch:#ff8a70" aria-hidden="true"></span>Corallo</span></label>
+      <label class="theme-option"><input type="radio" name="theme-palette" value="violet"><span class="theme-option-face"><span class="theme-swatch" style="--swatch:#b9a6ff" aria-hidden="true"></span>Viola</span></label>
+      <label class="theme-option"><input type="radio" name="theme-palette" value="mint"><span class="theme-option-face"><span class="theme-swatch" style="--swatch:#7bf7c9" aria-hidden="true"></span>Menta</span></label>
+      <label class="theme-option"><input type="radio" name="theme-palette" value="amber"><span class="theme-option-face"><span class="theme-swatch" style="--swatch:#ffcc66" aria-hidden="true"></span>Ambra</span></label>
+    </div>
+  </fieldset>
+  <p class="theme-note">La scelta resta solo su questo browser. Nessun cookie, nessun invio.</p>
+  <p class="theme-status" data-theme-status aria-live="polite"></p>
+</div>
+
+<div class="mobile-menu" id="mobileMenu" hidden>
+  <div class="mobile-menu-inner">
+    <div class="mobile-menu-head">
+      <span class="mobile-kicker">Menu / Affitto in Ordine</span>
+      <button class="menu-close" type="button" data-menu-close aria-label="Chiudi il menu"><svg aria-hidden="true" focusable="false"><use href="#i-x"></use></svg></button>
+    </div>
+    <nav class="mobile-nav" aria-label="Menu mobile">
+      <a href="#problema"><span>01</span>Il problema</a>
+      <a href="#come-funziona"><span>02</span>Come funziona</a>
+      <a href="#funzioni"><span>03</span>Funzioni</a>
+      <a href="#demo"><span>04</span>La demo</a>
+      <a href="#prezzi"><span>05</span>Prezzo</a>
+      <a href="#domande"><span>06</span>Domande</a>
+      <a href="#accesso"><span>07</span>Accesso</a>
+    </nav>
+    <div class="mobile-menu-foot">
+      <a class="btn btn--acid btn--wide" href="demo.html">Accendi la demo <svg aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></a>
+      <p>Progetto in validazione · nessuna vendita attiva</p>
+    </div>
+  </div>
+</div>
+
+<main id="top" tabindex="-1">
+
+  <section class="hero">
+    <div class="hero-blob hero-blob--lime" aria-hidden="true"></div>
+    <div class="hero-blob hero-blob--violet" aria-hidden="true"></div>
+    <div class="hero-blob hero-blob--coral" aria-hidden="true"></div>
+    <div class="hero-gridlines" aria-hidden="true"></div>
+    <span class="hero-watermark" aria-hidden="true">ORDINE</span>
+
+    <div class="container hero-layout">
+      <div class="hero-copy">
+        <div class="hero-kicker-row">
+          <span class="status-pill"><span class="dot" aria-hidden="true"></span>Progetto in validazione</span>
+          <span class="hero-kicker">Per chi affitta 1–5 case</span>
+        </div>
+        <h1 class="hero-title">
+          <span class="hero-line"><span class="hero-word">DATE?</span></span>
+          <span class="hero-line"><span class="hero-word hero-word--acid">FUORI</span><span class="hero-sticker" aria-hidden="true">ZERO<br>PANICO</span></span>
+          <span class="hero-line"><span class="hero-word">DALLA</span> <span class="hero-word hero-word--outline">TESTA.</span></span>
+        </h1>
+        <p class="hero-lead">Non dalle tue responsabilità. Scadenze, incassi e aumenti ISTAT in un unico posto: controllo senza vivere con il calendario aperto.</p>
+        <div class="hero-actions">
+          <a class="btn btn--acid btn--lg" data-magnetic href="demo.html">Accendi la demo <svg aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></a>
+          <a class="btn btn--ghost" href="#come-funziona">Come funziona <svg aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></a>
+        </div>
+        <ul class="hero-proof" aria-label="Caratteristiche della demo">
+          <li><svg aria-hidden="true" focusable="false"><use href="#i-check"></use></svg>Zero registrazioni</li>
+          <li><svg aria-hidden="true" focusable="false"><use href="#i-check"></use></svg>Solo nel browser</li>
+          <li><svg aria-hidden="true" focusable="false"><use href="#i-check"></use></svg>2 minuti</li>
+        </ul>
+      </div>
+
+      <div class="hero-play">
+        <div class="stage" data-stage data-mode="chaos">
+          <div class="stage-top">
+            <span class="stage-id"><span class="stage-light" aria-hidden="true"></span>AFFITTO / DEMO</span>
+            <span class="stage-meter" aria-hidden="true"><i></i></span>
+            <span class="stage-state" data-stage-state>CAOS · 87</span>
+          </div>
+          <div class="stage-board" data-stage-board>
+            <span class="board-word" data-stage-word aria-hidden="true">CAOS</span>
+            <div class="stage-notes">
+              <article class="note">
+                <span class="note-tag">REGISTRAZIONE</span>
+                <strong>12 NOV</strong>
+                <small>annualità</small>
+                <span class="note-check" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-check"></use></svg></span>
+              </article>
+              <article class="note">
+                <span class="note-tag">CANONE</span>
+                <strong>€ 1.150</strong>
+                <small>non incassato</small>
+                <span class="note-check" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-check"></use></svg></span>
+              </article>
+              <article class="note">
+                <span class="note-tag">ISTAT</span>
+                <strong>+1,5%</strong>
+                <small>da applicare</small>
+                <span class="note-check" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-check"></use></svg></span>
+              </article>
+              <article class="note">
+                <span class="note-tag">CONTRATTO</span>
+                <strong>28 FEB</strong>
+                <small>in scadenza</small>
+                <span class="note-check" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-check"></use></svg></span>
+              </article>
+              <article class="note">
+                <span class="note-tag">SOLLECITO</span>
+                <strong>18 GG</strong>
+                <small>da inviare</small>
+                <span class="note-check" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-check"></use></svg></span>
+              </article>
+              <article class="note">
+                <span class="note-tag">EXPORT</span>
+                <strong>CSV</strong>
+                <small>pronto</small>
+                <span class="note-check" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-check"></use></svg></span>
+              </article>
+            </div>
+            <div class="stage-confetti" data-confetti aria-hidden="true"></div>
+          </div>
+          <div class="stage-foot">
+            <p class="stage-copy" data-stage-copy>Sei tu, con sette schede aperte.</p>
+            <button class="stage-btn" type="button" data-stage-toggle aria-pressed="false">
+              <span data-stage-btn-label>Metti in ordine</span>
+              <svg aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg>
+            </button>
+          </div>
+          <p class="sr-only" data-stage-live role="status" aria-live="polite"></p>
+        </div>
+        <div class="hero-3d" data-3d-scene="key" data-3d-mode="decor" aria-hidden="true">
+          <canvas class="hero-3d-canvas" data-3d-canvas></canvas>
+          <span class="hero-3d-fallback"><svg aria-hidden="true" focusable="false"><use href="#i-home"></use></svg></span>
+        </div>
+        <p class="stage-caption">Simulazione interattiva · nomi e date inventati · nessun dato inviato.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="tape" data-tape>
+    <div class="tape-track" aria-hidden="true">
+      <span>SCADENZE <b>✳</b> INCASSI <b>✳</b> ISTAT <b>✳</b> CONTRATTI <b>✳</b> SOLLECITI <b>✳</b> CSV <b>✳</b> ZERO EXCEL <b>✳</b> </span>
+      <span>SCADENZE <b>✳</b> INCASSI <b>✳</b> ISTAT <b>✳</b> CONTRATTI <b>✳</b> SOLLECITI <b>✳</b> CSV <b>✳</b> ZERO EXCEL <b>✳</b> </span>
+    </div>
+    <button class="tape-toggle" type="button" data-tape-toggle aria-pressed="false" aria-label="Metti in pausa il nastro scorrevole">
+      <svg aria-hidden="true" focusable="false"><use href="#i-pause"></use></svg>
+    </button>
+  </div>
+
+  <section class="section problem" id="problema">
+    <div class="container">
+      <div class="section-head section-head--split">
+        <div>
+          <span class="eyebrow"><b>01</b> / Il problema</span>
+          <h2 class="display">LE DATE NON<br>FANNO RUMORE.<br><em>FINO A QUANDO.</em></h2>
+        </div>
+        <div class="section-aside">
+          <p>Una registrazione saltata, un aumento dimenticato, un canone che non arriva. Nessuno ti avvisa con un suono.</p>
+          <p class="aside-note">Se ne accorge il commercialista, o il conto in banca.</p>
+        </div>
+      </div>
+
+      <div class="pain-grid">
+        <article class="pain-card pain-card--coral">
+          <span class="pain-num" aria-hidden="true">01</span>
+          <span class="pain-tag">Registrazioni</span>
+          <h3>La data che vive in un PDF.</h3>
+          <p>Contratto, annualità, cedolare secca: le date sono in documenti diversi e nessuno te le ricorda insieme.</p>
+          <span class="pain-mark" aria-hidden="true">!</span>
+        </article>
+        <article class="pain-card pain-card--violet">
+          <span class="pain-num" aria-hidden="true">02</span>
+          <span class="pain-tag">ISTAT</span>
+          <h3>La percentuale che nessuno ricorda.</h3>
+          <p>Applicarla male costa. Dimenticarla costa uguale. E il contratto non si calcola da solo.</p>
+          <span class="pain-mark" aria-hidden="true">%</span>
+        </article>
+        <article class="pain-card pain-card--mint">
+          <span class="pain-num" aria-hidden="true">03</span>
+          <span class="pain-tag">Incassi</span>
+          <h3>Il ritardo che scopri tardi.</h3>
+          <p>Te ne accorgi quando guardi il conto, non quando sarebbe il momento di mandare un promemoria.</p>
+          <span class="pain-mark" aria-hidden="true">€</span>
+        </article>
+      </div>
+
+      <div class="chaos-test" data-chaos-test>
+        <div class="chaos-test-copy">
+          <span class="eyebrow"><b>Test rapido</b> / zero giudizi</span>
+          <h3>QUANTE NE STAI<br>GIÀ RINCORRENDO?</h3>
+          <p>Segna quelle che ti suonano. Non è una diagnosi: è solo un promemoria.</p>
+        </div>
+        <div class="chaos-checks">
+          <label class="chaos-check">
+            <input type="checkbox" name="caos" value="registrazione">
+            <span class="chaos-box" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-check"></use></svg></span>
+            <span>Non so a memoria quando scade la prossima registrazione.</span>
+          </label>
+          <label class="chaos-check">
+            <input type="checkbox" name="caos" value="istat">
+            <span class="chaos-box" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-check"></use></svg></span>
+            <span>L’aumento ISTAT lo verifico quando me lo ricordo.</span>
+          </label>
+          <label class="chaos-check">
+            <input type="checkbox" name="caos" value="incassi">
+            <span class="chaos-box" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-check"></use></svg></span>
+            <span>Mi accorgo di un affitto non pagato dal conto.</span>
+          </label>
+          <label class="chaos-check">
+            <input type="checkbox" name="caos" value="strumenti">
+            <span class="chaos-box" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-check"></use></svg></span>
+            <span>Le date sono tra Excel, email e agenda.</span>
+          </label>
+        </div>
+        <div class="chaos-score" role="status" aria-live="polite">
+          <span class="chaos-score-label">Il tuo conteggio</span>
+          <strong data-chaos-score>0/4</strong>
+          <p data-chaos-message>Quattro domande. Zero giudizi.</p>
+          <span class="chaos-privacy">Nessun dato viene inviato.</span>
+        </div>
+      </div>
+
+      <p class="closing-line">Non ti serve un gestionale da agenzia. Ti serve <strong>un posto dove guardare una volta al mese</strong>.</p>
+    </div>
+  </section>
+
+  <section class="section section--ink how" id="come-funziona">
+    <div class="container">
+      <div class="section-head section-head--split">
+        <div>
+          <span class="eyebrow"><b>02</b> / Come funziona</span>
+          <h2 class="display">DAL CAOS<br>ALL’ORDINE<br><span class="acid-text">IN 3 MOSSE.</span></h2>
+        </div>
+        <div class="section-aside">
+          <p>La prima configurazione richiede pochi minuti. Dopo, apri, guardi, agisci. Il resto è controllo.</p>
+          <a class="text-link text-link--light" href="demo.html">Provalo nella demo <svg aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></a>
+        </div>
+      </div>
+
+      <div class="steps">
+        <article class="step-card">
+          <div class="step-top"><span class="step-num">01</span><span class="step-tag">Setup</span></div>
+          <span class="step-icon"><svg aria-hidden="true" focusable="false"><use href="#i-home"></use></svg></span>
+          <h3>Butta dentro le date.</h3>
+          <p>Contratto, inquilino, canone, registrazione, ISTAT. Una volta. Senza fogli sparsi.</p>
+          <span class="step-line" aria-hidden="true"></span>
+        </article>
+        <article class="step-card">
+          <div class="step-top"><span class="step-num">02</span><span class="step-tag">Controllo</span></div>
+          <span class="step-icon"><svg aria-hidden="true" focusable="false"><use href="#i-calendar"></use></svg></span>
+          <h3>Guarda cosa scade.</h3>
+          <p>La dashboard ti dice cosa richiede attenzione oggi. Non devi cercare tra le email.</p>
+          <span class="step-line" aria-hidden="true"></span>
+        </article>
+        <article class="step-card">
+          <div class="step-top"><span class="step-num">03</span><span class="step-tag">Azione</span></div>
+          <span class="step-icon"><svg aria-hidden="true" focusable="false"><use href="#i-bell"></use></svg></span>
+          <h3>Agisci in 2 minuti.</h3>
+          <p>Canone incassato, promemoria copiato, CSV esportato. Fatto. Puoi tornare alla tua vita.</p>
+          <span class="step-line" aria-hidden="true"></span>
+        </article>
+      </div>
+
+      <div class="model-feature" data-3d-scene="house" data-3d-mode="auto" data-3d-drag>
+        <div class="model-feature-copy">
+          <span class="eyebrow"><b>3D</b> / La casa in ordine</span>
+          <h3>UNA CASA.<br><span class="acid-text">UN SOLO SGUARDO.</span></h3>
+          <p>Un modello dimostrativo per raccontare il punto di vista: la casa al centro, le date e gli incassi intorno. Ruotalo per guardarlo da tutte le parti.</p>
+          <div class="model-legend" aria-hidden="true">
+            <span><i class="model-dot model-dot--lime"></i>Scadenze</span>
+            <span><i class="model-dot model-dot--coral"></i>Incassi</span>
+            <span><i class="model-dot model-dot--violet"></i>ISTAT</span>
+          </div>
+          <button class="model-pause" type="button" data-model-pause aria-pressed="false" hidden>
+            <svg aria-hidden="true" focusable="false"><use href="#i-pause"></use></svg>
+            <span data-model-pause-label>Ferma animazione 3D</span>
+          </button>
+          <p class="model-note">Modello 3D dimostrativo: non rappresenta un immobile reale. Nessun dato viene inviato.</p>
+        </div>
+        <div class="model-stage">
+          <canvas class="model-canvas" data-3d-canvas width="900" height="680" aria-hidden="true"></canvas>
+          <div class="model-fallback" aria-hidden="true">
+            <svg aria-hidden="true" focusable="false"><use href="#i-home"></use></svg>
+            <span>Modello 3D non disponibile su questo dispositivo.</span>
+          </div>
+          <span class="model-label model-label--deadlines" aria-hidden="true">Scadenze</span>
+          <span class="model-label model-label--income" aria-hidden="true">Incassi</span>
+          <span class="model-label model-label--istat" aria-hidden="true">ISTAT</span>
+          <span class="model-hint" data-model-hint aria-hidden="true">Trascina per ruotare</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section features" id="funzioni">
+    <div class="container">
+      <div class="section-head section-head--split">
+        <div>
+          <span class="eyebrow"><b>03</b> / Cosa ti trovi</span>
+          <h2 class="display">TUTTO QUELLO<br>CHE SERVE.<br><em>NIENTE DI PIÙ.</em></h2>
+        </div>
+        <div class="section-aside">
+          <p>Non è un software di contabilità. Non sostituisce il commercialista. Serve a non perdere di vista ciò che hai già.</p>
+        </div>
+      </div>
+
+      <div class="bento">
+        <article class="bento-card bento-schedule">
+          <div class="bento-label"><span class="eyebrow">Scadenzario</span><span class="demo-tag">Demo</span></div>
+          <h3>UNA LINEA TEMPORALE,<br>NON UN PUZZLE.</h3>
+          <p>Contratti, registrazioni e adeguamenti ISTAT ordinati per data. Apri una volta al mese e vedi subito cosa richiede attenzione.</p>
+          <div class="mini-schedule" aria-hidden="true">
+            <div class="mini-row">
+              <span class="mini-date"><b>12</b><small>NOV</small></span>
+              <span class="mini-body"><b>Adeguamento ISTAT</b><small>Bilocale Porta Romana</small></span>
+              <span class="mini-pill">tra 18 gg</span>
+            </div>
+            <div class="mini-row">
+              <span class="mini-date"><b>15</b><small>DIC</small></span>
+              <span class="mini-body"><b>Registrazione / annualità</b><small>Trilocale Navigli</small></span>
+              <span class="mini-pill">tra 51 gg</span>
+            </div>
+            <div class="mini-row">
+              <span class="mini-date"><b>28</b><small>FEB</small></span>
+              <span class="mini-body"><b>Fine prima scadenza</b><small>Monolocale Bologna Centro</small></span>
+              <span class="mini-pill">tra 126 gg</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="bento-card bento-collect">
+          <div class="bento-label"><span class="eyebrow">Incassi</span><span class="demo-tag">Esempio</span></div>
+          <div class="donut" style="--p:92" aria-hidden="true"><span>92<small>%</small></span></div>
+          <h3>IL QUADRANTE<br>CHE PARLA CHIARO.</h3>
+          <p>Canoni incassati negli ultimi 6 mesi nell’esempio demo. I ritardi restano visibili finché non li chiudi.</p>
+        </article>
+
+        <article class="bento-card bento-istat">
+          <span class="eyebrow">ISTAT</span>
+          <h3>CALCOLA.<br>NON INDOVINARE.</h3>
+          <div class="istat-visual" aria-hidden="true"><span>€ 1.150</span><svg aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg><strong>€ 1.167</strong></div>
+          <p>Inserisci canone e variazione, scegli la quota e leggi il nuovo importo. Il resto lo verifichi con il consulente.</p>
+        </article>
+
+        <article class="bento-card bento-reminder">
+          <span class="eyebrow">Promemoria</span>
+          <h3>PAROLE GIUSTE,<br>GIÀ PRONTE.</h3>
+          <div class="bubble" aria-hidden="true">“Gentile Giulia, ti scrivo in merito al canone di…”</div>
+          <p>Solleciti e comunicazioni cortesi da copiare, personalizzare e inviare.</p>
+          <span class="demo-tag">Esempio</span>
+        </article>
+
+        <article class="bento-card bento-csv">
+          <span class="eyebrow">Export</span>
+          <h3>I TUOI DATI<br>ESCONO CON TE.</h3>
+          <div class="file-chip" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-download"></use></svg><span>incassi-demo.csv</span></div>
+          <p>Esporta lo storico degli incassi quando vuoi. Senza richieste, senza attese.</p>
+        </article>
+
+        <article class="bento-card bento-privacy">
+          <span class="eyebrow">Privacy by default</span>
+          <h3>LA DEMO NON<br>MANDA NIENTE<br>IN GIRO.</h3>
+          <p>Nomi, importi e date restano nel localStorage del tuo browser. Nessun account, nessun server, nessun tracciamento.</p>
+          <span class="local-chip"><span class="dot" aria-hidden="true"></span>localStorage · solo sul tuo dispositivo</span>
+        </article>
+
+        <a class="bento-card bento-cta" href="demo.html">
+          <span class="eyebrow">La demo</span>
+          <strong>VEDILO<br>IN AZIONE.</strong>
+          <span class="bento-cta-arrow" aria-hidden="true"><svg aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></span>
+          <span class="bento-cta-note">Nessuna registrazione · 2 minuti</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="fit-band" id="per-chi">
+    <div class="container fit-grid">
+      <article class="fit-card fit-card--yes">
+        <span class="fit-kicker">Fa per te se…</span>
+        <ul>
+          <li><svg aria-hidden="true" focusable="false"><use href="#i-check"></use></svg>Hai da 1 a 5 immobili in affitto.</li>
+          <li><svg aria-hidden="true" focusable="false"><use href="#i-check"></use></svg>Gestisci tutto da solo, magari con un commercialista.</li>
+          <li><svg aria-hidden="true" focusable="false"><use href="#i-check"></use></svg>Vuoi un promemoria, non un secondo lavoro.</li>
+        </ul>
+      </article>
+      <article class="fit-card fit-card--no">
+        <span class="fit-kicker">Non fa per te se…</span>
+        <ul>
+          <li><svg aria-hidden="true" focusable="false"><use href="#i-x"></use></svg>Gestisci un’agenzia o decine di immobili.</li>
+          <li><svg aria-hidden="true" focusable="false"><use href="#i-x"></use></svg>Cerchi contabilità, fatturazione o consulenza fiscale.</li>
+          <li><svg aria-hidden="true" focusable="false"><use href="#i-x"></use></svg>Vuoi automatizzare tutto senza controllare nulla.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section section--ink showcase" id="demo">
+    <div class="showcase-glow" aria-hidden="true"></div>
+    <div class="container">
+      <div class="section-head section-head--split showcase-head">
+        <div>
+          <span class="eyebrow"><b>04</b> / La demo</span>
+          <h2 class="display">PROVALA.<br><span class="acid-text">DAVVERO.</span></h2>
+        </div>
+        <div class="section-aside">
+          <p>Niente video, niente “prenota una call per vedere il prodotto”. La demo è qui, è interattiva e non chiede la tua email.</p>
+          <div class="showcase-actions">
+            <a class="btn btn--acid" href="demo.html">Apri la demo <svg aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></a>
+            <span class="showcase-note">Dati di esempio · tutto locale</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="showcase-frame" data-tilt>
+        <div class="browser-bar">
+          <span class="browser-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="browser-url">demo locale / panoramica</span>
+          <span class="browser-demo">demo</span>
+        </div>
+        <img src="assets/demo-preview.png" data-theme-shot data-light="assets/demo-preview.png" data-dark="assets/demo-preview-dark.png" alt="La dashboard di Affitto in Ordine con scadenze, incassi e promemoria" width="1440" height="900" loading="lazy" decoding="async">
+        <span class="showcase-sticker">0 registrazioni</span>
+        <span class="showcase-sticker showcase-sticker--two">solo locale</span>
+      </div>
+      <p class="showcase-caption">Anteprima della demo. Nomi, importi e immobili sono inventati.</p>
+    </div>
+  </section>
+
+  <section class="section pricing" id="prezzi">
+    <div class="container">
+      <div class="section-head section-head--split">
+        <div>
+          <span class="eyebrow"><b>05</b> / Prezzo</span>
+          <h2 class="display">UN PREZZO.<br>NESSUNA<br><em>SORPRESA.</em></h2>
+        </div>
+        <div class="section-aside">
+          <p>Sto costruendo la prima versione con 20 proprietari. Il prezzo fondatore serve a validare il prodotto con chi lo userà davvero.</p>
+          <p class="aside-note"><strong>Oggi non si compra.</strong> Prima parliamo 15 minuti.</p>
+        </div>
+      </div>
+
+      <div class="price-switch-wrap">
+        <div class="price-switch" role="group" aria-label="Confronta i prezzi previsti">
+          <button class="price-choice is-active" type="button" data-price-choice="founder" aria-pressed="true">Fondatore <span>39 €</span></button>
+          <button class="price-choice" type="button" data-price-choice="standard" aria-pressed="false">Standard <span>79 €</span></button>
+        </div>
+        <span class="price-switch-note">Prezzi previsti · non attivi</span>
+      </div>
+
+      <div class="price-layout">
+        <aside class="price-card">
+          <div class="price-card-head">
+            <span class="price-badge" data-price-badge>Primi 20 posti</span>
+            <span class="price-status"><span class="dot" aria-hidden="true"></span>Nessun pagamento ora</span>
+          </div>
+          <div class="price-main" aria-live="polite">
+            <span class="price-name" data-price-name>Fondatore</span>
+            <div class="price-row"><span class="price-amount"><span data-price-amount>39</span><small>€</small></span><span class="price-period">/ anno</span></div>
+            <p class="price-monthly" data-price-monthly>≈ 3,25 € al mese</p>
+            <p class="price-desc" data-price-desc>Per i primi 20 proprietari. Fino a 5 immobili, supporto diretto e una call di configurazione.</p>
+          </div>
+          <ul class="price-list">
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"></use></svg>Scadenzario completo</li>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"></use></svg>Incassi e ritardi</li>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"></use></svg>Promemoria e calcolatore ISTAT</li>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"></use></svg>Export CSV dei tuoi dati</li>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"></use></svg>Una call di configurazione</li>
+          </ul>
+          <a class="btn btn--acid btn--wide" href="#accesso">Richiedi l’accesso <svg aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></a>
+          <p class="price-note">Importo indicativo, IVA inclusa se applicabile. Condizioni definitive prima dell’eventuale vendita.</p>
+        </aside>
+
+        <div class="price-side">
+          <div class="price-side-card">
+            <span class="eyebrow">Perché questo prezzo</span>
+            <h3>UN PREZZO DA<br>PROPRIETARIO.</h3>
+            <p>Non serve un mutuo per tenere in ordine una casa. Serve uno strumento che usi davvero. Il prezzo fondatore è pensato per chi entra presto e aiuta a costruire la prima versione.</p>
+          </div>
+          <div class="price-side-card price-side-card--dark">
+            <span class="eyebrow">Cosa non è</span>
+            <h3>NON È UN<br>ABBONAMENTO<br>TRAPPOLA.</h3>
+            <p>Nessun pagamento adesso. Nessun rinnovo automatico nascosto. Se non fa per te, te lo dico prima io.</p>
+            <span class="sticker-line">Prezzo previsto, non attivo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq-section" id="domande">
+    <div class="container faq-layout">
+      <div class="faq-intro">
+        <span class="eyebrow"><b>06</b> / Domande</span>
+        <h2 class="display">LE RISPOSTE,<br>SENZA GIRI<br><em>DI PAROLA.</em></h2>
+        <p>Se manca qualcosa, scrivimi. Rispondo personalmente.</p>
+        <a class="text-link" href="mailto:alelocu09@gmail.com">alelocu09@gmail.com <svg aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></a>
+      </div>
+      <div class="faq">
+        <details>
+          <summary><span>Devo installare qualcosa?</span><span class="faq-icon" aria-hidden="true"></span></summary>
+          <p>No. Funziona nel browser, da computer e telefono. La demo non richiede registrazione.</p>
+        </details>
+        <details>
+          <summary><span>Dove finiscono i dati della demo?</span><span class="faq-icon" aria-hidden="true"></span></summary>
+          <p>Solo nel tuo browser, tramite memoria locale. Nessun dato viene inviato a un server e il Titolare non può vederlo. Puoi cancellarlo con “Ripristina i dati demo” o dalle impostazioni del browser. Leggi l’<a href="legale.html#privacy">informativa privacy</a>.</p>
+        </details>
+        <details>
+          <summary><span>È un software fiscale o legale?</span><span class="faq-icon" aria-hidden="true"></span></summary>
+          <p>No. È uno strumento di organizzazione: ti aiuta a non dimenticare date e incassi. Le decisioni fiscali e legali restano tue e del tuo consulente.</p>
+        </details>
+        <details>
+          <summary><span>Meglio di Excel?</span><span class="faq-icon" aria-hidden="true"></span></summary>
+          <p>Per tenere insieme scadenze, incassi e promemoria, sì: è più difficile dimenticare una data. Se ti serve contabilità completa, Excel o un gestionale professionale possono essere più adatti.</p>
+        </details>
+        <details>
+          <summary><span>Quanto costa davvero?</span><span class="faq-icon" aria-hidden="true"></span></summary>
+          <p>Se e quando il servizio sarà in vendita, il prezzo fondatore previsto è 39 € all’anno per massimo 5 immobili; dopo la validazione il prezzo standard previsto è 79 € all’anno. Oggi non è possibile acquistare: il prezzo serve a capire se il prodotto ha valore. Non ci sono costi nascosti.</p>
+        </details>
+        <details>
+          <summary><span>Quando sarà disponibile?</span><span class="faq-icon" aria-hidden="true"></span></summary>
+          <p>Sto validando la prima versione con i primi proprietari. Chi richiede l’accesso viene coinvolto nelle prossime settimane e vede il prodotto prima degli altri.</p>
+        </details>
+        <details>
+          <summary><span>Posso usarlo con più di 5 immobili?</span><span class="faq-icon" aria-hidden="true"></span></summary>
+          <p>Non in questa versione. Il prodotto è pensato per proprietari con 1–5 immobili residenziali, non per agenzie o gestori professionali.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--ink access" id="accesso">
+    <div class="access-glow" aria-hidden="true"></div>
+    <div class="container access-panel">
+      <div class="access-copy">
+        <span class="eyebrow"><b>07</b> / Accesso fondatore</span>
+        <h2 class="display">ENTRA PRIMA.<br><span class="acid-text">POI DECIDI.</span></h2>
+        <p>Lascia la tua email. Ti mando la demo, ti chiedo 15 minuti e capiamo insieme se Affitto in Ordine risolve un problema vero per te.</p>
+        <ol class="access-steps">
+          <li><span>01</span>Mi scrivi.</li>
+          <li><span>02</span>Parliamo 15 minuti.</li>
+          <li><span>03</span>Se ha senso, entri nei primi 20.</li>
+        </ol>
+        <p class="access-small">Niente spam, niente pagamenti automatici. Solo una conversazione.</p>
+      </div>
+
+      <form class="access-form" id="waitlistForm" aria-describedby="formNote" novalidate>
+        <div class="form-head"><span>Richiesta accesso</span><span class="form-sticker">1 email / 0 spam</span></div>
+        <label class="field">
+          <span>Nome</span>
+          <input id="wName" name="nome" type="text" maxlength="60" autocomplete="name" placeholder="Es. Mario Rossi…" aria-describedby="nameError">
+          <span class="field-error" id="nameError" aria-live="polite"></span>
+        </label>
+        <label class="field">
+          <span>Email *</span>
+          <input id="wEmail" name="email" type="email" required maxlength="120" autocomplete="email" spellcheck="false" inputmode="email" placeholder="nome@esempio.it…" aria-describedby="emailError">
+          <span class="field-error" id="emailError" aria-live="polite"></span>
+        </label>
+        <label class="field">
+          <span>Quanti immobili affitti?</span>
+          <select id="wCount" name="immobili" autocomplete="off">
+            <option value="1">1 immobile</option>
+            <option value="2-3" selected>2-3 immobili</option>
+            <option value="4-5">4-5 immobili</option>
+            <option value="oltre 5">Più di 5</option>
+          </select>
+        </label>
+        <label class="check">
+          <input id="wPrivacy" name="privacy" type="checkbox" required aria-describedby="privacyError">
+          <span>Ho letto l’<a href="legale.html#privacy">informativa privacy</a> e confermo di voler essere contattato per questa richiesta. *</span>
+        </label>
+        <span class="field-error" id="privacyError" aria-live="polite"></span>
+        <button class="btn btn--dark btn--wide" type="submit">Richiedi l’accesso <svg aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></button>
+        <p class="form-note" id="formNote" role="status" aria-live="polite">Si aprirà il tuo programma email con un messaggio già scritto. Il sito non salva i dati. Questa richiesta non è un ordine.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="container">
+    <p class="foot-word" aria-hidden="true">AFFITTO IN <span>ORDINE.</span></p>
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand brand--foot" href="#top" aria-label="Affitto in Ordine, torna su">
+          <span class="brand-mark"><svg aria-hidden="true" focusable="false"><use href="#i-logo"></use></svg></span>
+          <span class="brand-text"><strong>Affitto in Ordine</strong><small>per piccoli proprietari</small></span>
+        </a>
+        <p class="foot-tag">Le scadenze del tuo affitto, in un unico posto. Progetto in validazione, non ancora un servizio attivo.</p>
+      </div>
+      <div class="foot-right">
+        <div class="foot-links">
+          <a href="demo.html">Demo</a>
+          <a href="#funzioni">Funzioni</a>
+          <a href="#prezzi">Prezzo</a>
+          <a href="#domande">Domande</a>
+          <a href="mailto:alelocu09@gmail.com">alelocu09@gmail.com</a>
+        </div>
+        <div class="foot-links legal-links">
+          <a href="legale.html#privacy">Privacy</a>
+          <a href="legale.html#cookie">Cookie</a>
+          <a href="legale.html#termini">Termini</a>
+          <a href="legale.html#note-legali">Note legali</a>
+          <a href="legale.html#accessibilita">Accessibilità</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-legal">
+      <p>© <span id="year">2026</span> Affitto in Ordine. Le informazioni non costituiscono consulenza fiscale, legale o finanziaria.</p>
+      <p>Progetto in validazione · nessun pagamento attivo · <a href="legale.html#note-legali">Informazioni legali in bozza</a></p>
+    </div>
+  </div>
+</footer>
+
+<div class="cursor-glow" aria-hidden="true"></div>
+<script src="landing.js"></script>
+<script src="motion.js"></script>
+<script src="assets/vendor/three.min.js"></script>
+<script src="models.js"></script>
+<script src="notice.js"></script>
+<script src="alive.js"></script>
+</body>
+</html>
+
