@@ -1,5 +1,8 @@
 # Affitto in Ordine
 
+**Sito pubblicato:** https://locu09.github.io/Affitto-in-ordine/
+**Repository:** https://github.com/Locu09/Affitto-in-ordine
+
 **Prototipo di micro-SaaS per piccoli proprietari immobiliari.**
 Non è una macchina per fare soldi. È un prodotto digitale che prova a risolvere un problema specifico e a farsi pagare per farlo.
 
@@ -42,7 +45,7 @@ Il sito è statico e non richiede build, database o variabili d'ambiente.
 2. Carica tutti i file nella radice del repository, sul ramo `main`.
 3. Vai in **Settings → Pages**.
 4. In **Build and deployment**, scegli **Deploy from a branch**, ramo `main`, cartella `/ (root)`.
-5. Salva e attendi la pubblicazione. L'indirizzo sarà `https://TUO-USERNAME.github.io/affitto-in-ordine/`.
+5. Salva e attendi la pubblicazione. L'indirizzo è `https://locu09.github.io/Affitto-in-ordine/`.
 
 Il file `.nojekyll` evita l'elaborazione Jekyll e mantiene le risorse così come sono. La prima pubblicazione richiede account GitHub e repository pubblico; i dati della demo restano nel browser dell'utente.
 
