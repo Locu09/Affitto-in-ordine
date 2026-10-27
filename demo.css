@@ -117,7 +117,7 @@ svg:not(.svg-sprite) {
   display: flex;
   min-height: 100vh;
   background:
-    radial-gradient(circle at 100% 0%, rgba(220, 255, 69, 0.22), transparent 24%),
+    radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--lime) 22%, transparent), transparent 24%),
     radial-gradient(circle at 6% 70%, rgba(131, 103, 255, 0.1), transparent 30%),
     var(--paper);
 }
@@ -215,7 +215,7 @@ svg:not(.svg-sprite) {
   gap: 6px;
   margin: 0;
   padding: 5px 8px;
-  border: 1px solid rgba(220, 255, 69, 0.55);
+  border: 1px solid color-mix(in srgb, var(--lime) 55%, transparent);
   border-radius: 999px;
   color: var(--lime);
   font-family: var(--mono);
@@ -229,7 +229,7 @@ svg:not(.svg-sprite) {
   height: 5px;
   border-radius: 50%;
   background: var(--lime);
-  box-shadow: 0 0 0 3px rgba(220, 255, 69, 0.13);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--lime) 13%, transparent);
   animation: pulse 2.2s ease-in-out infinite;
 }
 
@@ -1074,7 +1074,7 @@ svg:not(.svg-sprite) {
 }
 
 .payments-table tr:last-child td { border-bottom: 0; }
-.payments-table tbody tr:hover { background: rgba(220, 255, 69, 0.14); }
+.payments-table tbody tr:hover { background: color-mix(in srgb, var(--lime) 14%, transparent); }
 
 .payments-table .pay-prop {
   padding-left: 16px;
@@ -1401,9 +1401,9 @@ svg:not(.svg-sprite) {
 }
 
 @keyframes cell-flash {
-  0% { box-shadow: 0 0 0 0 rgba(220, 255, 69, 0.75); transform: scale(1); }
-  45% { box-shadow: 0 0 0 6px rgba(220, 255, 69, 0); transform: scale(1.13); }
-  100% { box-shadow: 0 0 0 0 rgba(220, 255, 69, 0); transform: scale(1); }
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--lime) 75%, transparent); transform: scale(1); }
+  45% { box-shadow: 0 0 0 6px color-mix(in srgb, var(--lime) 0%, transparent); transform: scale(1.13); }
+  100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--lime) 0%, transparent); transform: scale(1); }
 }
 
 @keyframes modal-in {

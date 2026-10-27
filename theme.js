@@ -4,6 +4,7 @@
   const STORAGE_KEY = 'aio-theme-v1';
   const root = document.documentElement;
   const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const allowedModes = new Set(['light', 'dark', 'system']);
   const allowedPalettes = new Set(['lime', 'sky', 'coral', 'violet', 'mint', 'amber', 'rose', 'ruby', 'indigo', 'ice', 'sage', 'sand']);
   const paletteNames = {
@@ -25,6 +26,7 @@
   let panel = null;
   let triggers = [];
   let lastTrigger = null;
+  let themeTransition = null;
 
   function readState() {
     try {
@@ -67,7 +69,12 @@
     root.style.colorScheme = mode;
 
     const meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute('content', mode === 'dark' ? '#0a0d0a' : '#f7f2e7');
+    if (meta) {
+      const paletteSurface = getComputedStyle(root)
+        .getPropertyValue(mode === 'dark' ? '--night' : '--paper')
+        .trim();
+      meta.setAttribute('content', paletteSurface || (mode === 'dark' ? '#171a18' : '#f7f2e7'));
+    }
 
     document.querySelectorAll('input[name="theme-mode"]').forEach((input) => {
       input.checked = input.value === state.mode;
@@ -94,9 +101,23 @@
   }
 
   function updateState(patch) {
-    state = { ...state, ...patch };
-    writeState();
-    apply();
+    const commit = () => {
+      state = { ...state, ...patch };
+      writeState();
+      apply();
+    };
+
+    /* Il cambio tema è una semplice dissolvenza. Se il browser non supporta
+       View Transitions, o l'utente preferisce meno movimento, il cambio resta immediato. */
+    if (!document.startViewTransition || reduceMotion.matches || themeTransition) {
+      commit();
+      return;
+    }
+
+    themeTransition = document.startViewTransition(commit);
+    themeTransition.finished.catch(() => {}).finally(() => {
+      themeTransition = null;
+    });
   }
 
   function openPanel(trigger) {
@@ -165,6 +186,7 @@
 
     root.classList.add('theme-ready');
     apply();
+    window.addEventListener('load', apply, { once: true });
   }
 
   state = readState();

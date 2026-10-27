@@ -271,7 +271,7 @@ svg:not(.svg-sprite) {
   flex: none;
   border-radius: 50%;
   background: currentColor;
-  box-shadow: 0 0 0 3px rgba(220, 255, 69, 0.12);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--lime) 12%, transparent);
 }
 
 .menu-toggle {
@@ -492,7 +492,7 @@ svg:not(.svg-sprite) {
   right: 16%;
   width: 46vw;
   height: 46vw;
-  background: radial-gradient(circle, rgba(220, 255, 69, 0.9), rgba(220, 255, 69, 0) 68%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--lime) 90%, transparent), color-mix(in srgb, var(--lime) 0%, transparent) 68%);
 }
 
 .hero-blob--violet {
@@ -755,7 +755,7 @@ svg:not(.svg-sprite) {
   padding: 27px 20px;
   background:
     radial-gradient(circle at 8% 0%, rgba(131, 103, 255, 0.18), transparent 38%),
-    radial-gradient(circle at 100% 90%, rgba(220, 255, 69, 0.1), transparent 42%),
+    radial-gradient(circle at 100% 90%, color-mix(in srgb, var(--lime) 10%, transparent), transparent 42%),
     #101610;
   transition: background 0.5s ease;
 }
@@ -863,7 +863,7 @@ svg:not(.svg-sprite) {
 
 .stage[data-mode="order"] .stage-board {
   background:
-    radial-gradient(circle at 0% 0%, rgba(220, 255, 69, 0.18), transparent 42%),
+    radial-gradient(circle at 0% 0%, color-mix(in srgb, var(--lime) 18%, transparent), transparent 42%),
     radial-gradient(circle at 100% 100%, rgba(131, 103, 255, 0.15), transparent 42%),
     #101610;
 }
@@ -874,7 +874,7 @@ svg:not(.svg-sprite) {
 }
 
 .stage[data-mode="order"] .note {
-  border-color: rgba(220, 255, 69, 0.42);
+  border-color: color-mix(in srgb, var(--lime) 42%, transparent);
   background: #192219;
   transform: none;
 }
@@ -884,7 +884,7 @@ svg:not(.svg-sprite) {
   transform: scale(1) rotate(0);
 }
 
-.stage[data-mode="order"] .stage-light { background: var(--lime); box-shadow: 0 0 0 3px rgba(220, 255, 69, 0.14); }
+.stage[data-mode="order"] .stage-light { background: var(--lime); box-shadow: 0 0 0 3px color-mix(in srgb, var(--lime) 14%, transparent); }
 .stage[data-mode="order"] .stage-meter i { width: 100%; background: var(--lime); }
 .stage[data-mode="order"] .stage-state { color: var(--lime); }
 
@@ -1360,7 +1360,7 @@ svg:not(.svg-sprite) {
 .how {
   overflow: hidden;
   background:
-    radial-gradient(circle at 8% 0%, rgba(220, 255, 69, 0.13), transparent 30%),
+    radial-gradient(circle at 8% 0%, color-mix(in srgb, var(--lime) 13%, transparent), transparent 30%),
     radial-gradient(circle at 98% 94%, rgba(131, 103, 255, 0.17), transparent 36%),
     var(--ink);
 }
@@ -1394,7 +1394,7 @@ svg:not(.svg-sprite) {
   left: 5%;
   right: 5%;
   height: 1px;
-  background: repeating-linear-gradient(90deg, rgba(220, 255, 69, 0.5) 0 8px, transparent 8px 16px);
+  background: repeating-linear-gradient(90deg, color-mix(in srgb, var(--lime) 50%, transparent) 0 8px, transparent 8px 16px);
   pointer-events: none;
 }
 
@@ -1825,7 +1825,7 @@ svg:not(.svg-sprite) {
 .showcase {
   overflow: hidden;
   background:
-    radial-gradient(circle at 95% 20%, rgba(220, 255, 69, 0.14), transparent 28%),
+    radial-gradient(circle at 95% 20%, color-mix(in srgb, var(--lime) 14%, transparent), transparent 28%),
     radial-gradient(circle at 4% 94%, rgba(131, 103, 255, 0.22), transparent 33%),
     var(--ink);
   color: var(--paper);
@@ -1838,7 +1838,7 @@ svg:not(.svg-sprite) {
   width: 70vw;
   height: 20vw;
   border-radius: 50%;
-  background: rgba(220, 255, 69, 0.09);
+  background: color-mix(in srgb, var(--lime) 9%, transparent);
   filter: blur(50px);
   transform: translateX(-50%);
   pointer-events: none;
@@ -1959,7 +1959,7 @@ svg:not(.svg-sprite) {
 
 .pricing {
   background:
-    radial-gradient(circle at 0% 12%, rgba(220, 255, 69, 0.24), transparent 23%),
+    radial-gradient(circle at 0% 12%, color-mix(in srgb, var(--lime) 24%, transparent), transparent 23%),
     var(--paper);
 }
 
@@ -2313,7 +2313,7 @@ svg:not(.svg-sprite) {
 .access {
   overflow: hidden;
   background:
-    radial-gradient(circle at 12% 20%, rgba(220, 255, 69, 0.15), transparent 28%),
+    radial-gradient(circle at 12% 20%, color-mix(in srgb, var(--lime) 15%, transparent), transparent 28%),
     radial-gradient(circle at 100% 80%, rgba(131, 103, 255, 0.19), transparent 30%),
     var(--ink);
   color: var(--paper);
@@ -2325,9 +2325,9 @@ svg:not(.svg-sprite) {
   bottom: -20%;
   width: 42vw;
   height: 42vw;
-  border: 1px solid rgba(220, 255, 69, 0.28);
+  border: 1px solid color-mix(in srgb, var(--lime) 28%, transparent);
   border-radius: 50%;
-  box-shadow: 0 0 0 36px rgba(220, 255, 69, 0.03), 0 0 0 72px rgba(220, 255, 69, 0.025);
+  box-shadow: 0 0 0 36px color-mix(in srgb, var(--lime) 3%, transparent), 0 0 0 72px color-mix(in srgb, var(--lime) 2.5%, transparent);
   pointer-events: none;
 }
 
@@ -2581,7 +2581,7 @@ svg:not(.svg-sprite) {
   width: 360px;
   height: 360px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(220, 255, 69, 0.18), rgba(131, 103, 255, 0.07) 42%, transparent 67%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--lime) 18%, transparent), rgba(131, 103, 255, 0.07) 42%, transparent 67%);
   filter: blur(18px);
   opacity: 0;
   pointer-events: none;

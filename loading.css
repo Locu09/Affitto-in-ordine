@@ -1,0 +1,126 @@
+/* Affitto in Ordine — schermate di attesa
+   Un solo componente, usato quando serve davvero: avvio demo, export, reset.
+   Il cambio tema non passa da qui: usa solo una dissolvenza. */
+
+.aio-thinking {
+  position: fixed;
+  inset: 0;
+  z-index: 980;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: color-mix(in srgb, var(--paper) 84%, transparent);
+  -webkit-backdrop-filter: blur(9px) saturate(0.88);
+  backdrop-filter: blur(9px) saturate(0.88);
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.28s ease, visibility 0s linear 0.28s;
+}
+
+.aio-thinking[hidden] { display: none; }
+
+.aio-thinking.is-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.aio-thinking-card {
+  width: min(380px, 100%);
+  padding: 24px 22px 20px;
+  border: 2px solid var(--edge);
+  border-radius: 18px;
+  background: var(--paper-2);
+  box-shadow: var(--surface-shadow);
+  color: var(--ink);
+  text-align: center;
+}
+
+.aio-thinking-mark {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 14px;
+  border: 2px solid var(--edge);
+  border-radius: 50%;
+  background: var(--lime);
+  color: var(--accent-on);
+}
+
+.aio-thinking-mark svg {
+  width: 25px;
+  height: 25px;
+  animation: aio-thinking-key 1.25s ease-in-out infinite;
+}
+
+.aio-thinking-kicker {
+  margin: 0 0 6px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.aio-thinking-title {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(22px, 5vw, 29px);
+  font-weight: 900;
+  letter-spacing: -0.045em;
+  line-height: 0.98;
+  text-transform: uppercase;
+}
+
+.aio-thinking-detail {
+  margin: 9px auto 0;
+  max-width: 30ch;
+  color: var(--ink-soft);
+  font-size: 12.5px;
+  line-height: 1.55;
+}
+
+.aio-thinking-bar {
+  width: 100%;
+  height: 4px;
+  margin-top: 17px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ink) 12%, transparent);
+}
+
+.aio-thinking-bar i {
+  display: block;
+  width: 42%;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--lime);
+  animation: aio-thinking-bar 0.95s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes aio-thinking-key {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-3px) rotate(2deg); }
+}
+
+@keyframes aio-thinking-bar {
+  0% { transform: translateX(-115%); }
+  100% { transform: translateX(255%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aio-thinking { transition: none; }
+  .aio-thinking-mark svg { animation: none; }
+  .aio-thinking-bar i { animation: none; width: 100%; opacity: 0.72; }
+}
+
+@media (max-width: 520px) {
+  .aio-thinking-card { padding: 20px 17px 17px; }
+  .aio-thinking-detail { font-size: 12px; }
+}
+
+@media print {
+  .aio-thinking { display: none !important; }
+}

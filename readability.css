@@ -1,0 +1,407 @@
+/* Affitto in Ordine — leggibilità
+   Testo più grande, righe più corte e contrasto più solido.
+   Le animazioni restano attive: qui cambiamo tipografia e leggibilità. */
+
+:root {
+  --reading-copy: clamp(16px, 0.95rem + 0.22vw, 17px);
+  --reading-card: clamp(15px, 0.9rem + 0.16vw, 16px);
+  --reading-meta: clamp(10.5px, 0.64rem + 0.08vw, 11.5px);
+  --reading-line: 1.68;
+}
+
+html[data-mode="light"],
+html:not([data-mode]) {
+  --ink-soft: #2f3931;
+  --muted: #4f5a51;
+  --line-soft: rgba(10, 13, 10, 0.19);
+}
+
+html[data-mode="dark"] {
+  --ink-soft: #d8dfd8;
+  --muted: #bac4bb;
+  --muted-dark: #c2cbc2;
+}
+
+body {
+  font-size: 17px;
+  line-height: 1.62;
+}
+
+body.demo-page { font-size: 16px; line-height: 1.58; }
+
+p,
+li,
+figcaption,
+blockquote {
+  text-wrap: pretty;
+}
+
+/* ---------- Landing: gerarchia più calma ---------- */
+
+.hero-title {
+  font-size: clamp(3rem, 8.1vw, 7.15rem);
+  letter-spacing: -0.065em;
+  line-height: 0.9;
+}
+
+.display {
+  font-size: clamp(2.5rem, 5.55vw, 5rem);
+  letter-spacing: -0.055em;
+  line-height: 0.98;
+}
+
+.hero-lead {
+  max-width: 55ch;
+  color: var(--ink-soft);
+  font-size: clamp(16.5px, 1.3vw, 19px);
+  line-height: 1.68;
+}
+
+.section-aside {
+  max-width: 46ch;
+}
+
+.section-aside p {
+  color: var(--muted);
+  font-size: var(--reading-copy);
+  line-height: 1.72;
+}
+
+.section-aside .aside-note {
+  font-size: 11.5px;
+  line-height: 1.6;
+}
+
+.pain-card h3,
+.step-card h3,
+.bento-card h3,
+.price-side-card h3 {
+  line-height: 1.03;
+}
+
+.pain-card p,
+.chaos-test-copy p,
+.chaos-check,
+.chaos-score p,
+.step-card p,
+.bento-card p,
+.price-side-card p {
+  font-size: var(--reading-card);
+  line-height: 1.66;
+}
+
+.chaos-test-copy p { max-width: 34ch; }
+.chaos-score p { font-size: 14.5px; line-height: 1.55; }
+
+.closing-line {
+  max-width: 64ch;
+  font-size: clamp(22px, 2.2vw, 32px);
+  line-height: 1.36;
+}
+
+.fit-card li {
+  font-size: 15.5px;
+  line-height: 1.6;
+}
+
+.price-desc {
+  max-width: 54ch;
+  font-size: 15.5px;
+  line-height: 1.66;
+}
+
+.price-list li {
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+
+.faq summary {
+  font-size: 17px;
+  line-height: 1.45;
+}
+
+.faq details p {
+  max-width: 64ch;
+  font-size: 15.5px;
+  line-height: 1.72;
+}
+
+.access-copy > p {
+  max-width: 58ch;
+  font-size: 16.5px;
+  line-height: 1.72;
+}
+
+.access-steps li {
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.check {
+  font-size: 14.5px;
+  line-height: 1.58;
+}
+
+.form-note {
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.field input,
+.field select {
+  font-size: 16px;
+}
+
+.foot-tag {
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.foot-links a { font-size: 13px; }
+.legal-links a { font-size: 12.5px; }
+.foot-legal p { font-size: 11.5px; line-height: 1.65; }
+
+/* Etichette e microtesti: più leggibili senza diventare protagonisti. */
+.eyebrow,
+.hero-kicker,
+.status-pill,
+.hero-proof li,
+.pain-tag,
+.price-badge,
+.price-status,
+.price-switch-note,
+.price-name,
+.price-period,
+.price-monthly,
+.price-note,
+.sticker-line,
+.showcase-note,
+.showcase-caption,
+.fit-kicker,
+.aside-note,
+.demo-tag,
+.step-tag,
+.bento-cta-note,
+.local-chip,
+.browser-url,
+.browser-demo,
+.mini-date small,
+.mini-body small {
+  font-size: var(--reading-meta);
+}
+
+.access-small {
+  font-size: 11.5px !important;
+  line-height: 1.6 !important;
+}
+
+/* ---------- Legale: documento davvero leggibile ---------- */
+
+.legal-hero h1 {
+  max-width: 960px;
+  font-size: clamp(2.6rem, 8.2vw, 6.9rem);
+  letter-spacing: -0.065em;
+  line-height: 0.9;
+}
+
+.legal-lead {
+  max-width: 64ch;
+  font-size: clamp(16.5px, 1.15vw, 18px);
+  line-height: 1.72;
+}
+
+.legal-section h2 {
+  font-size: clamp(26px, 3.2vw, 40px);
+  line-height: 1.02;
+}
+
+.legal-section h3 {
+  font-size: 17px;
+  line-height: 1.45;
+}
+
+.legal-section p,
+.legal-section li {
+  max-width: 72ch;
+  font-size: 15.5px;
+  line-height: 1.75;
+}
+
+.legal-section p {
+  margin-bottom: 14px;
+}
+
+.legal-warning {
+  font-size: 14.5px;
+  line-height: 1.72;
+}
+
+.legal-callout p {
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.legal-table {
+  font-size: 14px;
+}
+
+.legal-table th,
+.legal-table td {
+  line-height: 1.65;
+  padding: 12px;
+}
+
+.legal-table th { font-size: 13px; }
+
+.legal-toc a {
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.legal-toc p { font-size: 10.5px; }
+
+.legal-kicker,
+.legal-updated,
+.legal-draft {
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+.legal-meta {
+  font-size: 10.5px !important;
+  line-height: 1.6 !important;
+}
+
+.legal-tag { font-size: 9.5px; }
+.legal-contact a { font-size: 12px; }
+
+.legal-section a,
+.faq details p a,
+.check a,
+.form-note a,
+.legal-highlight a {
+  text-underline-offset: 0.16em;
+  text-decoration-thickness: 0.08em;
+}
+
+/* ---------- Demo: meno microtesto, più respiro ---------- */
+
+.demo-page .view-intro p {
+  font-size: 14.5px;
+  line-height: 1.62;
+}
+
+.demo-page .alert p {
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+
+.demo-page .kpi-label {
+  font-size: 10px;
+  letter-spacing: 0.045em;
+  line-height: 1.4;
+}
+
+.demo-page .kpi small {
+  font-size: 10.5px;
+  line-height: 1.4;
+}
+
+.demo-page .card-head h2 {
+  font-size: 18px;
+  line-height: 1.1;
+}
+
+.demo-page .card-head p {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.demo-page .deadline-title {
+  font-size: 12.5px;
+  line-height: 1.4;
+}
+
+.demo-page .deadline-meta {
+  font-size: 10.5px;
+  line-height: 1.45;
+}
+
+.demo-page .deadline-rel { font-size: 10px; }
+.demo-page .pay-name { font-size: 12.5px; line-height: 1.4; }
+.demo-page .pay-name small { font-size: 10.5px; line-height: 1.4; }
+.demo-page .tag { font-size: 9.5px; line-height: 1.3; }
+.demo-page .pill { font-size: 9.5px; line-height: 1.3; }
+.demo-page .pay-action { font-size: 11px; }
+.demo-page .amount-total { font-size: 10px; }
+.demo-page .hint { font-size: 10.5px; line-height: 1.45; }
+
+.demo-page .payments-table {
+  font-size: 13px;
+}
+
+.demo-page .payments-table th {
+  font-size: 10.5px;
+  line-height: 1.35;
+}
+
+.demo-page .payments-table .pay-prop strong {
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.demo-page .payments-table .pay-prop small {
+  font-size: 10.5px;
+  line-height: 1.35;
+}
+
+.demo-page .cell-btn { font-size: 12px; }
+.demo-page .property-address { font-size: 12px; line-height: 1.45; }
+.demo-page .rent-line span { font-size: 10.5px; }
+.demo-page .property-meta span { font-size: 10px; }
+.demo-page .property-meta b { font-size: 11.5px; }
+.demo-page .delete-btn { font-size: 10.5px; }
+
+.demo-page .filter { font-size: 11px; }
+.demo-page .field > span:first-child { font-size: 11px; }
+.demo-page input,
+.demo-page select,
+.demo-page textarea,
+.demo-page .reminder-text { font-size: 16px; }
+.demo-page .disclaimer { font-size: 12px; line-height: 1.6; }
+.demo-page .app-foot { font-size: 10.5px; line-height: 1.5; }
+.demo-page .app-foot a { font-size: 11.5px; }
+.demo-page .toast { font-size: 12.5px; line-height: 1.45; }
+.demo-page .nav-item { font-size: 13px; }
+.demo-page .sidebar-card p { font-size: 12px; line-height: 1.5; }
+.demo-page .link-btn { font-size: 11.5px; }
+.demo-page .eyebrow { font-size: 10.5px; }
+.demo-page .topbar-sub { font-size: 11px; }
+.demo-page .brand small { font-size: 10px; }
+.demo-page .demo-pill { font-size: 9.5px; }
+
+/* ---------- Pannello tema ---------- */
+
+.theme-kicker { font-size: 10px; }
+.theme-panel h2 { font-size: 28px; line-height: 0.98; }
+.theme-fieldset legend { font-size: 10.5px; }
+.theme-option-face { min-height: 46px; font-size: 11.5px; line-height: 1.25; }
+.theme-note { font-size: 11.5px; line-height: 1.6; }
+.theme-status { font-size: 10.5px; line-height: 1.5; }
+
+@media (max-width: 720px) {
+  body { font-size: 16.5px; }
+  .hero-title { font-size: clamp(2.8rem, 10.6vw, 4.6rem); }
+  .display { font-size: clamp(2.3rem, 8.7vw, 4rem); }
+  .hero-lead { font-size: 16.5px; }
+  .section-aside { max-width: none; }
+  .section-aside p { font-size: 16px; }
+  .faq summary { font-size: 16px; }
+  .faq details p { font-size: 15px; }
+  .legal-section p,
+  .legal-section li { font-size: 15px; line-height: 1.72; }
+  .legal-warning { font-size: 14px; }
+  .legal-table { font-size: 13px; }
+  .demo-page .nav-item { font-size: 10.5px; }
+  .theme-option-face { font-size: 11px; }
+}

@@ -16,10 +16,13 @@ Non è una macchina per fare soldi. È un prodotto digitale che prova a risolver
 |---|---|
 | `index.html` | Landing page del prodotto: posizionamento, funzioni, prezzo fondatore, FAQ, form di accesso. |
 | `landing.css` / `landing.js` | Stile e comportamento della landing. |
+| `theme.css` / `theme.js` | Temi chiaro/scuro/automatico, 12 palette, superfici coordinate e dissolvenza al cambio tema. |
+| `readability.css` | Livello di leggibilità: testi, tabelle, etichette e misure di riga. |
+| `loading.css` | Schermate di attesa brevi per avvio demo, export e ripristino. |
 | `demo.html` | Demo interattiva del prodotto: dashboard, immobili, incassi, scadenze, strumenti. |
 | `demo.css` / `demo.js` | Stile e logica della demo. I dati demo sono salvati nel browser (localStorage). |
 | `motion.css` / `motion.js` | Micro-interazioni condivise: tilt, reveal, riflessi e feedback. |
-| `alive.css` / `alive.js` | Livello “vivo”: apertura lunga e saltabile, transizioni tra pagine, forme ambientali, cursore custom, rail delle sezioni, orologio locale e animazioni delle viste demo. |
+| `alive.css` / `alive.js` | Livello “vivo”: apertura lunga e saltabile, transizioni tra pagine con stato di caricamento, forme ambientali, cursore custom, rail delle sezioni, orologio locale e animazioni delle viste demo. |
 | `legale.html` | Privacy, cookie, termini d'uso, informazioni sui consumatori, note legali e accessibilità. |
 | `legal.css` | Stile delle pagine legali. |
 | `COMPLIANCE.md` | Checklist operativa: cosa è coperto, quali dati mancano, cosa fare prima del lancio. |
@@ -35,7 +38,8 @@ Apri `index.html` con doppio clic. Funziona senza server, senza dipendenze e sen
 - “Prova la demo” porta a `demo.html`.
 - Nella demo puoi aggiungere un immobile, segnare un canone come incassato, esportare un CSV, calcolare un aumento ISTAT e generare un promemoria.
 - I dati della demo restano nel browser. “Ripristina” riporta i dati di esempio.
-- Il selettore in alto permette di scegliere modalità chiara, scura o automatica e 12 palette di colore.
+- Il selettore in alto permette di scegliere modalità chiara, scura o automatica e 12 palette di colore. Il cambio è una dissolvenza breve; con “riduci movimento” resta immediato.
+- Le schermate di attesa compaiono solo durante l'apertura della demo, il passaggio tra pagine e le azioni locali più importanti (export CSV, ripristino). Non simulano operazioni online: i dati restano nel browser.
 - Le informazioni legali sono in `legale.html`: privacy, cookie, termini, consumatori, note legali e accessibilità.
 
 ### Pubblicazione gratuita su GitHub Pages

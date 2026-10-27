@@ -2,6 +2,7 @@
   'use strict';
 
   const STORAGE_KEY = 'affitto-in-ordine-demo-v1';
+  const ROUTE_FLAG = 'aio-motion-nav';
   const MS_DAY = 86400000;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const $ = (id) => document.getElementById(id);
@@ -173,6 +174,84 @@
     el.hidden = false;
     clearTimeout(toastTimer);
     toastTimer = setTimeout(() => { el.hidden = true; }, 2400);
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Schermata di attesa locale                                          */
+  /* ------------------------------------------------------------------ */
+
+  let thinking = null;
+  let thinkingTimer = 0;
+
+  function showThinking(title, detail, kicker = 'Demo locale') {
+    if (reduceMotion.matches) return null;
+    clearTimeout(thinkingTimer);
+
+    if (!thinking) {
+      thinking = document.createElement('div');
+      thinking.className = 'aio-thinking';
+      thinking.setAttribute('role', 'status');
+      thinking.setAttribute('aria-live', 'polite');
+      thinking.setAttribute('aria-atomic', 'true');
+      thinking.innerHTML = `
+        <div class="aio-thinking-card">
+          <span class="aio-thinking-mark" aria-hidden="true"><svg focusable="false"><use href="#i-logo"></use></svg></span>
+          <p class="aio-thinking-kicker"></p>
+          <p class="aio-thinking-title"></p>
+          <p class="aio-thinking-detail"></p>
+          <span class="aio-thinking-bar" aria-hidden="true"><i></i></span>
+        </div>`;
+
+      const app = document.querySelector('.app');
+      thinking._restoreInert = app ? app.inert : false;
+      thinking._restoreBusy = app ? app.getAttribute('aria-busy') : null;
+      thinking._lastFocus = document.activeElement;
+      if (app) {
+        app.inert = true;
+        app.setAttribute('aria-busy', 'true');
+      }
+      document.body.appendChild(thinking);
+    }
+
+    thinking.querySelector('.aio-thinking-kicker').textContent = kicker;
+    thinking.querySelector('.aio-thinking-title').textContent = title;
+    thinking.querySelector('.aio-thinking-detail').textContent = detail;
+    thinking.classList.remove('is-out');
+    return thinking;
+  }
+
+  function hideThinking(delay = 280) {
+    if (!thinking) return;
+    clearTimeout(thinkingTimer);
+    const node = thinking;
+    thinking = null;
+    node.classList.add('is-out');
+
+    const app = document.querySelector('.app');
+    if (app) {
+      if (!node._restoreInert) app.inert = false;
+      if (node._restoreBusy === null) app.removeAttribute('aria-busy');
+      else app.setAttribute('aria-busy', node._restoreBusy);
+    }
+    if (node._lastFocus && node._lastFocus.isConnected && typeof node._lastFocus.focus === 'function') {
+      node._lastFocus.focus({ preventScroll: true });
+    }
+    window.setTimeout(() => node.remove(), delay);
+  }
+
+  function runThinking(title, detail, action, duration = 430) {
+    if (reduceMotion.matches) {
+      action();
+      return;
+    }
+    showThinking(title, detail);
+    thinkingTimer = window.setTimeout(() => {
+      try {
+        action();
+      } finally {
+        hideThinking();
+      }
+    }, duration);
   }
 
   function animateNumber(el, value, format) {
@@ -738,23 +817,32 @@
     if (!window.confirm(`Rimuovere “${prop.name}” dalla demo?`)) return;
     const buttons = [...document.querySelectorAll('[data-delete-id]')];
     const removedIndex = buttons.findIndex((button) => button.dataset.deleteId === id);
-    state.properties = state.properties.filter((p) => p.id !== id);
-    delete state.payments[id];
-    saveState();
-    renderAll();
-    const remaining = [...document.querySelectorAll('[data-delete-id]')];
-    const nextButton = remaining[Math.min(removedIndex, remaining.length - 1)] || $('openAdd');
-    nextButton.focus();
-    toast('Immobile rimosso.');
+    runThinking('Rimuovo l’immobile', 'Aggiorno scadenze, incassi e riepilogo.', () => {
+      state.properties = state.properties.filter((p) => p.id !== id);
+      delete state.payments[id];
+      saveState();
+      renderAll();
+      const remaining = [...document.querySelectorAll('[data-delete-id]')];
+      const nextButton = remaining[Math.min(removedIndex, remaining.length - 1)] || $('openAdd');
+      nextButton.focus();
+      toast('Immobile rimosso.');
+    }, 360);
   }
 
   function resetDemo() {
     if (!window.confirm('Ripristinare i dati demo iniziali?')) return;
-    state = sampleState();
-    saveState();
-    renderAll();
-    switchView('overview');
-    toast('Dati demo ripristinati.');
+    runThinking(
+      'Ripristino i dati demo',
+      'Riporto l’esempio allo stato iniziale. Nessun dato lascia il browser.',
+      () => {
+        state = sampleState();
+        saveState();
+        renderAll();
+        switchView('overview');
+        toast('Dati demo ripristinati.');
+      },
+      460
+    );
   }
 
   function exportCSV() {
@@ -777,16 +865,30 @@
       .map((row) => row.map(cellValue).join(';'))
       .join('\r\n');
 
-    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `incassi-demo-${new Date().toISOString().slice(0, 10)}.csv`;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1500);
-    toast('CSV esportato.');
+    if (!reduceMotion.matches) {
+      showThinking('Preparo il CSV', 'Raccolgo gli incassi degli ultimi sei mesi.');
+    }
+
+    try {
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `incassi-demo-${new Date().toISOString().slice(0, 10)}.csv`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1500);
+    } finally {
+      if (reduceMotion.matches) {
+        toast('CSV esportato.');
+      } else {
+        window.setTimeout(() => {
+          hideThinking();
+          toast('CSV esportato.');
+        }, 460);
+      }
+    }
   }
 
   async function copyReminder() {
@@ -900,6 +1002,26 @@
   });
   $('todayLabel').textContent = cap(formattedToday);
 
-  renderAll();
-  switchView(HASH_VIEW[location.hash] || 'overview', { silent: true });
+  const arrivedByRoute = (() => {
+    try { return sessionStorage.getItem(ROUTE_FLAG) === '1'; } catch (_) { return false; }
+  })();
+  const bootStarted = performance.now();
+  const showBootLoader = !arrivedByRoute && !reduceMotion.matches;
+  if (showBootLoader) {
+    showThinking(
+      'Sto preparando la demo',
+      'Date, incassi e promemoria vengono letti solo da questo browser.',
+      'Demo locale'
+    );
+  }
+
+  try {
+    renderAll();
+    switchView(HASH_VIEW[location.hash] || 'overview', { silent: true });
+  } finally {
+    if (showBootLoader) {
+      const remaining = Math.max(0, 520 - (performance.now() - bootStarted));
+      window.setTimeout(() => hideThinking(), remaining);
+    }
+  }
 })();

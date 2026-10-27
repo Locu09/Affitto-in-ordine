@@ -644,12 +644,26 @@
     function showRoute(destination) {
       if (navigating) return;
       navigating = true;
+      let label = 'Torno al prodotto';
+      try {
+        const path = new URL(destination, window.location.href).pathname;
+        if (path.endsWith('/demo.html')) label = 'Apro la demo';
+        else if (path.endsWith('/legale.html')) label = 'Apro le informazioni legali';
+      } catch (_) { /* etichetta generica */ }
+
       overlay = doc.createElement('div');
       overlay.className = 'fx-route';
       overlay.setAttribute('aria-hidden', 'true');
-      overlay.innerHTML = '<span>Affitto in ordine</span>';
+      overlay.innerHTML = `
+        <div class="fx-route-card">
+          <span class="fx-route-mark"><svg aria-hidden="true" focusable="false"><use href="#i-logo"></use></svg></span>
+          <span class="fx-route-brand">Affitto in ordine</span>
+          <span class="fx-route-status">${label}</span>
+          <span class="fx-route-bar"><i></i></span>
+        </div>`;
       body.appendChild(overlay);
-      window.requestAnimationFrame(() => overlay.classList.add('is-on'));
+      void overlay.offsetWidth;
+      overlay.classList.add('is-on');
       try { sessionStorage.setItem(NAV_FLAG, '1'); } catch (_) { /* nessun problema */ }
       window.setTimeout(() => {
         window.location.assign(destination);

@@ -206,7 +206,9 @@
     if (reduceMotion.matches) return;
     const host = target && target.querySelector('[data-confetti]');
     if (!host) return;
-    const colors = ['#dcff45', '#ff6b4a', '#8367ff', '#bfffe0', '#f7f2e7'];
+    const current = getComputedStyle(document.documentElement);
+    const accent = current.getPropertyValue('--lime').trim() || '#dcff45';
+    const colors = [accent, '#ff6b4a', '#8367ff', '#bfffe0', '#f7f2e7'];
     host.innerHTML = '';
     for (let i = 0; i < count; i += 1) {
       const bit = document.createElement('i');

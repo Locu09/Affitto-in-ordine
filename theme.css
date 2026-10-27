@@ -9,24 +9,86 @@
   --accent-on: #0a0d0a;
   --edge: var(--ink);
   --surface-shadow: 4px 4px 0 var(--edge);
+  --palette-paper: #f7f2e7;
+  --palette-paper-2: #fffdf8;
+  --palette-paper-3: #eee7d8;
+  --palette-night: #171a18;
+  --palette-night-2: #1f2320;
+  --palette-night-3: #282d29;
 }
 
 html { color-scheme: light; }
 
-/* ---------- Palette principali ---------- */
+/* ---------- Palette principali ----------
+   Ogni palette cambia accento, superfici chiare e superfici scure:
+   così il tema non è solo un bottone colorato dentro la stessa pagina. */
 
-html[data-palette="lime"] { --lime: #dcff45; --lime-2: #c2ed00; }
-html[data-palette="sky"] { --lime: #7ddcff; --lime-2: #37c4ec; }
-html[data-palette="coral"] { --lime: #ff8a70; --lime-2: #ea5a3e; }
-html[data-palette="violet"] { --lime: #b9a6ff; --lime-2: #8f70ff; }
-html[data-palette="mint"] { --lime: #7bf7c9; --lime-2: #2fd6a0; }
-html[data-palette="amber"] { --lime: #ffcc66; --lime-2: #f0a91f; }
-html[data-palette="rose"] { --lime: #ffa6d2; --lime-2: #f06a9e; }
-html[data-palette="ruby"] { --lime: #ff7d8a; --lime-2: #e84b5f; }
-html[data-palette="indigo"] { --lime: #9aaaff; --lime-2: #6b7ff0; }
-html[data-palette="ice"] { --lime: #bdf3ff; --lime-2: #72d8f0; }
-html[data-palette="sage"] { --lime: #b9d7a3; --lime-2: #8fbd72; }
-html[data-palette="sand"] { --lime: #f0d9a6; --lime-2: #dcb96b; }
+html[data-palette="lime"] {
+  --lime: #dcff45; --lime-2: #eeff9a;
+  --palette-paper: #f7f2e7; --palette-paper-2: #fffdf8; --palette-paper-3: #eee7d8;
+  --palette-night: #171a18; --palette-night-2: #1f2320; --palette-night-3: #282d29;
+}
+html[data-palette="sky"] {
+  --lime: #6fd8ff; --lime-2: #a5ebff;
+  --palette-paper: #e9f7fb; --palette-paper-2: #f8fdff; --palette-paper-3: #dbeff6;
+  --palette-night: #141c20; --palette-night-2: #1b272c; --palette-night-3: #25343a;
+}
+html[data-palette="coral"] {
+  --lime: #ff7a5c; --lime-2: #ffa48d;
+  --palette-paper: #fcefe9; --palette-paper-2: #fff9f5; --palette-paper-3: #f4ddd3;
+  --palette-night: #211816; --palette-night-2: #2a1e1a; --palette-night-3: #382823;
+}
+html[data-palette="violet"] {
+  --lime: #a98bff; --lime-2: #c8b6ff;
+  --palette-paper: #f2ecfc; --palette-paper-2: #fcfaff; --palette-paper-3: #e6def4;
+  --palette-night: #1b1724; --palette-night-2: #241e2f; --palette-night-3: #30273d;
+}
+html[data-palette="mint"] {
+  --lime: #5cf2bd; --lime-2: #93ffd8;
+  --palette-paper: #ecf9f1; --palette-paper-2: #f9fffb; --palette-paper-3: #dcefe3;
+  --palette-night: #141e1a; --palette-night-2: #1b2923; --palette-night-3: #25362e;
+}
+html[data-palette="amber"] {
+  --lime: #ffc44d; --lime-2: #ffdd8a;
+  --palette-paper: #fbf3df; --palette-paper-2: #fffaf0; --palette-paper-3: #f1e2c1;
+  --palette-night: #211e15; --palette-night-2: #2b261a; --palette-night-3: #3a3120;
+}
+html[data-palette="rose"] {
+  --lime: #ff5fa8; --lime-2: #ff8dc4;
+  --palette-paper: #fdebf4; --palette-paper-2: #fff7fb; --palette-paper-3: #f7dce9;
+  --palette-night: #22161d; --palette-night-2: #2c1c25; --palette-night-3: #3b2732;
+}
+html[data-palette="ruby"] {
+  --lime: #ff6574; --lime-2: #ff95a0;
+  --palette-paper: #fcebea; --palette-paper-2: #fff7f6; --palette-paper-3: #f3d7d3;
+  --palette-night: #231614; --palette-night-2: #2e1d1b; --palette-night-3: #3e2724;
+}
+html[data-palette="indigo"] {
+  --lime: #8f8bff; --lime-2: #b5b2ff;
+  --palette-paper: #ececfb; --palette-paper-2: #f8f8ff; --palette-paper-3: #dde0f2;
+  --palette-night: #171823; --palette-night-2: #1f2130; --palette-night-3: #2a2c40;
+}
+html[data-palette="ice"] {
+  --lime: #43e0ee; --lime-2: #8aedf5;
+  --palette-paper: #eafafd; --palette-paper-2: #f7feff; --palette-paper-3: #d7eef3;
+  --palette-night: #131d20; --palette-night-2: #1a282c; --palette-night-3: #23383d;
+}
+html[data-palette="sage"] {
+  --lime: #a8d77f; --lime-2: #c6e7ab;
+  --palette-paper: #eef5e6; --palette-paper-2: #fbfdf8; --palette-paper-3: #dfead3;
+  --palette-night: #171e15; --palette-night-2: #1f291c; --palette-night-3: #293626;
+}
+html[data-palette="sand"] {
+  --lime: #f3c75f; --lime-2: #ffdd91;
+  --palette-paper: #f7efdf; --palette-paper-2: #fffbf3; --palette-paper-3: #eaddc1;
+  --palette-night: #201d16; --palette-night-2: #2a261c; --palette-night-3: #393120;
+}
+
+html[data-mode="light"] {
+  --paper: var(--palette-paper);
+  --paper-2: var(--palette-paper-2);
+  --paper-3: var(--palette-paper-3);
+}
 
 /* I bagliori seguono la palette scelta. */
 .hero-blob--lime {
@@ -128,17 +190,17 @@ html[data-palette="sand"] { --lime: #f0d9a6; --lime-2: #dcb96b; }
 
 html[data-mode="dark"] {
   color-scheme: dark;
-  --night: #171a18;
-  --night-2: #1f2320;
-  --night-3: #282d29;
+  --night: var(--palette-night);
+  --night-2: var(--palette-night-2);
+  --night-3: var(--palette-night-3);
   --on-night: #f1f0e8;
   --on-night-muted: #a6afa7;
   --ink: #f1f0e8;
   --ink-2: #e4e5dc;
   --ink-3: #d3d6cd;
-  --paper: #1a1d1b;
-  --paper-2: #222623;
-  --paper-3: #2b302c;
+  --paper: var(--palette-night);
+  --paper-2: var(--palette-night-2);
+  --paper-3: var(--palette-night-3);
   --ink-soft: #c7cec7;
   --muted: #a2aca3;
   --muted-dark: #a6afa7;
@@ -171,7 +233,7 @@ html[data-mode="dark"] ::selection {
 }
 
 html[data-mode="dark"] .site-head {
-  background: linear-gradient(to bottom, var(--paper) 0%, rgba(26, 29, 27, 0.94) 62%, rgba(26, 29, 27, 0) 100%);
+  background: linear-gradient(to bottom, var(--paper) 0%, color-mix(in srgb, var(--paper) 94%, transparent) 62%, transparent 100%);
 }
 
 html[data-mode="dark"] .head-inner {
@@ -475,7 +537,7 @@ html[data-mode="dark"] .legal-content {
 }
 
 html[data-mode="dark"] .legal-table th {
-  background: rgba(220, 255, 69, 0.16);
+  background: color-mix(in srgb, var(--lime) 16%, transparent);
   color: var(--on-night);
 }
 
@@ -760,4 +822,21 @@ html[data-mode="dark"] .theme-close:hover {
   .theme-note { font-size: 10.5px; line-height: 1.55; }
   .theme-status { font-size: 10px; line-height: 1.45; }
   .theme-close { width: 42px; height: 42px; min-height: 42px; }
+}
+
+/* ---------- Cambio tema: dissolvenza, non una schermata di caricamento ---------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 280ms;
+    animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 1ms;
+  }
 }
