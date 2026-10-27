@@ -35,6 +35,7 @@ Apri `index.html` con doppio clic. Funziona senza server, senza dipendenze e sen
 - “Prova la demo” porta a `demo.html`.
 - Nella demo puoi aggiungere un immobile, segnare un canone come incassato, esportare un CSV, calcolare un aumento ISTAT e generare un promemoria.
 - I dati della demo restano nel browser. “Ripristina” riporta i dati di esempio.
+- Il selettore in alto permette di scegliere modalità chiara, scura o automatica e 12 palette di colore.
 - Le informazioni legali sono in `legale.html`: privacy, cookie, termini, consumatori, note legali e accessibilità.
 
 ### Pubblicazione gratuita su GitHub Pages

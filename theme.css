@@ -21,6 +21,12 @@ html[data-palette="coral"] { --lime: #ff8a70; --lime-2: #ea5a3e; }
 html[data-palette="violet"] { --lime: #b9a6ff; --lime-2: #8f70ff; }
 html[data-palette="mint"] { --lime: #7bf7c9; --lime-2: #2fd6a0; }
 html[data-palette="amber"] { --lime: #ffcc66; --lime-2: #f0a91f; }
+html[data-palette="rose"] { --lime: #ffa6d2; --lime-2: #f06a9e; }
+html[data-palette="ruby"] { --lime: #ff7d8a; --lime-2: #e84b5f; }
+html[data-palette="indigo"] { --lime: #9aaaff; --lime-2: #6b7ff0; }
+html[data-palette="ice"] { --lime: #bdf3ff; --lime-2: #72d8f0; }
+html[data-palette="sage"] { --lime: #b9d7a3; --lime-2: #8fbd72; }
+html[data-palette="sand"] { --lime: #f0d9a6; --lime-2: #dcb96b; }
 
 /* I bagliori seguono la palette scelta. */
 .hero-blob--lime {

@@ -5,14 +5,20 @@
   const root = document.documentElement;
   const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
   const allowedModes = new Set(['light', 'dark', 'system']);
-  const allowedPalettes = new Set(['lime', 'sky', 'coral', 'violet', 'mint', 'amber']);
+  const allowedPalettes = new Set(['lime', 'sky', 'coral', 'violet', 'mint', 'amber', 'rose', 'ruby', 'indigo', 'ice', 'sage', 'sand']);
   const paletteNames = {
     lime: 'Acido',
     sky: 'Cielo',
     coral: 'Corallo',
     violet: 'Viola',
     mint: 'Menta',
-    amber: 'Ambra'
+    amber: 'Ambra',
+    rose: 'Rosa',
+    ruby: 'Rubino',
+    indigo: 'Indaco',
+    ice: 'Ghiaccio',
+    sage: 'Salvia',
+    sand: 'Sabbia'
   };
   const defaults = { mode: 'system', palette: 'lime' };
   let state = { ...defaults };
