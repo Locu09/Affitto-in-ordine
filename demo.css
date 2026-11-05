@@ -1271,6 +1271,297 @@ svg:not(.svg-sprite) {
   gap: 8px;
 }
 
+/* ---------- Backup Drive e licenza ---------- */
+
+.cloud-card {
+  align-self: start;
+}
+
+.cloud-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 24px;
+  padding: 4px 9px;
+  border: 1.5px solid var(--edge);
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 7.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.cloud-badge[data-state="connected"] { background: var(--mint); }
+.cloud-badge[data-state="premium"] { background: var(--amber-soft); }
+.cloud-badge[data-state="pending"] { background: var(--amber); }
+.cloud-badge[data-state="busy"] { background: var(--violet-soft); }
+.cloud-badge[data-state="auth"] { background: var(--coral-soft); }
+.cloud-badge[data-state="error"] { background: var(--coral); color: var(--ink); }
+
+.cloud-status {
+  margin: 4px 0 10px;
+  padding: 9px 10px;
+  border: 1px solid var(--line-soft);
+  border-radius: 9px;
+  background: var(--paper);
+  color: var(--ink-soft);
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+.cloud-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cloud-actions .link-btn { margin-left: 2px; }
+
+.cloud-license {
+  margin-top: 14px;
+  padding-top: 13px;
+  border-top: 1px solid var(--line-soft);
+}
+
+.cloud-license .field > label {
+  color: var(--ink-soft);
+  font-family: var(--mono);
+  font-size: 7.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.cloud-license-row {
+  display: flex;
+  align-items: stretch;
+  gap: 7px;
+}
+
+.cloud-license-row input {
+  flex: 1 1 190px;
+  min-width: 0;
+}
+
+.cloud-license-row .btn { flex: 0 0 auto; }
+
+.cloud-license .link-btn {
+  align-self: flex-start;
+  margin-top: 5px;
+}
+
+.cloud-premium-note {
+  margin-top: 9px;
+  padding: 8px 9px;
+  border-left: 3px solid var(--violet);
+  background: var(--violet-soft);
+  color: var(--ink-soft);
+}
+
+.cloud-disclaimer {
+  max-width: none;
+  margin-top: 9px;
+}
+
+.cloud-disclaimer code {
+  padding: 1px 4px;
+  border: 1px solid var(--line-soft);
+  border-radius: 4px;
+  background: var(--paper);
+  font-family: var(--mono);
+  font-size: 0.95em;
+}
+
+/* ---------- Paywall e licenza fondatore ---------- */
+
+.premium-strip {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 14px;
+  padding: clamp(15px, 2vw, 22px);
+  border: 2px solid var(--edge);
+  border-radius: var(--radius);
+  background: var(--ink);
+  color: var(--paper);
+  box-shadow: 4px 4px 0 rgba(10, 13, 10, 0.2);
+}
+
+.premium-strip .eyebrow {
+  color: var(--lime);
+  font-size: 8px;
+}
+
+.premium-strip h2 {
+  margin-top: 3px;
+  font-family: var(--display);
+  font-size: clamp(20px, 2.4vw, 29px);
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.premium-strip p {
+  max-width: 680px;
+  margin-top: 7px;
+  color: var(--muted-dark);
+  font-size: 10.5px;
+  line-height: 1.45;
+}
+
+.premium-strip-buy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  min-width: 190px;
+  text-align: right;
+}
+
+.premium-strip-buy strong {
+  color: var(--lime);
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.premium-strip-buy span {
+  color: var(--muted-dark);
+  font-size: 8.5px;
+}
+
+.premium-strip-buy .btn {
+  margin-top: 3px;
+  border-color: var(--paper);
+}
+
+.premium-lock-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 0 0 11px;
+  padding: 8px 10px;
+  border: 1px solid var(--edge);
+  border-radius: 8px;
+  background: var(--amber-soft);
+  color: var(--ink-soft);
+  font-size: 9px;
+  line-height: 1.4;
+}
+
+.premium-lock-banner strong { color: var(--ink); }
+
+.premium-offer {
+  margin-bottom: 14px;
+  padding: 12px;
+  border: 1.5px solid var(--edge);
+  border-radius: 9px;
+  background: var(--amber-soft);
+}
+
+.premium-offer-price {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.premium-offer-price span {
+  font-family: var(--mono);
+  font-size: 7.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.premium-offer-price strong {
+  font-family: var(--display);
+  font-size: 18px;
+  letter-spacing: -0.04em;
+}
+
+.premium-offer-copy {
+  margin-top: 6px;
+  color: var(--ink-soft);
+  font-size: 9.5px;
+  line-height: 1.45;
+}
+
+.premium-offer-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 9px;
+}
+
+.premium-offer-actions .hint { margin: 0; }
+
+.cloud-subtitle {
+  margin: 13px 0 6px;
+  font-family: var(--mono);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.cloud-license { margin-top: 0; padding-top: 0; border-top: 0; }
+
+.btn.is-locked,
+.pay-action.is-locked {
+  position: relative;
+  opacity: 0.66;
+}
+
+.btn.is-locked::after {
+  content: "PRO";
+  margin-left: 4px;
+  padding: 1px 4px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 6.5px;
+  letter-spacing: 0.04em;
+}
+
+.premium-highlight {
+  animation: premiumPulse 1.15s ease-in-out 2;
+  outline: 3px solid var(--violet);
+  outline-offset: 3px;
+}
+
+@keyframes premiumPulse {
+  0%, 100% { transform: translateY(0); }
+  45% { transform: translateY(-2px); }
+}
+
+@media (max-width: 760px) {
+  .premium-strip { grid-template-columns: 1fr; }
+  .premium-strip-buy {
+    align-items: flex-start;
+    min-width: 0;
+    text-align: left;
+  }
+}
+
+@media (max-width: 560px) {
+  .premium-strip h2 { font-size: 21px; }
+  .premium-offer-price { display: block; }
+  .premium-offer-price strong { display: block; margin-top: 3px; }
+}
+
 /* ---------- Footer ---------- */
 
 .app-foot {
@@ -1856,4 +2147,11 @@ svg:not(.svg-sprite) {
 @media (max-width: 360px) {
   .alert p { font-size: 11.5px; }
   .chart-value, .chart-label { font-size: 8.8px; }
+}
+
+@media (max-width: 560px) {
+  .cloud-license-row { flex-direction: column; }
+  .cloud-license-row .btn,
+  .cloud-actions .btn { width: 100%; }
+  .cloud-actions .link-btn { min-height: 34px; }
 }

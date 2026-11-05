@@ -4,6 +4,13 @@
   const STORAGE_KEY = 'affitto-in-ordine-demo-v1';
   const ROUTE_FLAG = 'aio-motion-nav';
   const MS_DAY = 86400000;
+  const FREE_PROPERTY_LIMIT = 1;
+  const MAX_PREMIUM_PROPERTIES = 5;
+  const cloudConfig = window.AIO_CLOUD_CONFIG || {};
+  const purchase = cloudConfig.purchase || {};
+  const purchaseEnabled = purchase.enabled !== false && Boolean(purchase.requestEmail || purchase.requestUrl);
+  const premiumPrice = purchase.priceLabel || '39 €/anno fondatore';
+  const premiumOffer = purchase.offerLabel || 'Fino a 5 immobili';
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const $ = (id) => document.getElementById(id);
 
@@ -159,7 +166,21 @@
   function saveState() {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      window.dispatchEvent(new CustomEvent('aio:data-changed', { detail: { key: STORAGE_KEY } }));
     } catch (_) { /* storage non disponibile */ }
+  }
+
+  function isPremium() {
+    try {
+      return Boolean(window.AIOLicense && window.AIOLicense.isPremium());
+    } catch (_) {
+      return false;
+    }
+  }
+
+  function visibleProperties() {
+    if (isPremium()) return state.properties;
+    return state.properties.slice(0, FREE_PROPERTY_LIMIT);
   }
 
   let state = loadState();
@@ -298,6 +319,10 @@
   }
 
   function togglePayment(propId, key) {
+    if (!isPremium() && !visibleProperties().some((p) => p.id === propId)) {
+      showPremiumGate('Gli altri immobili si sbloccano con la licenza premium.');
+      return;
+    }
     if (!state.payments[propId]) state.payments[propId] = {};
     state.payments[propId][key] = state.payments[propId][key] !== true;
     saveState();
@@ -320,7 +345,8 @@
 
   function buildDeadlines() {
     const list = [];
-    for (const prop of state.properties) {
+    const properties = visibleProperties();
+    for (const prop of properties) {
       if (prop.contractEnd) {
         list.push({
           date: prop.contractEnd,
@@ -351,7 +377,7 @@
     }
 
     const keys = monthKeysBack(3);
-    for (const prop of state.properties) {
+    for (const prop of properties) {
       for (const key of keys) {
         if (paymentStatus(prop, key) === 'unpaid') {
           list.push({
@@ -396,9 +422,10 @@
     const host = $('collectionsChart');
     if (!host) return;
     const keys = monthKeysBack(6);
+    const properties = visibleProperties();
     const data = keys.map((key) => {
-      const paid = state.properties.filter((prop) => paymentStatus(prop, key) === 'paid');
-      const total = state.properties.length;
+      const paid = properties.filter((prop) => paymentStatus(prop, key) === 'paid');
+      const total = properties.length;
       const amount = paid.reduce((sum, prop) => sum + Number(prop.rent || 0), 0);
       return { key, count: paid.length, total, amount };
     });
@@ -418,7 +445,7 @@
   }
 
   function renderOverview() {
-    const properties = state.properties;
+    const properties = visibleProperties();
     const count = properties.length;
     const monthly = properties.reduce((sum, p) => sum + Number(p.rent || 0), 0);
     const month = monthKey();
@@ -495,13 +522,14 @@
   }
 
   function renderProperties() {
-    if (!state.properties.length) {
+    const properties = visibleProperties();
+    if (!properties.length) {
       $('propertiesGrid').innerHTML = '<div class="empty">Nessun immobile inserito. Usa “Aggiungi immobile” per iniziare.</div>';
       return;
     }
 
     const month = monthKey();
-    $('propertiesGrid').innerHTML = state.properties.map((prop) => {
+    $('propertiesGrid').innerHTML = properties.map((prop) => {
       const status = paymentStatus(prop, month);
       const cls = status === 'paid' ? 'paid' : status === 'unpaid' ? 'late' : 'pending';
       const label = status === 'paid' ? 'Incassato' : status === 'unpaid' ? 'In ritardo' : 'In attesa';
@@ -524,7 +552,7 @@
         </div>
         <div class="property-foot">
           <span class="pill ${cls}">${monthLabel(month, 'short')}: ${label}</span>
-          <button class="delete-btn" type="button" data-delete-id="${esc(prop.id)}"><svg aria-hidden="true" focusable="false"><use href="#i-trash"></use></svg>Rimuovi</button>
+          ${isPremium() ? `<button class="delete-btn" type="button" data-delete-id="${esc(prop.id)}"><svg aria-hidden="true" focusable="false"><use href="#i-trash"></use></svg>Rimuovi</button>` : ''}
         </div>
       </article>`;
     }).join('');
@@ -540,12 +568,13 @@
 
   function renderPayments() {
     const keys = monthKeysBack(6);
+    const properties = visibleProperties();
     let collected = 0;
     let unpaid = 0;
 
     const head = `<thead><tr><th scope="col">Immobile</th>${keys.map((k) => `<th scope="col">${monthShort(k)}</th>`).join('')}</tr></thead>`;
 
-    const body = state.properties.map((prop) => {
+    const body = properties.map((prop) => {
       const cells = keys.map((key) => {
         const status = paymentStatus(prop, key);
         const cls = status === 'paid' ? 'paid' : status === 'unpaid' ? 'unpaid' : 'pending';
@@ -563,7 +592,7 @@
       </tr>`;
     }).join('');
 
-    $('paymentsTable').innerHTML = state.properties.length
+    $('paymentsTable').innerHTML = properties.length
       ? `${head}<tbody>${body}</tbody>`
       : `<tbody><tr><td colspan="${keys.length + 1}"><div class="empty">Aggiungi un immobile per vedere gli incassi.</div></td></tr></tbody>`;
 
@@ -591,6 +620,11 @@
   }
 
   function calcIstat() {
+    if (!isPremium()) {
+      $('istatResult').textContent = 'Premium';
+      $('istatDetail').textContent = 'Il calcolatore ISTAT si attiva con la licenza fondatore.';
+      return;
+    }
     const rent = Math.max(0, parseFloat($('istatRent').value) || 0);
     const pct = Math.max(0, parseFloat($('istatPct').value) || 0);
     const quota = parseFloat($('istatQuota').value) || 100;
@@ -606,24 +640,26 @@
   function fillReminderProperties() {
     const select = $('reminderProperty');
     const previous = select.value;
-    if (!state.properties.length) {
+    const properties = visibleProperties();
+    const premium = isPremium();
+    if (!properties.length) {
       select.innerHTML = '<option value="">Nessun immobile</option>';
       select.disabled = true;
       $('copyReminder').disabled = true;
       return;
     }
-    select.disabled = false;
-    $('copyReminder').disabled = false;
-    select.innerHTML = state.properties
+    select.innerHTML = properties
       .map((p) => `<option value="${esc(p.id)}">${esc(p.name)} — ${esc(p.tenant)}</option>`)
       .join('');
-    if (state.properties.some((p) => p.id === previous)) {
+    select.disabled = !premium;
+    $('copyReminder').disabled = !premium;
+    if (properties.some((p) => p.id === previous)) {
       select.value = previous;
     } else {
-      const withArrears = state.properties.find((p) =>
+      const withArrears = properties.find((p) =>
         monthKeysBack(6).some((key) => paymentStatus(p, key) === 'unpaid')
       );
-      select.value = (withArrears || state.properties[0]).id;
+      select.value = (withArrears || properties[0]).id;
     }
   }
 
@@ -636,8 +672,14 @@
   function updateReminder() {
     const select = $('reminderProperty');
     const type = $('reminderType').value;
-    const prop = state.properties.find((p) => p.id === select.value);
+    const prop = visibleProperties().find((p) => p.id === select.value);
     const textarea = $('reminderText');
+
+    if (!isPremium()) {
+      textarea.value = 'Il promemoria pronto è una funzione premium. Attiva la licenza per generare il testo.';
+      $('reminderHint').textContent = 'Funzione premium.';
+      return;
+    }
 
     if (!prop) {
       textarea.value = 'Aggiungi un immobile per generare un promemoria.';
@@ -674,6 +716,119 @@
     textarea.value = text;
   }
 
+  function configurePurchaseUi() {
+    const offer = document.querySelector('.premium-offer');
+    if (offer) offer.hidden = !purchaseEnabled;
+    document.querySelectorAll('[data-premium-price]').forEach((el) => {
+      el.textContent = premiumPrice;
+    });
+    document.querySelectorAll('[data-premium-offer]').forEach((el) => {
+      el.textContent = premiumOffer;
+    });
+    document.querySelectorAll('[data-premium-method]').forEach((el) => {
+      el.textContent = purchase.paymentLabel || 'Bonifico SEPA';
+    });
+
+    const request = $('premiumRequest');
+    if (!request) return;
+    if (!purchaseEnabled) {
+      request.hidden = true;
+      return;
+    }
+
+    if (purchase.requestUrl) {
+      request.href = purchase.requestUrl;
+      request.textContent = purchase.requestLabel || 'Richiedi licenza';
+    } else {
+      const subject = purchase.requestSubject || 'Licenza fondatore Affitto in Ordine';
+      const body = [
+        'Buongiorno,',
+        '',
+        `vorrei attivare la licenza fondatore di Affitto in Ordine (${premiumPrice}, ${premiumOffer}).`,
+        `Mi indicate le coordinate per il ${purchase.paymentLabel || 'bonifico SEPA'} e le condizioni di attivazione?`,
+        '',
+        'Grazie.'
+      ].join('\n');
+      request.href = `mailto:${purchase.requestEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      request.textContent = 'Richiedi licenza via email';
+    }
+    request.hidden = false;
+
+    const note = $('premiumPurchaseNote');
+    if (note) {
+      note.textContent = purchase.note || 'La richiesta non è un ordine: ricevi conferma, coordinate bancarie e condizioni via email.';
+    }
+  }
+
+  function applyPremiumUi() {
+    const premium = isPremium();
+    document.documentElement.dataset.premium = premium ? 'true' : 'false';
+
+    const strip = $('premiumStrip');
+    if (strip) strip.hidden = premium || !purchaseEnabled;
+    const offer = document.querySelector('.premium-offer');
+    if (offer) offer.hidden = premium || !purchaseEnabled;
+
+    const sub = $('topbarSub');
+    if (sub) {
+      sub.textContent = premium
+        ? 'Licenza attiva · Drive opzionale'
+        : 'Demo gratuita · 1 immobile visibile';
+    }
+
+    [ $('openAdd'), $('openAdd2') ].forEach((button) => {
+      if (!button) return;
+      button.classList.toggle('is-locked', !premium);
+      button.setAttribute('aria-disabled', String(!premium));
+      button.title = premium ? '' : 'Disponibile con la licenza premium';
+    });
+
+    const exportButton = $('exportPayments');
+    if (exportButton) {
+      exportButton.classList.toggle('is-locked', !premium);
+      exportButton.setAttribute('aria-disabled', String(!premium));
+      exportButton.title = premium ? '' : 'Disponibile con la licenza premium';
+    }
+
+    [ 'istatRent', 'istatPct', 'istatQuota', 'reminderType' ].forEach((id) => {
+      const field = $(id);
+      if (field) field.disabled = !premium;
+    });
+    const reminderSelect = $('reminderProperty');
+    if (reminderSelect) reminderSelect.disabled = !premium || visibleProperties().length === 0;
+    const copyButton = $('copyReminder');
+    if (copyButton) copyButton.disabled = !premium || visibleProperties().length === 0;
+
+    document.querySelectorAll('[data-premium-lock]').forEach((el) => {
+      el.hidden = premium;
+    });
+  }
+
+  function showPremiumGate(message) {
+    if (isPremium()) return;
+    if (message) toast(message);
+    switchView('tools');
+    window.setTimeout(() => {
+      const card = $('cloudCard');
+      const target = (card && !card.hidden) ? card : $('premiumStrip');
+      if (target) {
+        target.scrollIntoView({
+          behavior: reduceMotion.matches ? 'auto' : 'smooth',
+          block: 'center'
+        });
+        target.classList.add('premium-highlight');
+        window.setTimeout(() => target.classList.remove('premium-highlight'), 2600);
+      }
+      const request = $('premiumRequest');
+      const license = $('licenseCode');
+      if (request && !request.hidden) {
+        request.focus({ preventScroll: true });
+      } else if (license && cloudConfig.licensePublicKey && license.offsetParent !== null) {
+        license.focus({ preventScroll: true });
+      }
+    }, reduceMotion.matches ? 30 : 360);
+  }
+
   function renderTools() {
     fillReminderProperties();
     calcIstat();
@@ -686,6 +841,15 @@
     renderPayments();
     renderDeadlines();
     renderTools();
+    applyPremiumUi();
+  }
+
+  function refreshFromStorage() {
+    state = loadState();
+    renderAll();
+    switchView(currentView, { silent: true });
+    const modal = $('propertyModal');
+    if (modal && !modal.hidden) closeModal();
   }
 
   const VIEW_TITLES = {
@@ -736,6 +900,10 @@
   }
 
   function openModal() {
+    if (!isPremium()) {
+      showPremiumGate('Aggiungere immobili è incluso nella licenza premium.');
+      return;
+    }
     const form = $('propertyForm');
     lastFocused = document.activeElement instanceof HTMLElement && document.activeElement !== document.body
       ? document.activeElement
@@ -770,6 +938,15 @@
 
   function addProperty(event) {
     event.preventDefault();
+    if (!isPremium()) {
+      closeModal();
+      showPremiumGate('Aggiungere immobili è incluso nella licenza premium.');
+      return;
+    }
+    if (state.properties.length >= MAX_PREMIUM_PROPERTIES) {
+      toast(`La licenza gestisce fino a ${MAX_PREMIUM_PROPERTIES} immobili.`);
+      return;
+    }
     const name = $('fName').value.trim();
     const tenant = $('fTenant').value.trim();
     const rent = Math.max(0, parseFloat($('fRent').value) || 0);
@@ -812,6 +989,10 @@
   }
 
   function deleteProperty(id) {
+    if (!isPremium()) {
+      showPremiumGate('La rimozione degli immobili è inclusa nella licenza premium.');
+      return;
+    }
     const prop = state.properties.find((p) => p.id === id);
     if (!prop) return;
     if (!window.confirm(`Rimuovere “${prop.name}” dalla demo?`)) return;
@@ -833,7 +1014,7 @@
     if (!window.confirm('Ripristinare i dati demo iniziali?')) return;
     runThinking(
       'Ripristino i dati demo',
-      'Riporto l’esempio allo stato iniziale. Nessun dato lascia il browser.',
+      'Riporto l’esempio allo stato iniziale. Se Drive è collegato, la modifica verrà sincronizzata.',
       () => {
         state = sampleState();
         saveState();
@@ -846,6 +1027,10 @@
   }
 
   function exportCSV() {
+    if (!isPremium()) {
+      showPremiumGate('L’esportazione CSV è inclusa nella licenza premium.');
+      return;
+    }
     const keys = monthKeysBack(6);
     const statusLabel = { paid: 'Incassato', unpaid: 'Non incassato', pending: 'Non scaduto' };
     const rows = [
@@ -892,6 +1077,10 @@
   }
 
   async function copyReminder() {
+    if (!isPremium()) {
+      showPremiumGate('I promemoria pronti sono inclusi nella licenza premium.');
+      return;
+    }
     const textarea = $('reminderText');
     try {
       await navigator.clipboard.writeText(textarea.value);
@@ -931,8 +1120,32 @@
   $('istatQuota').addEventListener('change', calcIstat);
   $('reminderProperty').addEventListener('change', updateReminder);
   $('reminderType').addEventListener('change', updateReminder);
+  $('premiumStripCta').addEventListener('click', () => showPremiumGate());
+
+  window.addEventListener('aio:license-change', () => {
+    renderAll();
+  });
+
+  window.addEventListener('aio:cloud-pull', (event) => {
+    refreshFromStorage();
+    const conflict = Boolean(event.detail && event.detail.conflict);
+    toast(conflict
+      ? 'Dati Drive più recenti applicati. La copia locale precedente è stata conservata.'
+      : 'Dati aggiornati da Google Drive.');
+  });
+
+  window.addEventListener('aio:toast', (event) => {
+    if (event.detail && event.detail.message) toast(event.detail.message);
+  });
 
   document.addEventListener('click', (event) => {
+    const premiumCta = event.target.closest('[data-premium-cta]');
+    if (premiumCta) {
+      event.preventDefault();
+      showPremiumGate();
+      return;
+    }
+
     const go = event.target.closest('[data-go]');
     if (go) {
       switchView(go.dataset.go);
@@ -1010,12 +1223,13 @@
   if (showBootLoader) {
     showThinking(
       'Sto preparando la demo',
-      'Date, incassi e promemoria vengono letti solo da questo browser.',
+      'Date, incassi e promemoria vengono letti dal browser. Con Drive attivo possono essere sincronizzati.',
       'Demo locale'
     );
   }
 
   try {
+    configurePurchaseUi();
     renderAll();
     switchView(HASH_VIEW[location.hash] || 'overview', { silent: true });
   } finally {

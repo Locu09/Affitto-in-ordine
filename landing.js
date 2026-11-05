@@ -294,6 +294,7 @@
       founder: {
         name: 'Fondatore',
         badge: 'Primi 20 posti',
+        status: 'Attivazione su richiesta',
         amount: '39',
         monthly: '≈ 3,25 € al mese',
         desc: 'Per i primi 20 proprietari. Fino a 5 immobili, supporto diretto e una call di configurazione.'
@@ -301,6 +302,7 @@
       standard: {
         name: 'Standard',
         badge: 'Dopo la validazione',
+        status: 'Non attivo · prezzo previsto',
         amount: '79',
         monthly: '≈ 6,58 € al mese',
         desc: 'Prezzo standard previsto per la versione completa. Stesse funzioni, senza i vantaggi riservati ai primi 20.'
@@ -310,6 +312,7 @@
     const amountEl = $('[data-price-amount]', priceCard);
     const nameEl = $('[data-price-name]', priceCard);
     const badgeEl = $('[data-price-badge]', priceCard);
+    const statusEl = $('[data-price-status]', priceCard);
     const descEl = $('[data-price-desc]', priceCard);
     const monthlyEl = $('[data-price-monthly]', priceCard);
 
@@ -324,6 +327,7 @@
       amountEl.textContent = data.amount;
       nameEl.textContent = data.name;
       badgeEl.textContent = data.badge;
+      if (statusEl && data.status) statusEl.textContent = data.status;
       descEl.textContent = data.desc;
       monthlyEl.textContent = data.monthly;
       priceCard.classList.remove('is-changing');

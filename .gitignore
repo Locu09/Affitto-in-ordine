@@ -13,3 +13,12 @@ dist/
 .env
 .env.*
 !.env.example
+
+# Chiavi e materiale di firma delle licenze
+license-private-key.*
+private-key.*
+*.pem
+*.p12
+*.pfx
+secrets/
+private/

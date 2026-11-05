@@ -1,7 +1,7 @@
 (() => {
   'use strict';
 
-  const STORAGE_KEY = 'aio-notice-v1';
+  const STORAGE_KEY = 'aio-notice-v2';
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   try {
@@ -19,16 +19,16 @@
         <p class="notice-kicker">Trasparenza · primo accesso</p>
         <h2 id="noticeTitle">Cookie: zero.<br><span>Memoria tecnica: sì.</span></h2>
         <div id="noticeCopy">
-          <p class="notice-lead">Questo sito <strong>non usa cookie</strong>, analytics, pixel o tracker. Per far funzionare la demo e ricordare le tue preferenze salva soltanto dati tecnici nel browser.</p>
+          <p class="notice-lead">Questo sito <strong>non usa cookie proprietari</strong>, analytics, pixel o tracker. Per far funzionare la demo e ricordare le tue preferenze salva soltanto dati tecnici nel browser.</p>
           <ul class="notice-list">
-            <li><strong>Demo locale.</strong> Immobili e incassi restano sul tuo dispositivo.</li>
+            <li><strong>Demo locale.</strong> Immobili e incassi restano sul tuo dispositivo, salvo il backup Google Drive che scegli tu.</li>
             <li><strong>Tema.</strong> Modalità e palette restano nel browser.</li>
-            <li><strong>Zero invii.</strong> Nessun account, nessuna profilazione.</li>
-            <li><strong>Zero pubblicità.</strong> Non condividiamo dati con terzi.</li>
+            <li><strong>Drive opzionale.</strong> Se colleghi Google Drive, il file <code>config_immobili.json</code> viene salvato nella cartella privata dell'app del tuo account Google. Le librerie Google si caricano solo dopo il collegamento.</li>
+            <li><strong>Zero pubblicità.</strong> Nessuna profilazione e nessuna vendita di dati.</li>
           </ul>
           <p class="notice-small">Non c'è un consenso pubblicitario da prestare: non ci sono cookie non tecnici. Questo avviso spiega cosa resta sul dispositivo e richiede una presa d'atto prima di continuare.</p>
         </div>
-        <p class="notice-foot">Nessun cookie HTTP o JavaScript. Dati cancellabili dalle impostazioni del browser o con “Ripristina i dati demo”.</p>
+        <p class="notice-foot">Nessun cookie HTTP o JavaScript proprietario. Dati locali cancellabili dalle impostazioni del browser o con “Ripristina i dati demo”; il backup Drive si elimina dal tuo Drive.</p>
       </div>
       <div class="notice-actions">
         <button class="notice-accept" type="button">

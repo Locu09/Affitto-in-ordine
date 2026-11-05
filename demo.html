@@ -8,6 +8,15 @@
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <title>Demo · Affitto in Ordine</title>
 <meta name="description" content="Demo interattiva di Affitto in Ordine: scadenze, incassi e promemoria per piccoli proprietari. Nessuna registrazione, dati salvati solo nel browser.">
+<link rel="canonical" href="https://locu09.github.io/Affitto-in-ordine/demo.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta property="og:site_name" content="Affitto in Ordine">
+<meta property="og:title" content="Demo · Affitto in Ordine">
+<meta property="og:description" content="Prova il cruscotto per scadenze, incassi e aumenti ISTAT. La demo gratuita mostra 1 immobile.">
+<meta property="og:url" content="https://locu09.github.io/Affitto-in-ordine/demo.html">
+<meta property="og:image" content="https://locu09.github.io/Affitto-in-ordine/assets/demo-preview.png">
+<meta name="twitter:card" content="summary_large_image">
 <script src="theme.js"></script>
 <link rel="stylesheet" href="demo.css">
 <link rel="stylesheet" href="theme.css">
@@ -70,7 +79,7 @@
     </div>
 
     <div class="sidebar-card">
-      <p>Dati salvati solo in questo browser. Nessun account, nessun invio. Nomi e immobili di esempio sono fittizi.</p>
+      <p>La demo gratuita mostra 1 immobile. La licenza fondatore sblocca fino a 5 immobili, export, promemoria e ISTAT. I dati restano in questo browser; il backup Drive è opzionale. Nomi e immobili di esempio sono fittizi.</p>
       <button id="resetDemo" class="link-btn" type="button"><svg aria-hidden="true" focusable="false"><use href="#i-reset"></use></svg>Ripristina i dati demo</button>
     </div>
 
@@ -82,7 +91,7 @@
       <div>
         <p class="eyebrow" id="todayLabel">—</p>
         <h1 id="viewTitle">Panoramica</h1>
-        <p class="topbar-sub">Demo locale · i dati restano in questo browser</p>
+        <p class="topbar-sub" id="topbarSub">Demo locale · Drive opzionale</p>
       </div>
       <p class="sr-only" id="viewAnnouncement" aria-live="polite"></p>
       <div class="top-actions">
@@ -90,6 +99,19 @@
         <button class="btn primary" id="openAdd" type="button"><svg aria-hidden="true" focusable="false"><use href="#i-plus"></use></svg>Aggiungi immobile</button>
       </div>
     </header>
+
+    <section class="premium-strip" id="premiumStrip" hidden aria-labelledby="premiumStripTitle">
+      <div class="premium-strip-main">
+        <p class="eyebrow">Licenza fondatore</p>
+        <h2 id="premiumStripTitle">Demo gratuita: 1 immobile.</h2>
+        <p>Attiva la licenza per gestire fino a 5 immobili, esportare i dati, usare promemoria e calcolatore ISTAT. Il backup automatico su Drive è incluso.</p>
+      </div>
+      <div class="premium-strip-buy">
+        <strong data-premium-price>39 €/anno fondatore</strong>
+        <span data-premium-offer>Fino a 5 immobili</span>
+        <button class="btn primary small" id="premiumStripCta" type="button">Attiva premium</button>
+      </div>
+    </section>
 
     <section class="view" id="view-overview" data-view-panel="overview">
       <div class="alert" id="nextAlert" role="status" aria-live="polite" hidden>
@@ -222,6 +244,10 @@
           <div class="card-head">
             <div><h2>Calcolatore aumento ISTAT</h2><p>Calcola il nuovo canone in base alla variazione che inserisci.</p></div>
           </div>
+          <div class="premium-lock-banner" data-premium-lock hidden>
+            <span><strong>Funzione premium.</strong> Il calcolatore ISTAT si attiva con la licenza.</span>
+            <button class="link-btn" type="button" data-premium-cta>Attiva</button>
+          </div>
           <div class="form-grid compact">
             <label class="field">
               <span>Canone attuale (€)</span>
@@ -251,6 +277,10 @@
           <div class="card-head">
             <div><h2>Promemoria pronto</h2><p>Un testo cortese da copiare e inviare. Niente toni aggressivi.</p></div>
           </div>
+          <div class="premium-lock-banner" data-premium-lock hidden>
+            <span><strong>Funzione premium.</strong> I promemoria pronti si attivano con la licenza.</span>
+            <button class="link-btn" type="button" data-premium-cta>Attiva</button>
+          </div>
           <div class="form-grid compact">
             <label class="field">
               <span>Immobile</span>
@@ -272,12 +302,60 @@
           </div>
           <p class="disclaimer">Sostituisci i campi tra parentesi e verifica il contenuto prima dell'invio. Non è un modello legale.</p>
         </section>
+
+        <section class="card cloud-card span-2" id="cloudCard" hidden>
+          <div class="card-head">
+            <div>
+              <h2>Licenza premium e Drive</h2>
+              <p>Attiva la versione completa oppure collega il backup facoltativo.</p>
+            </div>
+            <span class="cloud-badge" id="cloudBadge" data-state="local">Demo gratuita</span>
+          </div>
+
+          <div class="premium-offer">
+            <div class="premium-offer-price">
+              <span>Licenza fondatore</span>
+              <strong data-premium-price>39 €/anno fondatore</strong>
+            </div>
+            <p class="premium-offer-copy">Fino a 5 immobili, export CSV, promemoria, calcolatore ISTAT e sincronizzazione automatica. Nessun rinnovo automatico.</p>
+            <div class="premium-offer-actions">
+              <a class="btn primary small" id="premiumRequest" href="#" hidden>Richiedi licenza via email</a>
+              <span class="hint">Pagamento tramite <span data-premium-method>bonifico SEPA</span></span>
+            </div>
+            <p class="hint" id="premiumPurchaseNote">La richiesta non è un ordine: ricevi conferma, coordinate bancarie e condizioni via email.</p>
+          </div>
+
+          <h3 class="cloud-subtitle">Hai già un codice?</h3>
+          <form class="cloud-license" id="licenseForm" novalidate>
+            <div class="field">
+              <label for="licenseCode">Codice licenza premium</label>
+              <div class="cloud-license-row">
+                <input id="licenseCode" name="licenza" type="text" autocomplete="off" spellcheck="false" maxlength="4096" placeholder="Incolla il codice ricevuto">
+                <button class="btn ghost small" id="licenseApply" type="submit">Attiva</button>
+              </div>
+              <p class="hint" id="licenseStatus" role="status" aria-live="polite">Verifica della licenza in corso…</p>
+              <button class="link-btn" id="licenseClear" type="button" hidden>Rimuovi licenza da questo browser</button>
+            </div>
+          </form>
+
+          <h3 class="cloud-subtitle">Backup Google Drive</h3>
+          <p class="cloud-status" id="cloudStatus" role="status" aria-live="polite">I dati restano in questo browser. Il collegamento a Google Drive è facoltativo.</p>
+
+          <div class="cloud-actions">
+            <button class="btn primary small" id="cloudConnect" type="button">Collega Google Drive</button>
+            <button class="btn ghost small" id="cloudSync" type="button" hidden>Sincronizza ora</button>
+            <button class="link-btn" id="cloudDisconnect" type="button" hidden>Scollega</button>
+          </div>
+
+          <p class="hint cloud-premium-note">La sincronizzazione automatica è inclusa con la licenza premium. Senza licenza puoi usare “Sincronizza ora”.</p>
+          <p class="disclaimer cloud-disclaimer">Quando colleghi il Drive, il file <code>config_immobili.json</code> viene salvato nella cartella privata dei dati dell'app nel tuo account Google. Google tratta i dati secondo la propria informativa. Le librerie Google vengono caricate solo quando scegli di collegare o riprendere il Drive. <a href="legale.html#privacy">Privacy</a>.</p>
+        </section>
       </div>
     </section>
 
     <footer class="app-foot">
       <span>Affitto in Ordine · prototipo di validazione</span>
-      <span>Dati demo locali · nomi fittizi · nessun dato inviato · <a href="legale.html#privacy">Privacy</a></span>
+      <span>Dati demo locali · nomi fittizi · Drive opzionale · <a href="legale.html#privacy">Privacy</a></span>
     </footer>
   </main>
 </div>
@@ -307,7 +385,7 @@
         <button class="btn ghost" type="button" data-close-modal>Annulla</button>
         <button class="btn primary" type="submit"><svg aria-hidden="true" focusable="false"><use href="#i-check"></use></svg>Salva immobile</button>
       </div>
-      <p class="form-note" id="propertyFormNote">* Campi obbligatori. I dati restano nel tuo browser (demo). Usa solo dati di esempio o dati per cui hai il consenso: non inserire dati reali di inquilini senza autorizzazione.</p>
+      <p class="form-note" id="propertyFormNote">* Campi obbligatori. Di base i dati restano nel tuo browser (demo); se attivi il backup Google Drive vengono copiati nel tuo spazio Google. Usa solo dati di esempio o dati per cui hai il consenso: non inserire dati reali di inquilini senza autorizzazione.</p>
     </form>
   </div>
 </div>
@@ -353,7 +431,11 @@
   <p class="theme-status" data-theme-status aria-live="polite"></p>
 </div>
 
+<script src="cloud-config.js"></script>
 <script src="demo.js"></script>
+<script src="license.js"></script>
+<script src="drive-service.js"></script>
+<script src="cloud-sync.js"></script>
 <script src="motion.js"></script>
 <script src="assets/vendor/three.min.js"></script>
 <script src="models.js"></script>

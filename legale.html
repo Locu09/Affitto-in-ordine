@@ -114,7 +114,7 @@
     </nav>
     <div class="mobile-menu-foot">
       <a class="btn btn--acid btn--wide" href="index.html#accesso">Richiedi l’accesso <svg aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg></a>
-      <p>Progetto in validazione · nessuna vendita attiva</p>
+      <p>Progetto in validazione · attivazione su richiesta</p>
     </div>
   </div>
 </div>
@@ -124,14 +124,14 @@
   <div class="container legal-hero">
     <span class="legal-kicker">Trasparenza / Informazioni legali</span>
     <h1>LE REGOLE,<br><span class="legal-highlight">IN CHIARO.</span></h1>
-    <p class="legal-lead">Qui trovi informativa privacy, cookie policy, termini d'uso, note legali e dichiarazione di accessibilità di Affitto in Ordine. Il progetto è un prototipo in fase di validazione: <strong>non è ancora possibile acquistare il servizio</strong>.</p>
+    <p class="legal-lead">Qui trovi informativa privacy, cookie policy, termini d'uso, note legali e dichiarazione di accessibilità di Affitto in Ordine. Il progetto è un prototipo in fase di validazione: <strong>il sito non ha un checkout automatico</strong>. La licenza fondatore può essere richiesta via email e il pagamento è concordato tramite bonifico SEPA dopo la conferma.</p>
     <div class="legal-meta-row">
-      <p class="legal-updated">Ultimo aggiornamento: <time datetime="2026-10-26">26 ottobre 2026</time></p>
+      <p class="legal-updated">Ultimo aggiornamento: <time datetime="2026-10-29">29 ottobre 2026</time></p>
       <p class="legal-draft"><span class="dot" aria-hidden="true"></span>Bozza operativa · noindex</p>
     </div>
 
     <div class="legal-warning" role="note">
-      <strong>Prima della pubblicazione.</strong> Completa i campi <span class="to-fill">[DA COMPILARE]</span> con i dati reali del titolare, del fornitore di hosting e dei tempi di risposta. Fai verificare questi testi da un professionista: questa pagina è un modello operativo, non una certificazione di conformità.
+      <strong>Prima della pubblicazione.</strong> Completa i campi <span class="to-fill">[DA COMPILARE]</span> con i dati reali del titolare, del fornitore di hosting e dei tempi di risposta. Prima di incassare bonifici per la licenza fondatore, inserisci identità e sede del venditore, P.IVA/CF, condizioni complete, prezzo IVA inclusa, diritto di recesso, tempi di attivazione e recapito per i reclami. Se attivi il backup Google Drive, verifica anche client OAuth, scope <code>drive.appdata</code>, schermata di consenso, informativa Google e limitazioni d'uso dei dati. Fai verificare questi testi da un professionista: questa pagina è un modello operativo, non una certificazione di conformità.
     </div>
   </div>
 
@@ -167,8 +167,10 @@
         <h3>2. Quali dati trattiamo</h3>
         <ul>
           <li><strong>Dati che ci invii volontariamente.</strong> Nome, indirizzo email, numero indicativo di immobili, contenuto del messaggio e ogni altro dato che scegli di includere. Il form della landing non invia dati a un server: apre il tuo programma di posta con un messaggio già scritto. Il messaggio arriva alla casella email del Titolare.</li>
-          <li><strong>Dati della demo.</strong> Nomi, indirizzi, canoni, incassi e note inseriti nella demo sono salvati solo nel <em>localStorage</em> del tuo browser. Non vengono trasmessi al Titolare e non sono visibili a noi. I nomi e gli immobili precompilati sono fittizi.</li>
-          <li><strong>Preferenze e avviso.</strong> La modalità chiara/scura, la palette e la presa d'atto dell'avviso cookie sono salvate nel <em>localStorage</em> con le chiavi indicate più avanti. Sono preferenze tecniche del dispositivo e non vengono inviate a nessun server.</li>
+          <li><strong>Dati per la licenza fondatore e il bonifico (facoltativi).</strong> Se richiedi la licenza via email, trattiamo nome, recapito email, dati necessari alla ricevuta/fattura e i dati del bonifico SEPA (per esempio ordinante, importo, causale e coordinate bancarie presenti nell'estratto conto). Servono a gestire la richiesta, confermare il pagamento, emettere il documento fiscale e inviare il codice. Non chiediamo né conserviamo i dati completi della carta perché il sito non gestisce pagamenti con carta.</li>
+          <li><strong>Dati della demo.</strong> Nomi, indirizzi, canoni, incassi e note inseriti nella demo sono salvati di base nel <em>localStorage</em> del tuo browser. Non vengono trasmessi al Titolare e non sono visibili a noi. I nomi e gli immobili precompilati sono fittizi.</li>
+          <li><strong>Backup Google Drive e licenza (facoltativi).</strong> Se scegli di collegare Google Drive, il file <code>config_immobili.json</code> viene creato o aggiornato nella cartella privata dei dati dell'app del tuo account Google. Contiene i dati della demo, un identificativo casuale del dispositivo, il flag <code>is_premium</code> e il token di licenza firmato, se presente. Il token non contiene nome, email o altri dati anagrafici. Il Titolare del sito non riceve il file, non ha accesso al tuo Drive e non gestisce un server applicativo. Google tratta il file e i dati di autenticazione secondo la propria informativa.</li>
+          <li><strong>Preferenze, avviso e stato locale.</strong> La modalità chiara/scura, la palette, la presa d'atto dell'avviso, la licenza verificata e i metadati della sincronizzazione sono salvati nel <em>localStorage</em> con le chiavi indicate più avanti. La licenza e i metadati restano sul dispositivo; il token di licenza viene incluso nel file Drive solo se attivi il backup.</li>
           <li><strong>Dati tecnici di navigazione.</strong> Se il sito viene pubblicato, il fornitore di hosting può registrare dati come indirizzo IP, data e ora, pagina richiesta e tipo di browser, per sicurezza, diagnostica e funzionamento del servizio. Il provider è <span class="to-fill">[DA COMPILARE: fornitore di hosting]</span>.</li>
         </ul>
         <p>Non chiediamo e non vogliamo ricevere categorie particolari di dati (per esempio dati sanitari, giudiziari, biometrici o relativi alle convinzioni personali). Non inserirli nella demo né nei messaggi. Se ci invii dati di terzi, per esempio dati di un inquilino, devi avere una base giuridica e, quando necessario, il consenso per farlo.</p>
@@ -177,7 +179,8 @@
         <table class="legal-table">
           <tr><th>Finalità</th><th>Base giuridica</th></tr>
           <tr><td>Rispondere a richieste di informazioni, demo o accesso fondatore.</td><td>Art. 6, par. 1, lett. b) GDPR: misure precontrattuali adottate su tua richiesta.</td></tr>
-          <tr><td>Gestire un eventuale contratto e fornire il servizio.</td><td>Art. 6, par. 1, lett. b) GDPR: esecuzione del contratto.</td></tr>
+          <tr><td>Gestire un eventuale contratto, la licenza fondatore e fornire il servizio.</td><td>Art. 6, par. 1, lett. b) GDPR: esecuzione del contratto o misure precontrattuali.</td></tr>
+          <tr><td>Consentire il backup facoltativo su Google Drive e la portabilità tra dispositivi, su tua richiesta.</td><td>Art. 6, par. 1, lett. b) GDPR: esecuzione del servizio richiesto; il collegamento è sempre revocabile.</td></tr>
           <tr><td>Adempiere a obblighi fiscali, contabili, amministrativi e legali.</td><td>Art. 6, par. 1, lett. c) GDPR: obbligo legale.</td></tr>
           <tr><td>Proteggere il sito, prevenire abusi e difendersi in giudizio.</td><td>Art. 6, par. 1, lett. f) GDPR: legittimo interesse del Titolare.</td></tr>
           <tr><td>Inviare comunicazioni promozionali o una newsletter, se attivate.</td><td>Art. 6, par. 1, lett. a) GDPR: consenso, revocabile in ogni momento.</td></tr>
@@ -186,32 +189,36 @@
         <p>Non effettuiamo profilazione, non prendiamo decisioni automatizzate con effetti giuridici e non usiamo i dati per addestrare modelli di intelligenza artificiale.</p>
 
         <h3>4. Conferimento dei dati</h3>
-        <p>Nome e email sono necessari per rispondere alla richiesta: senza un recapito non possiamo contattarti. Il numero di immobili è facoltativo. Il conferimento per finalità di marketing è facoltativo e non condiziona la risposta alla tua richiesta.</p>
+        <p>Nome, email e dati necessari alla ricevuta sono necessari per gestire la richiesta di licenza e il pagamento: senza questi dati non possiamo confermare il bonifico né inviare il codice. Il numero di immobili è facoltativo. Il conferimento per finalità di marketing è facoltativo e non condiziona la risposta alla tua richiesta. Il collegamento a Google Drive e l'inserimento di una licenza sono facoltativi: la demo continua a funzionare in locale senza di essi.</p>
 
         <h3>5. Destinatari</h3>
         <p>I dati possono essere trattati da:</p>
         <ul>
-          <li><strong>Google Ireland Limited / Google LLC</strong>, per il servizio di posta Gmail;</li>
+          <li><strong>Google Ireland Limited / Google LLC</strong>, per il servizio di posta Gmail e, solo se attivi il backup, per Google Drive e l'autenticazione Google;</li>
           <li>il fornitore di hosting e i servizi tecnici necessari al sito, quando saranno scelti;</li>
+          <li>l'istituto bancario coinvolto nel bonifico SEPA, per la sola esecuzione e la conferma del pagamento;</li>
           <li>consulenti fiscali, legali o tecnici, nei limiti delle rispettive competenze;</li>
           <li>autorità pubbliche, quando richiesto dalla legge.</li>
         </ul>
-        <p>Non vendiamo i dati personali e non li condividiamo per finalità commerciali di terzi. I fornitori trattano i dati secondo i contratti e le informative applicabili. Per Gmail, le informazioni sul trattamento sono disponibili nella privacy policy di Google.</p>
+        <p>Non vendiamo i dati personali e non li condividiamo per finalità commerciali di terzi. I fornitori trattano i dati secondo i contratti e le informative applicabili. Per Gmail e per l'eventuale backup Drive, le informazioni sul trattamento sono disponibili nella privacy policy di Google.</p>
+        <p>Se attivi Google Drive, l'uso delle informazioni ricevute dalle API Google è limitato a creare, leggere e aggiornare il backup richiesto nella cartella privata dell'app. Non usiamo questi dati per pubblicità, non li vendiamo e non li usiamo per addestrare modelli. Rispettiamo i requisiti applicabili della Google API Services User Data Policy, inclusi i limiti d'uso.</p>
 
         <h3>5.1 Dati di inquilini nella futura versione con account</h3>
-        <p>Nella demo attuale i dati restano sul dispositivo e non arrivano al Titolare. Se in futuro il servizio conterrà dati di inquilini inseriti dai clienti, il proprietario o gestore che li inserisce sarà titolare del trattamento e Affitto in Ordine sarà responsabile del trattamento ai sensi dell'art. 28 GDPR. In quel caso il contratto includerà un accordo sul trattamento dei dati con istruzioni, sub-responsabili, misure di sicurezza, assistenza per i diritti degli interessati e cancellazione o restituzione dei dati alla fine del rapporto.</p>
+        <p>Nella demo attuale i dati restano sul dispositivo e, se attivi il backup, nella cartella privata dell'app del tuo account Google; non arrivano al Titolare. Se in futuro il servizio conterrà dati di inquilini inseriti dai clienti, il proprietario o gestore che li inserisce sarà titolare del trattamento e Affitto in Ordine sarà responsabile del trattamento ai sensi dell'art. 28 GDPR. In quel caso il contratto includerà un accordo sul trattamento dei dati con istruzioni, sub-responsabili, misure di sicurezza, assistenza per i diritti degli interessati e cancellazione o restituzione dei dati alla fine del rapporto.</p>
 
         <h3>6. Trasferimenti fuori dallo Spazio economico europeo</h3>
-        <p>L'uso di Gmail può comportare un trasferimento di dati verso gli Stati Uniti. Eventuali trasferimenti avvengono sulla base di una decisione di adeguatezza, ove applicabile (incluso il Data Privacy Framework UE-USA), o di clausole contrattuali standard con misure supplementari. Prima del lancio verificheremo il meccanismo applicabile e conserveremo la documentazione del fornitore.</p>
+        <p>L'uso di Gmail e del backup facoltativo Google Drive può comportare un trasferimento di dati verso gli Stati Uniti. Eventuali trasferimenti avvengono sulla base di una decisione di adeguatezza, ove applicabile (incluso il Data Privacy Framework UE-USA), o di clausole contrattuali standard con misure supplementari. Prima del lancio verificheremo il meccanismo applicabile e conserveremo la documentazione del fornitore.</p>
         <p>Per un servizio con account e dati dei clienti, valuteremo un fornitore con data residency nell'Unione europea o un'adeguata configurazione contrattuale.</p>
 
         <h3>7. Per quanto tempo conserviamo i dati</h3>
         <table class="legal-table">
           <tr><th>Dati</th><th>Conservazione</th></tr>
           <tr><td>Richieste di informazioni, demo o accesso.</td><td>24 mesi dall'ultimo contatto, salvo necessità di difesa o obblighi di legge.</td></tr>
-          <tr><td>Dati contrattuali, fatture e documenti contabili.</td><td>10 anni, in base agli obblighi fiscali e contabili applicabili.</td></tr>
+          <tr><td>Dati contrattuali, fatture, documenti contabili e conferma del bonifico.</td><td>10 anni, in base agli obblighi fiscali e contabili applicabili.</td></tr>
           <tr><td>Comunicazioni di marketing, se attivate.</td><td>Fino alla revoca del consenso o alla cancellazione dell'indirizzo.</td></tr>
           <tr><td>Dati della demo.</td><td>Solo sul tuo dispositivo, fino al ripristino o alla cancellazione dei dati del browser.</td></tr>
+          <tr><td>Backup Google Drive facoltativo.</td><td>Fino alla cancellazione del file dal tuo Drive o alla revoca dell'accesso all'app. Il Titolare non ne conserva una copia.</td></tr>
+          <tr><td>Licenza locale e metadati di sincronizzazione.</td><td>Fino alla rimozione della licenza o alla cancellazione dei dati del sito nel browser.</td></tr>
           <tr><td>Log tecnici del fornitore di hosting.</td><td>Per il tempo tecnico necessario e comunque non oltre <span class="to-fill">[DA COMPILARE: giorni]</span>, salvo obblighi di legge.</td></tr>
         </table>
         <p>Alla scadenza cancelliamo o anonimizziamo i dati in modo sicuro. Se un obbligo di legge o un contenzioso richiede una conservazione più lunga, manteniamo solo i dati necessari.</p>
@@ -233,7 +240,7 @@
         <p>Il sito e il servizio non sono destinati a persone di età inferiore a 18 anni. Se veniamo a conoscenza di dati di minori raccolti senza base giuridica, li cancelliamo.</p>
 
         <h3>10. Sicurezza</h3>
-        <p>Nella versione attuale non esiste un backend e la demo non trasmette dati. Per la futura versione applicheremo misure tecniche e organizzative adeguate: cifratura in transito, controllo degli accessi, autenticazione a due fattori per gli amministratori, backup, aggiornamenti di sicurezza e procedura di gestione degli incidenti. Nessun sistema è sicuro al 100%; se ritieni che ci sia un problema, scrivici subito.</p>
+        <p>Nella versione attuale non esiste un backend del Titolare. La demo funziona in locale; se attivi il backup facoltativo, il browser invia direttamente il file a Google Drive tramite OAuth e TLS. Il token OAuth resta nella memoria della pagina e non viene salvato nel <em>localStorage</em>; il file è limitato alla cartella privata dei dati dell'app. Per la futura versione applicheremo misure tecniche e organizzative adeguate: cifratura in transito, controllo degli accessi, autenticazione a due fattori per gli amministratori, backup, aggiornamenti di sicurezza e procedura di gestione degli incidenti. Nessun sistema è sicuro al 100%; se ritieni che ci sia un problema, scrivici subito.</p>
 
         <h3>11. Modifiche</h3>
         <p>Aggiorneremo questa informativa se cambiano finalità, fornitori o modalità di trattamento. La data di aggiornamento è indicata all'inizio della pagina. Per modifiche sostanziali, avviseremo gli interessati con un mezzo adeguato, quando possibile.</p>
@@ -244,14 +251,15 @@
 
       <section class="legal-section" id="cookie">
         <h2>Cookie e memoria locale</h2>
-        <p class="legal-meta">Ultima verifica: 26 ottobre 2026.</p>
+        <p class="legal-meta">Ultima verifica: 29 ottobre 2026.</p>
 
         <div class="legal-callout">
-          <p><strong>Questo sito non usa cookie.</strong> Non ci sono cookie di profilazione, analytics, marketing, social plugin o pixel. Non c'è quindi un consenso pubblicitario da prestare. Al primo accesso su landing e demo mostriamo un <strong>avviso informativo</strong> che spiega la memoria locale e richiede una presa d'atto; non è un banner di consenso e non modifica ciò che viene memorizzato. La pagina legale resta accessibile anche senza prendere atto dell'avviso.</p>
+          <p><strong>Questo sito non usa cookie proprietari.</strong> Non ci sono cookie di profilazione, analytics, marketing, social plugin o pixel. Non c'è quindi un consenso pubblicitario da prestare. Al primo accesso su landing e demo mostriamo un <strong>avviso informativo</strong> che spiega la memoria locale e richiede una presa d'atto; non è un banner di consenso e non modifica ciò che viene memorizzato. La pagina legale resta accessibile anche senza prendere atto dell'avviso.</p>
         </div>
 
         <h3>Cosa usa il sito</h3>
         <p>La demo usa la <strong>memoria locale del browser</strong> (<em>localStorage</em>) per conservare gli immobili, gli incassi e le preferenze che inserisci. È una memorizzazione tecnica necessaria a fornire la funzione che hai richiesto: senza di essa, i dati sparirebbero a ogni ricaricamento.</p>
+        <p>Il backup su Google Drive è disattivato per impostazione predefinita. Se lo attivi, il browser carica le librerie di Google Identity Services e Google API solo in quel momento e usa un token OAuth conservato in memoria per creare o aggiornare il file <code>config_immobili.json</code> nella cartella privata dell'app. Il token non viene scritto nel <em>localStorage</em>.</p>
         <p>Per le transizioni tra pagine usiamo anche <em>sessionStorage</em> con una sola chiave temporanea: serve a non ripetere l'animazione d'ingresso quando hai già scelto di aprire un'altra pagina. Viene letta e rimossa alla pagina successiva; non contiene dati personali e non viene inviata a nessun server.</p>
         <p>Questa memorizzazione rientra nell'eccezione per i mezzi tecnici strettamente necessari prevista dall'art. 5, par. 3, della Direttiva 2002/58/CE e dall'art. 122 del D.Lgs. 196/2003, come interpretati dal Garante. Non serve un consenso preventivo perché non traccia l'utente e non ha finalità pubblicitarie.</p>
 
@@ -260,15 +268,18 @@
           <tr><th scope="col">Chiave</th><th scope="col">Contenuto</th><th scope="col">Durata</th></tr>
           <tr><td><code>affitto-in-ordine-demo-v1</code></td><td>Immobili, inquilini fittizi, canoni, incassi, scadenze e note della demo.</td><td>Fino a “Ripristina i dati demo” o alla cancellazione dei dati del sito.</td></tr>
           <tr><td><code>aio-theme-v1</code></td><td>Modalità chiara/scura/automatica e palette scelta.</td><td>Fino alla cancellazione dei dati del sito.</td></tr>
-          <tr><td><code>aio-notice-v1</code></td><td>Presa d'atto dell'avviso cookie e memoria locale.</td><td>Fino alla cancellazione dei dati del sito.</td></tr>
+          <tr><td><code>aio-notice-v2</code></td><td>Presa d'atto dell'avviso cookie e memoria locale.</td><td>Fino alla cancellazione dei dati del sito.</td></tr>
+          <tr><td><code>aio-license-v1</code></td><td>Token di licenza premium firmato, senza dati anagrafici. Viene verificato localmente.</td><td>Fino alla rimozione della licenza o alla cancellazione dei dati del sito.</td></tr>
+          <tr><td><code>aio-drive-meta-v1</code></td><td>Preferenza di collegamento Drive, identificativo casuale del dispositivo, data dell'ultima sincronizzazione e stato delle modifiche. Non contiene il token OAuth.</td><td>Fino alla cancellazione dei dati del sito o allo scollegamento.</td></tr>
+          <tr><td><code>aio-cloud-conflict-v1</code></td><td>Copia locale di sicurezza creata solo se una sincronizzazione trova dati Drive più recenti di modifiche locali non ancora caricate.</td><td>Fino alla cancellazione dei dati del sito.</td></tr>
           <tr><td><code>aio-motion-nav</code> <small>(sessionStorage)</small></td><td>Indicatore temporaneo di navigazione, senza dati personali.</td><td>Fino alla pagina successiva; viene rimosso alla prima lettura.</td></tr>
         </table>
 
-        <p>I dati restano sul tuo dispositivo. Puoi cancellarli con il pulsante <strong>“Ripristina i dati demo”</strong> per i dati della demo, oppure cancellando i dati del sito dalle impostazioni del browser per tutte le chiavi. Il Titolare non riceve una copia di questi dati. Se cancelli i dati del sito, l'avviso informativo ricomparirà al successivo accesso.</p>
-        <p>La memoria locale non è cifrata: chi ha accesso al dispositivo o al profilo del browser può leggerla. Non inserire dati sensibili e, se usi un dispositivo condiviso, cancella i dati della demo quando hai finito.</p>
+        <p>Di base i dati restano sul tuo dispositivo. Puoi cancellare i dati locali con il pulsante <strong>“Ripristina i dati demo”</strong> per la demo, oppure cancellando i dati del sito dalle impostazioni del browser per tutte le chiavi. Se attivi il backup, il file resta nel tuo Google Drive finché non lo cancelli o revochi l'accesso all'app. Il Titolare non riceve una copia di questi dati. Se cancelli i dati del sito, l'avviso informativo ricomparirà al successivo accesso.</p>
+        <p>La memoria locale non è cifrata: chi ha accesso al dispositivo o al profilo del browser può leggerla. Il file su Google Drive è protetto dalle misure del provider e l'accesso all'app è limitato allo scope <code>drive.appdata</code>; non è un archivio cifrato end-to-end dal Titolare. Non inserire dati sensibili e, se usi un dispositivo condiviso, cancella i dati della demo quando hai finito.</p>
 
         <h3>Cookie di terze parti</h3>
-        <p>Non carichiamo Google Fonts, Google Analytics, Meta Pixel, Hotjar, video incorporati o altri strumenti di tracciamento. I font sono di sistema. Se clicchi un link verso Gmail o un altro sito, lasci il nostro sito e si applicano le informative e i cookie di quel fornitore, che non controlliamo.</p>
+        <p>Non carichiamo Google Fonts, Google Analytics, Meta Pixel, Hotjar, video incorporati o altri strumenti di tracciamento. I font sono di sistema. Se scegli di collegare Google Drive, il browser carica le librerie Google Identity Services e Google API da domini Google; Google può usare cookie o memoria del browser secondo la propria informativa e il proprio consenso, se applicabile. Il collegamento è revocabile dal pulsante “Scollega” e dalle impostazioni del tuo account Google. Se clicchi un link verso Gmail o un altro sito, lasci il nostro sito e si applicano le informative e i cookie di quel fornitore, che non controlliamo.</p>
 
         <h3>Se in futuro aggiungeremo strumenti di misurazione</h3>
         <p>Se introdurremo analytics, pubblicità o altre tecnologie non tecniche, chiederemo il consenso <strong>prima</strong> dell'attivazione, con un banner che permette di accettare, rifiutare e revocare la scelta, e aggiorneremo questa pagina. Non useremo cookie wall né consensi preselezionati.</p>
@@ -284,14 +295,15 @@
 
       <section class="legal-section" id="termini">
         <h2>Termini d'uso</h2>
-        <p class="legal-meta">Versione 1.0 · 26 ottobre 2026.</p>
+        <p class="legal-meta">Versione 1.1 · 29 ottobre 2026.</p>
 
         <h3>1. Oggetto</h3>
-        <p>Questi termini regolano l'accesso e l'uso del sito e della demo di <strong>Affitto in Ordine</strong>. Il sito è un prototipo informativo e la demo è gratuita. Il sito non costituisce un'offerta di vendita e non è attualmente possibile acquistare il servizio.</p>
+        <p>Questi termini regolano l'accesso e l'uso del sito e della demo di <strong>Affitto in Ordine</strong>. Il sito è un prototipo informativo e la demo gratuita è limitata a un immobile. La licenza fondatore si richiede via email; il sito non contiene un checkout e non addebita pagamenti.</p>
 
         <h3>2. Stato del progetto</h3>
-        <p>Il prodotto è in fase di validazione. I prezzi, le funzioni e i tempi mostrati sono indicativi e possono cambiare. Nessun pagamento viene richiesto o accettato tramite il sito. La richiesta di accesso non crea un contratto né un obbligo di acquisto.</p>
-        <p>L'indicazione “primi 20 posti” descrive il numero massimo di clienti fondatori previsti: non è un contatore in tempo reale e non garantisce la disponibilità. Al lancio, i posti saranno assegnati ai primi 20 clienti che completeranno l'acquisto secondo le condizioni pubblicate. Il prezzo fondatore e l'eventuale blocco del prezzo saranno confermati al lancio e non costituiscono un'offerta vincolante oggi.</p>
+        <p>Il prodotto è in fase di validazione. I prezzi, le funzioni e i tempi mostrati sono indicativi e possono cambiare. Nessun pagamento viene richiesto o accettato tramite il sito. La richiesta di licenza non crea un contratto né un obbligo di acquisto: l'attivazione è soggetta a conferma scritta, disponibilità e alle condizioni comunicate via email.</p>
+        <p>Salvo diverse condizioni comunicate prima del pagamento, la licenza fondatore dura dodici mesi dalla data di attivazione indicata nella conferma e <strong>non si rinnova automaticamente</strong>. Alla scadenza le funzioni premium si disattivano e i dati restano nel browser; per continuare serve un nuovo codice. Non usiamo addebiti ricorrenti sul sito e non conserviamo l'IBAN.</p>
+        <p>L'indicazione “primi 20 posti” descrive il numero massimo di clienti fondatori previsti: non è un contatore in tempo reale e non garantisce la disponibilità. I posti saranno assegnati ai primi 20 clienti che completeranno l'attivazione secondo le condizioni pubblicate. Il prezzo fondatore e l'eventuale blocco del prezzo saranno confermati prima del pagamento e non costituiscono un'offerta vincolante fino a tale conferma.</p>
 
         <h3>3. Uso della demo</h3>
         <p>Ti concediamo una licenza personale, non esclusiva, non trasferibile e revocabile per usare la demo al solo fine di valutare il prodotto. Non puoi:</p>
@@ -302,6 +314,8 @@
           <li>usare la demo per attività illecite, per molestare persone o per trattare dati senza una base giuridica.</li>
         </ul>
         <p>Inserisci solo dati di esempio o dati per cui hai il diritto di farlo. Non inserire dati reali di inquilini senza il loro consenso, quando necessario, e non inserire categorie particolari di dati. La demo è fornita “così com'è”: può essere modificata, sospesa o interrotta senza preavviso.</p>
+
+        <p><strong>Licenze e servizi esterni.</strong> Un eventuale codice di licenza premium è un token firmato, verificato localmente e privo di dati anagrafici. Non è un documento di identità e non va condiviso pubblicamente. La verifica lato browser è un controllo di esperienza e non una protezione inviolabile. Il collegamento a Google Drive è facoltativo e resta soggetto ai termini e all'informativa privacy di Google; puoi revocarlo dal pulsante “Scollega” o dalle impostazioni del tuo account Google.</p>
 
         <h3>4. Proprietà intellettuale</h3>
         <p>Testi, grafica, interfaccia, codice e contenuti del sito sono del Titolare o sono utilizzati con licenza. Il nome “Affitto in Ordine” è un nome di lavoro e non implica che il marchio sia registrato. Non puoi usare nome, logo o contenuti per creare confusione sull'origine del prodotto.</p>
@@ -314,7 +328,7 @@
 
         <h3>7. Responsabilità</h3>
         <p>Nei limiti consentiti dalla legge, il Titolare non risponde di danni indiretti, perdita di dati, mancato guadagno o danni derivanti dall'uso o dall'impossibilità di usare la demo. Restano fermi i diritti inderogabili dei consumatori e la responsabilità per dolo o colpa grave. L'utente è responsabile dei dati inseriti, delle credenziali eventualmente utilizzate e delle decisioni prese sulla base delle informazioni del sito.</p>
-        <p>Nella demo non esiste un backup automatico: se hai bisogno di conservare i dati, usa l'export CSV prima di cancellare o cambiare browser.</p>
+        <p>Nella demo gratuita non esiste un backup automatico: se hai bisogno di conservare i dati, usa l'export CSV (disponibile con la licenza) o il collegamento manuale a Google Drive prima di cancellare o cambiare browser. La sincronizzazione automatica è inclusa nella licenza premium.</p>
 
         <h3>8. Reclami, legge applicabile e foro</h3>
         <p>Per reclami scrivi a <a href="mailto:alelocu09@gmail.com">alelocu09@gmail.com</a> con oggetto <strong>“Reclamo”</strong>. I termini sono regolati dalla legge italiana. Per i consumatori è competente il foro del luogo di residenza o domicilio, come previsto dall'art. 66-bis del Codice del Consumo. Per i professionisti è competente il foro di <span class="to-fill">[DA COMPILARE: città]</span>, salvo diverso accordo scritto.</p>
@@ -328,14 +342,14 @@
 
       <section class="legal-section" id="consumatori">
         <h2>Vendita e tutele dei consumatori</h2>
-        <p class="legal-meta">Sezione informativa. Il servizio non è in vendita alla data di pubblicazione.</p>
+        <p class="legal-meta">Sezione informativa. La licenza fondatore è attivabile su richiesta; il sito non ha un checkout automatico.</p>
 
         <div class="legal-callout">
-          <p><strong>Oggi non c'è nulla da comprare.</strong> Non accettiamo pagamenti, non attiviamo abbonamenti e non concludiamo contratti a distanza. Le informazioni seguenti indicano gli standard che applicheremo se e quando il servizio sarà messo in vendita.</p>
+          <p><strong>Nessun checkout sul sito.</strong> La licenza si richiede via email. Prima di pagare ricevi identità e dati del venditore, condizioni complete, prezzo totale, tempi di attivazione, istruzioni per il bonifico SEPA, diritto di recesso e recapito per i reclami. Il pagamento avviene fuori dal sito e il codice viene inviato dopo la conferma. Le informazioni seguenti indicano gli standard applicati a questa attivazione.</p>
         </div>
 
         <h3>Informazioni prima dell'acquisto</h3>
-        <p>Prima di un eventuale acquisto mostreremo in modo chiaro, ai sensi dell'art. 49 del Codice del Consumo:</p>
+        <p>Prima dell'attivazione mostriamo in modo chiaro, ai sensi dell'art. 49 del Codice del Consumo:</p>
         <ul>
           <li>identità, sede e contatti del venditore;</li>
           <li>caratteristiche principali del servizio e compatibilità;</li>
@@ -474,7 +488,7 @@
     </div>
     <div class="foot-legal">
       <p>© <span id="year">2026</span> Affitto in Ordine. Le informazioni presenti non costituiscono consulenza fiscale, legale o finanziaria.</p>
-      <p>Progetto in validazione · nessun pagamento attivo · <a href="#note-legali">Informazioni legali in bozza</a></p>
+      <p>Progetto in validazione · attivazione su richiesta · <a href="#note-legali">Informazioni legali in bozza</a></p>
     </div>
   </div>
 </footer>

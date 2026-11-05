@@ -2,7 +2,7 @@
 
 > **Questo documento non è consulenza legale e non certifica la conformità.** È una checklist operativa per rendere il prototipo presentabile e per preparare il lancio. Le norme cambiano, i fornitori cambiano e l'applicazione dipende dal modello di business. Prima di pubblicare e, soprattutto, prima di incassare pagamenti, fai verificare testi, flussi e contratti da un legale o da un consulente privacy.
 
-Ultimo aggiornamento: **23 ottobre 2026**.
+Ultimo aggiornamento: **29 ottobre 2026**.
 
 ---
 
@@ -11,14 +11,15 @@ Ultimo aggiornamento: **23 ottobre 2026**.
 | Area | Stato | Note |
 |---|---|---|
 | Privacy GDPR | Base pronta | `legale.html#privacy`; mancano dati del titolare, hosting e tempi. |
-| Cookie / ePrivacy | Base pronta | Nessun cookie; `localStorage` tecnico della demo. Nessun banner necessario. |
+| Cookie / ePrivacy | Base pronta, da verificare con Drive | Nessun cookie proprietario; `localStorage` tecnico. Se si attiva Google Drive, il browser carica librerie Google solo dopo l'azione dell'utente: verificare eventuali cookie/storage Google e la base giuridica. |
 | Termini d'uso | Base pronta | `legale.html#termini`; da rivedere prima della vendita. |
-| Informazioni consumatori | Base pronta | `legale.html#consumatori`; oggi non c'è vendita. |
+| Informazioni consumatori | Base pronta | `legale.html#consumatori`; attivazione su richiesta, checkout assente. Prima di incassare servono identità del venditore e condizioni complete. |
 | Note legali / e-commerce | Da completare | Mancano P.IVA, sede, PEC, REA, hosting. |
 | Accessibilità | Base pronta | Skip link, focus, modale accessibile; manca audit indipendente. |
 | Pratiche commerciali | Base pronta | Nessuna scarsità finta, nessun guadagno garantito. |
-| Pagamenti | Non attivi | Nessun checkout, nessun incasso. |
-| Account / backend | Non presenti | La demo è locale. |
+| Pagamenti | Richiesta manuale | Nessun checkout. La licenza si richiede via email; bonifico SEPA solo dopo aver completato dati del venditore, condizioni, recesso e ricevute. |
+| Account / backend | Non presenti | La demo è locale; non c'è un backend del Titolare. |
+| Google Drive / licenza | Licenza configurata; Drive da configurare | Chiave pubblica ECDSA presente e chiave privata fuori dal repository. Manca il client OAuth Google: il collegamento Drive è disabilitato. La demo gratuita è limitata a 1 immobile; vedi `CLOUD.md`. |
 | AI Act | Non applicabile allo stato attuale | Nessuna AI generativa o decisione automatizzata. Da rivalutare se aggiunta. |
 | DSA | Non applicabile allo stato attuale | Non siamo un intermediario online. Da rivalutare se ospitiamo contenuti di terzi. |
 | NIS2 | Probabilmente non applicabile | Micro-SaaS; da verificare se crescono dimensioni e criticità. |
@@ -54,6 +55,9 @@ Se non hai ancora aperto una partita IVA, non presentare il sito come un'attivit
 |---|---|---|---|---|---|
 | Richieste dalla landing | Nome, email, numero immobili, messaggio | Rispondere alla richiesta e valutare l'accesso fondatore | Art. 6(1)(b) GDPR (misure precontrattuali) | 24 mesi dall'ultimo contatto | Gmail/Google; eventuale form provider |
 | Demo locale | Immobili, nomi, canoni, note | Fornire la demo | Non c'è trasmissione al Titolare; trattamento sul dispositivo dell'utente | Fino a reset o cancellazione del browser | Nessuno |
+| Backup Google Drive facoltativo | Dati demo, token licenza, `is_premium`, ID dispositivo casuale, timestamp | Backup e portabilità richiesti dall'utente | Art. 6(1)(b) GDPR (servizio richiesto); revocabile | Fino a cancellazione del file o revoca dell'app | Google Drive; il Titolare non riceve copia |
+| Licenza premium locale | Token firmato senza dati anagrafici | Sbloccare le funzioni premium | Esecuzione del servizio richiesto; nessun dato ulteriore | Fino a rimozione o cancellazione dati sito | Nessuno; il token è incluso nel file Drive solo se attivo il backup |
+| Licenza fondatore e bonifico | Nome, email, dati per ricevuta/fattura, ordinante, importo, causale, coordinate presenti nell'estratto conto | Confermare il pagamento, emettere il documento fiscale e inviare il codice | Art. 6(1)(b) e art. 6(1)(c) GDPR | 10 anni per obblighi fiscali e contabili | Banca; consulente fiscale; email provider |
 | Futuro contratto | Dati anagrafici, contatti, dati di fatturazione, dati d'uso | Eseguire il servizio | Art. 6(1)(b) | Durata del contratto + 10 anni per obblighi fiscali | Hosting, pagamenti, email, consulenti |
 | Sicurezza | Log tecnici, IP | Protezione e diagnostica | Art. 6(1)(f) | Tempi tecnici brevi, da definire | Hosting |
 | Marketing futuro | Email | Newsletter/comunicazioni | Art. 6(1)(a), consenso separato | Fino a revoca | Email provider |
@@ -63,6 +67,9 @@ Se non hai ancora aperto una partita IVA, non presentare il sito come un'attivit
 - [ ] Verificare se il form `mailto` basta per la fase di validazione. Se passi a Tally/Formspree/Google Form, aggiungi il fornitore nell'informativa e nel registro.
 - [ ] Aggiornare l'informativa quando scegli l'hosting e indica la conservazione dei log.
 - [ ] Conservare il DPA/accordo di trattamento con ogni fornitore che tratta dati per tuo conto.
+- [ ] Per Google Drive: verificare la schermata di consenso OAuth, le origini autorizzate, lo scope `drive.appdata`, l'informativa Google e i requisiti della Google API Services User Data Policy, inclusi i limiti d'uso.
+- [ ] Per Google Drive: definire come l'utente revoca l'accesso, cancella il file e richiede assistenza; il Titolare non ha accesso al file, ma deve comunque descrivere il trattamento.
+- [x] Per la licenza: chiave privata fuori dal repository, solo chiave pubblica nel sito, verifica client-side dichiarata come controllo di esperienza e non come protezione antifrode.
 - [ ] Definire una procedura per accesso, rettifica, cancellazione, limitazione, opposizione e portabilità.
 - [ ] Definire una procedura per data breach: valutazione, notifica al Garante entro 72 ore quando applicabile, comunicazione agli interessati se necessario.
 - [ ] Non inserire dati sanitari, giudiziari o biometrici nella demo né chiedere agli utenti di farlo.
@@ -73,7 +80,7 @@ Se non hai ancora aperto una partita IVA, non presentare il sito come un'attivit
 
 ### 3.3 Trasferimenti extra-SEE
 
-Gmail può comportare trasferimenti verso gli Stati Uniti. Verifica il meccanismo applicabile:
+Gmail e l'eventuale backup Google Drive possono comportare trasferimenti verso gli Stati Uniti. Verifica il meccanismo applicabile:
 
 - decisione di adeguatezza, incluso il **Data Privacy Framework UE-USA**, se il fornitore è certificato;
 - in alternativa, **clausole contrattuali standard** con valutazione d'impatto e misure supplementari.
@@ -86,14 +93,29 @@ Per la produzione, valuta un provider con data residency UE. Conserva la documen
 
 ### Audit attuale
 
-- Cookie HTTP: **nessuno**.
-- Cookie JS: **nessuno**.
+- Cookie HTTP proprietari: **nessuno**.
+- Cookie JS proprietari: **nessuno**.
 - Analytics: **nessuno**.
 - Pixel/social plugin: **nessuno**.
 - Google Fonts: **nessuno** (font di sistema).
-- `localStorage`: usato dalla demo per salvare lo stato. È tecnico e necessario alla funzione richiesta dall'utente.
+- Script Google: **nessuno al primo accesso**; Google Identity Services e Google API possono essere caricati solo dopo che l'utente attiva il backup Drive o riprende un collegamento già attivo. Google può usare cookie o memoria del browser secondo la propria informativa: verificare caso per caso.
+- `localStorage`: usato dalla demo per salvare lo stato, le preferenze, l'avviso, la licenza e i metadati della sincronizzazione. È tecnico e necessario alla funzione richiesta dall'utente.
 - `sessionStorage`: usato solo per la chiave temporanea `aio-motion-nav`, che evita di ripetere l'animazione d'ingresso durante una navigazione interna. Non contiene dati personali e viene rimossa alla pagina successiva.
-- Banner cookie: **non necessario** finché non introduci cookie o identificatori non tecnici.
+- Banner cookie: **non necessario per i cookie proprietari**; se Google o altri fornitori impostano cookie non tecnici, valutare un consenso separato prima di attivarli. Non usare cookie wall.
+
+### Google Drive e licenza
+
+- [ ] Il client ID OAuth è pubblico e non accompagnato da client secret nel repository.
+- [ ] Le origini JavaScript autorizzate corrispondono al dominio pubblicato e agli ambienti di test.
+- [ ] Lo scope è solo `https://www.googleapis.com/auth/drive.appdata`.
+- [ ] La schermata di consenso spiega backup, file nella cartella privata e revoca.
+- [ ] La privacy policy descrive Google, il trasferimento extra-SEE, la conservazione e i diritti.
+- [ ] Il token OAuth resta in memoria e non viene scritto in `localStorage`.
+- [x] La chiave privata della licenza non è nel repository, nei log o nel sito.
+- [x] Il flag `is_premium` su Drive non è mai usato come prova di acquisto.
+- [x] La verifica client-side è dichiarata come controllo di esperienza, non come sicurezza antifrode.
+- [x] L'IBAN e i dati del venditore non sono nel repository né in `cloud-config.js`; la richiesta apre solo un'email.
+- [ ] Il file Drive e i metadati locali vengono cancellati o resi cancellabili dalle azioni dell'utente.
 
 ### Se aggiungi analytics o marketing
 
@@ -110,7 +132,7 @@ Per la produzione, valuta un provider con data residency UE. Conserva la documen
 
 ### Oggi
 
-Non c'è vendita, non c'è checkout, non ci sono pagamenti. La landing e i termini lo dicono chiaramente. Questo riduce gli obblighi, ma non elimina quelli su privacy, pubblicità e pratiche commerciali.
+Non c'è un checkout e il sito non addebita pagamenti. La licenza fondatore si richiede via email; il bonifico SEPA è concordato fuori dal sito e il codice viene inviato dopo la conferma. Questo riduce gli obblighi tecnici, ma non elimina quelli su privacy, pubblicità, pratiche commerciali e vendita a distanza. Prima di incassare il primo bonifico completa identità del venditore, condizioni, recesso, ricevute e rimborsi.
 
 ### Prima di vendere
 
@@ -127,15 +149,17 @@ Non c'è vendita, non c'è checkout, non ci sono pagamenti. La landing e i termi
 - [ ] Verifica delle clausole vessatorie nei termini (art. 33 Codice del Consumo): le limitazioni di responsabilità verso i consumatori possono essere nulle.
 - [ ] Se vendi a consumatori di altri Paesi UE, verifica le tutele inderogabili del Paese di residenza.
 
-### Pre-ordini
+### Licenza fondatore e bonifico
 
-Un pre-ordine con pagamento è una vendita a distanza a tutti gli effetti, anche se il prodotto non è pronto. Prima di incassare:
+Una licenza attivata con bonifico manuale è una vendita a distanza a tutti gli effetti, anche se il sito non ha un checkout. Prima di incassare:
 
-- definisci cosa viene venduto, quando sarà disponibile e cosa succede se non viene lanciato;
+- definisci cosa viene venduto, durata, quando sarà attivato e cosa succede se il prodotto non viene lanciato;
+- inserisci identità e sede del venditore, P.IVA/CF, condizioni, prezzo totale, attivazione, assistenza e reclami;
 - prevedi rimborso, recesso e comunicazioni chiare;
-- usa un processore di pagamento con DPA e non conservare dati di carta;
+- usa un conto bancario intestato al venditore e non pubblicare l'IBAN nel repository o nel sito;
 - emetti ricevuta/fattura secondo la normativa applicabile;
-- aggiorna termini e privacy.
+- aggiorna termini e privacy con i dati del bonifico;
+- conserva ordine, pagamento, token emesso e scadenza separatamente.
 
 Se non vuoi assumerti questi obblighi adesso, raccogli solo lettere d'intento senza pagamento.
 
@@ -174,6 +198,10 @@ Obiettivo: **WCAG 2.1 AA**, **EN 301 549** e, quando applicabile, **European Acc
 - [ ] Autenticazione a due fattori su tutti gli account amministrativi.
 - [ ] Backup automatici e test di ripristino per la futura versione con database.
 - [ ] Cifratura in transito (HTTPS) e a riposo per i dati dei clienti.
+- [ ] Token OAuth solo in memoria, nessun refresh token nel browser, revoca dall'interfaccia.
+- [ ] Backup Drive limitato allo scope `drive.appdata`; nessun accesso al resto del Drive.
+- [ ] Chiave privata delle licenze offline, con rotazione e revoca documentate; chiave pubblica nel solo file di configurazione.
+- [ ] Consapevolezza che la licenza client-side può essere aggirata: per la versione commerciale serve una verifica lato server.
 - [ ] Log degli accessi e principio del minimo privilegio.
 - [ ] Procedura di gestione degli incidenti e data breach.
 - [ ] Aggiornamenti di sicurezza e dipendenze.
@@ -189,6 +217,7 @@ Obiettivo: **WCAG 2.1 AA**, **EN 301 549** e, quando applicabile, **European Acc
 2. Fai una revisione legale dei testi.
 3. Verifica che non ci siano pagamenti o promesse di guadagno.
 4. Testa il sito su desktop e mobile.
+5. Se mostri il riquadro Drive, configura OAuth e privacy Google; altrimenti lascialo nascosto (`showWhenUnconfigured: false`).
 
 ### P1 — prima di raccogliere contatti su larga scala
 
@@ -196,6 +225,7 @@ Obiettivo: **WCAG 2.1 AA**, **EN 301 549** e, quando applicabile, **European Acc
 2. Scegli hosting UE e aggiorna privacy.
 3. Imposta una procedura per i diritti GDPR.
 4. Se aggiungi analytics, implementa il consenso.
+5. Verifica la schermata di consenso Google, lo scope `drive.appdata`, i limiti d'uso delle API e la cancellazione del file Drive.
 
 ### P2 — prima di vendere
 
@@ -212,6 +242,7 @@ Obiettivo: **WCAG 2.1 AA**, **EN 301 549** e, quando applicabile, **European Acc
 - Regolamento (UE) 2016/679 (GDPR).
 - D.Lgs. 196/2003 e D.Lgs. 101/2018 (Codice privacy italiano).
 - Direttiva 2002/58/CE (ePrivacy) e linee guida del Garante sui cookie.
+- Google API Services User Data Policy e Google API Services: requisiti per l'uso dei dati ottenuti tramite OAuth.
 - D.Lgs. 206/2005 (Codice del Consumo), in particolare artt. 20–23, 33, 49, 52–59, 66-bis, 135-octies e seguenti.
 - D.Lgs. 70/2003 (commercio elettronico), art. 7.
 - Direttiva (UE) 2019/882 e D.Lgs. 82/2022 (accessibilità).

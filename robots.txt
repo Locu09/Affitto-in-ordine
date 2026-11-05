@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /legale.html
+
+Sitemap: https://locu09.github.io/Affitto-in-ordine/sitemap.xml
